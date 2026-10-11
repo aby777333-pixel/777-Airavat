@@ -37,15 +37,21 @@ export default async function Home() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl drift" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto flex max-w-[1400px] flex-col px-4 pb-0 pt-16 sm:px-6 md:pt-24">
-          <div>
+        <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6">
+          <div className="relative md:min-h-[560px]">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 top-4 hidden md:block" aria-hidden="true">
+              <div className="absolute inset-x-[30%] bottom-0 top-[25%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.18),transparent_65%)] blur-3xl" />
+              <Image src="/brand/hero-people.webp" alt="" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-[78%_100%]" />
+            </div>
+            <div className="relative z-10 max-w-[620px] py-10 md:py-14">
+              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.14)] bg-[#0c1116]/95 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.55)] sm:p-8">
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
             </div>
             <h1 className="rise-2 font-display mt-5 text-4xl font-bold leading-[1.05] sm:text-6xl">
               Power with <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">precision.</span>
             </h1>
-            <p className="rise-3 mt-6 max-w-2xl text-lg text-muted">
+            <p className="rise-3 mt-5 max-w-xl text-base text-muted sm:text-lg">
               AIRAVAT is an independent Indian securities platform in sandbox development. Open a simulated account, fund it with simulated money,
               and watch every order pass through a real risk engine, a real order state machine and a real double-entry ledger.
             </p>
@@ -61,11 +67,10 @@ export default async function Home() {
               <SimBadge />
               <span>No SEBI registration or exchange membership is claimed.</span>
             </div>
-          </div>
-
-          <div className="rise-2 relative mt-10 aspect-[2172/724] w-full">
-            <div className="pointer-events-none absolute inset-x-[10%] bottom-0 top-[20%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.2),transparent_65%)] blur-3xl" aria-hidden="true" />
-            <Image src="/brand/hero-people.webp" alt="Investors and traders from across India greeting with namaste, holding charts" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-bottom" />
+          
+              </div>
+            </div>
+            <div className="relative -mx-4 aspect-[2172/724] sm:-mx-6 md:hidden"><Image src="/brand/hero-people.webp" alt="Investors and traders from across India greeting with namaste, holding charts" fill sizes="100vw" className="object-contain object-bottom" /></div>
           </div>
         </div>
       </section>
