@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 0.7.0 — 2026-10-11 — Markets hub (block 1 of the Indian-market build-out)
+- Migration 0028: sector indices (NIFTY IT, PHARMA, AUTO, FMCG, METAL, ENERGY, FIN SERVICE) and INDIA VIX as simulated index instruments; `index_constituents` with free-float-proxy weights; `instrument_fundamentals` (four FYs per company, SIMULATED SAMPLE); `fii_dii_activity` (45 sessions); fixed national holidays; `macro_series` (CPI, WPI, repo, 10Y, USDINR, IIP, PMI, Brent, GDP); `corporate_events` (results, AGMs); `ipo_subscriptions`; `contract_specs` for MCX and CDS; SQL `market_pulse()` and `index_detail()`.
+- Pages: /markets/indices/[slug] (constituents, weights, sector split, contributions), /markets/sectors and /markets/sectors/[slug] (breadth, valuation snapshot), /markets/derivatives (simulated option chain with OI, PCR, max pain, build-up, expiry ladder, FII positioning, stock F&O universe), /markets/commodities, /markets/currency, /markets/fii-dii (flows chart and table), /markets/calendar (holidays, results, ex-dates, expiries, macro), /markets/economy (indicator cards with sparklines), /markets/pulse (breadth, 52-week extremes, volume shockers, circuits, delivery, sector breadth). Instrument pages gain a fundamentals fact sheet, index memberships, sector peers and the company profile.
+- Navigation: eight new Markets links; SEO entries and sitemap coverage for each.
+- Home hero: translucent copy card with equal padding, people image aligned to the content edge.
+
 ## 0.6.8 — 2026-10-11 — Contact enquiries
 - Migration 0027 `site_enquiries` + `submit_enquiry` (anonymous allowed; name/contact/consent/message validation, honeypot, 5-per-hour rate limit per email or phone, reference ENQ-YYYYMMDD-xxxxxx, optional CRM lead with marketing consent, audit) and `update_enquiry` (staff). Detailed general-enquiry form on /contact (11 enquiry kinds with kind-specific questions, segments, horizon, capital, language, state, callback slot, consents) plus support hours, escalation matrix (support → compliance → SEBI SCORES / exchange IG / SMART ODR) and office placeholders. Console /admin/enquiries with status workflow.
 

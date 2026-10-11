@@ -1,4 +1,6 @@
 import Link from "next/link";
+import FundamentalsPanel from "@/components/market/FundamentalsPanel";
+import CompanyProfile from "@/components/market/CompanyProfile";
 import { notFound } from "next/navigation";
 import clsx from "clsx";
 import { getCandles, getInstrument, getMarketStatus } from "@/lib/market";
@@ -59,7 +61,8 @@ export default async function InstrumentPage({ params }: { params: Promise<{ sym
               </tbody>
             </table>
           </div>
-          <Notice tone="info">Fundamentals, shareholding, corporate actions and news require licensed data feeds and are not yet connected. See the <Link className="underline" href="/trust">Trust Centre</Link>.</Notice>
+          {inst.segment === "EQ" && <FundamentalsPanel instrumentId={inst.id} symbol={inst.symbol} sector={inst.sector} ltp={Number(inst.quote.ltp)} />}
+          <CompanyProfile instrumentId={inst.id} symbol={inst.symbol} />
         </div>
       </div>
     </div>

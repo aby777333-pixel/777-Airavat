@@ -41,10 +41,10 @@ export default async function Home() {
           <div className="relative md:min-h-[560px]">
             <div className="pointer-events-none absolute inset-x-0 bottom-0 top-4 hidden md:block" aria-hidden="true">
               <div className="absolute inset-x-[30%] bottom-0 top-[25%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.18),transparent_65%)] blur-3xl" />
-              <Image src="/brand/hero-people.webp" alt="" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-[78%_100%]" />
+              <Image src="/brand/hero-people.webp" alt="" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-[100%_100%]" />
             </div>
-            <div className="relative z-10 max-w-[620px] py-10 md:py-14">
-              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.14)] bg-[#0c1116]/95 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.55)] sm:p-8">
+            <div className="relative z-10 max-w-[620px] py-12 md:py-16">
+              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.16)] bg-[#0c1116]/72 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
             </div>
