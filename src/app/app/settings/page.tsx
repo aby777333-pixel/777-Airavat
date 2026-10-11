@@ -18,11 +18,11 @@ export default async function Settings() {
         <Card title="Profile">
           <form action={updatePreferences} className="space-y-3">
             <label className="block"><span className="label">Display name</span><input className="input" name="full_name" defaultValue={profile?.full_name ?? ""} /></label>
-            <label className="block"><span className="label">Theme</span><select className="select" name="theme" defaultValue={profile?.theme ?? "midnight-sovereign"}>{THEMES.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}</select></label>
+            <label className="block"><span className="label">Theme</span><select className="select" name="theme" defaultValue={profile?.theme ?? "gio4x"}>{THEMES.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}</select></label>
             <label className="block"><span className="label">Preferred language (AIRAVAT BHASHA)</span><select className="select" name="language" defaultValue={profile?.language ?? "en"}>{LANGS.map(([c, n]) => <option key={c} value={c}>{n}</option>)}</select></label>
             <button className="btn btn-primary">Save</button>
           </form>
-          <ApplyTheme theme={profile?.theme ?? "midnight-sovereign"} />
+          <ApplyTheme theme={profile?.theme ?? "gio4x"} />
           <dl className="mt-5 grid grid-cols-2 gap-2 text-sm">
             <dt className="text-muted">Email</dt><dd>{user.email}</dd>
             <dt className="text-muted">Role</dt><dd><Badge tone="info">{profile?.role}</Badge></dd>

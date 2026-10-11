@@ -146,7 +146,7 @@ export async function replyTicket(form: FormData): Promise<void> {
 
 export async function updatePreferences(form: FormData): Promise<void> {
   const { supabase, user } = await requireUser("/app/settings");
-  const theme = String(form.get("theme") || "midnight-sovereign");
+  const theme = String(form.get("theme") || "gio4x");
   const language = String(form.get("language") || "en");
   const full_name = String(form.get("full_name") || "").trim();
   await supabase.from("profiles").update({ theme, language, ...(full_name ? { full_name } : {}), updated_at: new Date().toISOString() }).eq("id", user.id);

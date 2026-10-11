@@ -21,7 +21,7 @@ export default async function Breadth() {
   const near52l = eq.filter((r) => r.m && Number(r.m.low_52w) > 0 && r.quote.ltp <= Number(r.m.low_52w) * 1.03);
   const asOf = metrics?.[0]?.as_of;
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Market breadth" />
       <PageHero variant="briefing" intro="Breadth measures how many stocks participate in a move. An index can rise while most stocks fall; the advance-decline line, the share of stocks above their moving averages and new highs versus new lows show whether a trend is broad or narrow."><PageHeader eyebrow="Markets" title="Market breadth" subtitle={<><SimBadge /> metrics as of {istTime(asOf)}</>} /></PageHero>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

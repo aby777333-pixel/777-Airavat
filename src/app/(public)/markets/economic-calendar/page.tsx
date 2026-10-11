@@ -12,7 +12,7 @@ export default async function EconomicCalendar() {
   const byDate = new Map<string, NonNullable<typeof rows>>();
   for (const r of rows ?? []) byDate.set(r.event_date, [...(byDate.get(r.event_date) ?? []), r]);
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Economic calendar" />
       <PageHero variant="briefing" intro="Scheduled economic releases move markets: RBI policy decisions set rates, CPI and IIP shape expectations, global central bank meetings move flows, and exchange holidays change settlement dates. The calendar lists them with importance and, where known, expected and previous values."><PageHeader eyebrow="Markets" title="Economic calendar" /></PageHero>
       <Notice tone="warn">No licensed economic data feed is connected. Holidays come from the sandbox exchange calendar; other rows are labelled SIMULATED SAMPLE and maintained by staff.</Notice>

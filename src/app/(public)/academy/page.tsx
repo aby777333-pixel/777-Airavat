@@ -23,7 +23,7 @@ const glossary = [
 
 export default function Academy() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="academy" intro={seoFor("/academy").intro}><PageHeader eyebrow="AIRAVAT Academy" title="Learn how markets actually work" subtitle="Plain-language lessons written to match what the sandbox does. Education, not advice. No course promises returns." /></PageHero>
       <div className="grid gap-4 md:grid-cols-2">
         {lessons.map((l) => (

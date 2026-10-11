@@ -42,7 +42,7 @@ export default async function Pricing() {
   const groups = ["Equity", "F&O", "Currency", "Commodity"] as const;
   const rows: [string, (s: Segment) => string][] = [["Brokerage", brokerageText], ["STT / CTT", sttText], ["Transaction charges", txnText], ["GST", () => "18% on brokerage + SEBI charges + transaction charges"], ["SEBI charges", sebiText], ["Stamp charges", (s) => s.stampNote], ["Investor protection fund (IPFT)", (s) => s.ipft ?? "—"]];
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="pricing" intro={seoFor("/pricing").intro}><PageHeader eyebrow="Charges" title="Every charge, published in full" subtitle={`AIRAVAT's complete charge schedule across equity, F&O, currency and commodity segments, plus account, depository and maintenance charges. Schedule version ${SCHEDULE_VERSION}.`} /></PageHero>
       <Notice tone="warn">Sandbox: only NSE equity cash (delivery and intraday) is tradable, with simulated money. Every other segment is published for transparency and marked as not enabled. Statutory and exchange rates are re-verified against official notifications before any live use.</Notice>
 

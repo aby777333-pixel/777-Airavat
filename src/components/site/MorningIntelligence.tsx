@@ -9,7 +9,7 @@ export default async function MorningIntelligence() {
   const b = await getBriefing();
   if (!b) return null;
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <section className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <div className="m-crystal relative overflow-hidden p-6">
         <span className="aurora-ribbon" aria-hidden="true" />
         <div className="flex flex-wrap items-center justify-between gap-3">

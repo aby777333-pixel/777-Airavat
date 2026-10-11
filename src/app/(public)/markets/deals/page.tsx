@@ -18,7 +18,7 @@ export default async function Deals() {
   const sym = (r: { instrument: unknown }) => ((Array.isArray(r.instrument) ? r.instrument[0] : r.instrument) as { symbol: string } | null)?.symbol;
   const today = stats?.[0]?.day;
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Deals, flows and delivery" />
       <PageHero variant="markets" intro="Bulk and block deals show large negotiated trades; FII and DII activity shows the net direction of institutional money; delivery percentage shows how much of a day's volume was actually taken into demat rather than squared off intraday."><PageHeader eyebrow="Markets" title="Bulk & block deals, FII/DII activity, delivery %" /></PageHero>
       <Notice tone="warn">No exchange deals or institutional flow feed is connected. Delivery percentages derive from the simulated engine; other rows show their source.</Notice>

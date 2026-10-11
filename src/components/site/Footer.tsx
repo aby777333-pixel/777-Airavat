@@ -3,8 +3,8 @@ import { NAV_GROUPS } from "@/lib/navigation";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-border bg-bg-2/60">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <footer className="on-night mt-24 border-t border-border bg-bg-2/60">
+      <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <div className="font-display text-lg font-bold tracking-[0.18em]">AIRAVAT</div>

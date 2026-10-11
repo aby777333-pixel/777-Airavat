@@ -14,7 +14,7 @@ const categories = [
 
 export default function Partners() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="partners" intro={seoFor("/partners").intro}><PageHeader eyebrow="Partner Universe" title="Distribution with discipline" subtitle="Each partner category has its own eligibility, permitted activities and compensation model. Nothing pays out without a compliance-approved plan, and a suspended partner keeps earned, verified remuneration while new business stops." /></PageHero>
       <Notice tone="info">The partner network is in sandbox: commissions accrue in a simulated ledger and payouts are maker-checker approved. Regulatory permissibility of each compensation basis is recorded as a legal basis on every plan and must be verified before live use.</Notice>
       <div className="mt-6 grid gap-4 md:grid-cols-2">

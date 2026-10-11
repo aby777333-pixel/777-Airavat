@@ -24,7 +24,7 @@ export default function ContentPageView({ page, groupHref }: { page: ContentPage
   const faqLd = page.faqs.length ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: page.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) } : null;
   const related = page.related.map((r) => ({ href: r, label: contentPage(r)?.h1 ?? r.split("/").pop()?.replace(/-/g, " ") ?? r }));
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: groupHref, label: page.group }, { href: page.path, label: page.h1 }]} />
       <PageHero variant={page.hero} intro={page.intro}>
         <PageHeader eyebrow={page.group} title={page.h1} subtitle={<>{page.dek} <Badge tone={b.tone}>{b.label}</Badge></>} />

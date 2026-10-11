@@ -11,7 +11,7 @@ const invest = NAV_GROUPS.find((g) => g.key === "invest")!.links;
 
 export function ProductDiscovery() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="h-invest">
+    <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6" aria-labelledby="h-invest">
       <div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Invest</div>
       <h2 id="h-invest" className="font-display mt-2 text-3xl font-bold">Every product, honestly labelled</h2>
       <p className="mt-2 max-w-2xl text-muted">Stocks, mutual funds, ETFs, IPOs, bonds, REITs and gold, each with its real availability: sandbox live, research-only, or designed and waiting on approvals.</p>
@@ -23,7 +23,7 @@ export function ProductDiscovery() {
 export function TerminalShowcase() {
   const shot = SHOWROOM.find((s) => s.id === "ticket");
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="h-terminal">
+    <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6" aria-labelledby="h-terminal">
       <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.618fr]">
         <div>
           <div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Trade · Terminal X</div>
@@ -50,7 +50,7 @@ export async function IntelligenceStrip() {
     { href: "/platforms#live", t: "AIRAVAT LIVE", b: "A calm AI assistant that explains markets, charges and your own screen in Indian languages. It has no order tools by design." },
   ];
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="h-intel">
+    <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6" aria-labelledby="h-intel">
       <div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Intelligence</div>
       <h2 id="h-intel" className="font-display mt-2 text-3xl font-bold">Research that shows its evidence</h2>
       <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_1fr_1fr_1fr]">{cards.map((c) => <Link key={c.href} href={c.href} className="m-sapphire-edge magnetic p-5"><div className="font-display font-semibold">{c.t}</div><p className="mt-2 text-sm text-muted">{c.b}</p></Link>)}</div>
@@ -61,7 +61,7 @@ export async function IntelligenceStrip() {
 
 export function AcademyPricingTrust() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6">
       <div className="grid gap-4 md:grid-cols-3">
         <Link href="/academy" className="glass p-6"><div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Learn</div><div className="font-display mt-2 text-xl font-semibold">Academy, guides, courses, glossary</div><p className="mt-2 text-sm text-muted">Plain-language lessons written to match what the sandbox does, with tutorials you complete in the app and a daily journal reviewed before publication.</p><span className="mt-3 inline-block text-xs text-accent">Start learning →</span></Link>
         <Link href="/pricing" className="m-crystal p-6"><div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Transparent pricing</div><div className="font-display mt-2 text-xl font-semibold">₹0 delivery · ₹20 intraday and F&O</div><p className="mt-2 text-sm text-muted">Every statutory levy, DP charge, AMC and BSDA rule published in full and applied by a versioned catalogue with maker-checker approval. No hidden charges, by construction.</p><span className="mt-3 inline-block text-xs text-accent">See all charges →</span></Link>
@@ -73,7 +73,7 @@ export function AcademyPricingTrust() {
 
 export function FinalCta({ className }: { className?: string }) {
   return (
-    <section className={clsx("mx-auto max-w-7xl px-4 py-16 sm:px-6", className)}>
+    <section className={clsx("mx-auto max-w-[1400px] px-4 py-16 sm:px-6", className)}>
       <div className="m-crystal sheen flex flex-col items-center gap-4 p-10 text-center">
         <h2 className="font-display text-3xl font-bold">Open a sandbox account</h2>
         <p className="max-w-xl text-muted">Two minutes. Simulated KYC, simulated funds, real engineering: risk checks, a double-entry ledger and an order passport for every trade.</p>

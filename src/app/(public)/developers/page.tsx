@@ -16,7 +16,7 @@ const endpoints = [
 
 export default function Developers() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/calculators", label: "Tools" }, { href: "/developers", label: "Developer Hub" }]} />
       <PageHero variant="contact" intro="The AIRAVAT API exposes the same engine the apps use. Issue a sandbox key in the app, call the versioned REST endpoints with an X-API-Key header, and every order you place passes the identical risk engine, fund holds, journal postings and audit trail. Streaming uses server-sent events; the OpenAPI document is machine-readable."><PageHeader eyebrow="Developer Hub" title="AIRAVAT API v1" subtitle="Sandbox keys · scopes · 120 requests per minute per key · idempotent POSTs · OpenAPI 3.1" /></PageHero>
       <Notice tone="warn">Sandbox only: simulated market data and funds. Production API access, FIX connectivity and WebSocket streaming require exchange approvals and certified infrastructure that do not exist yet.</Notice>

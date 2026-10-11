@@ -29,14 +29,14 @@ export default async function Home() {
     <>
       <Awakening />
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="on-night relative overflow-hidden">
         <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl drift" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.618fr_1fr] md:pt-24">
+        <div className="relative mx-auto grid max-w-[1400px] gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.618fr_1fr] md:pt-24">
           <div>
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
-              <span className="h-px w-8 bg-accent" /> Indian brokerage technology, built in the open
+              <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
             </div>
             <h1 className="rise-2 font-display mt-5 text-4xl font-bold leading-[1.05] sm:text-6xl">
               Power with <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">precision.</span>
@@ -105,7 +105,7 @@ export default async function Home() {
       <MorningIntelligence />
 
       {/* JOURNEY */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6">
         <div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">The client lifecycle, end to end</div>
         <div className="mt-6 flex flex-wrap gap-2">
           {journey.map((j, i) => (
@@ -122,7 +122,7 @@ export default async function Home() {
       </section>
 
       {/* PRODUCTS */}
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <section className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
         <h2 className="font-display text-3xl font-bold">One ecosystem. Every role.</h2>
         <p className="mt-2 max-w-2xl text-muted">From a first-time investor to a professional desk to the operations team reconciling the books.</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -138,7 +138,7 @@ export default async function Home() {
       </section>
 
       {/* WHY */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
           {[
             ["Financial correctness first", "Money is stored as exact decimals. Every trade posts a balanced journal entry. Corrections are reversals, never overwrites."],

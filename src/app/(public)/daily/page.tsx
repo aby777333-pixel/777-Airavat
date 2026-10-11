@@ -14,7 +14,7 @@ export default async function Daily({ searchParams }: { searchParams: Promise<{ 
   const [articles, cats, briefing] = await Promise.all([getPublishedArticles({ category, limit: 40 }), getCategories(), getBriefing()]);
   const [featured, ...rest] = articles;
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="daily" intro={seoFor("/daily").intro}><PageHeader eyebrow="AIRAVAT DAILY" title="The Financial Journal" subtitle="Market briefs, explainers and financial literacy, reviewed by humans before publication. Educational content, not advice." action={<Link href="/briefing" className="btn btn-primary btn-sm">Today&apos;s briefing →</Link>} /></PageHero>
       <div className="mb-6 flex flex-wrap gap-2">
         <Link href="/daily" className={clsx("btn btn-sm", !category ? "btn-primary" : "btn-ghost")}>All</Link>

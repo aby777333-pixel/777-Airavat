@@ -17,7 +17,7 @@ export default async function InstrumentPage({ params }: { params: Promise<{ sym
   const band = { lo: inst.quote.prev_close * (1 - inst.price_band_pct / 100), hi: inst.quote.prev_close * (1 + inst.price_band_pct / 100) };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="text-xs text-muted">{inst.exchange} · {inst.segment} · {inst.sector}{inst.isin && ` · ${inst.isin}`}</div>

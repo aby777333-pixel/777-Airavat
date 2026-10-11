@@ -15,7 +15,7 @@ export default async function Heatmap() {
   const order = [...sectors.entries()].map(([name, list]) => ({ name, list, avg: list.reduce((s, x) => s + x.changePct, 0) / list.length })).sort((a, b) => b.avg - a.avg);
   const cell = (v: number) => (v >= 2 ? "bg-profit/60" : v >= 0.5 ? "bg-profit/35" : v > -0.5 ? "bg-bg-2" : v > -2 ? "bg-loss/35" : "bg-loss/60");
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Sector heatmap" />
       <PageHero variant="markets" intro="The heatmap groups stocks by sector, colours each tile by day change and sizes it by traded value, so you can see where money moved at a glance. Every figure is simulated."><PageHeader eyebrow="Markets" title="Sector heatmap" subtitle={<SimBadge />} /></PageHero>
       <div className="space-y-4">

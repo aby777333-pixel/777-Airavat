@@ -18,7 +18,7 @@ const platforms = [
 
 export default function Platforms() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="platforms" intro={seoFor("/platforms").intro}><PageHeader eyebrow="Platforms" title="The AIRAVAT product family" subtitle="Status labels are honest: 'Sandbox live' means working against simulated infrastructure. 'Planned' means designed, not built." /></PageHero>
       <div className="grid gap-5 md:grid-cols-2">
         {platforms.map((p) => (

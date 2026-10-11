@@ -37,7 +37,7 @@ export default async function ToolPage({ params }: { params: Promise<{ tool: str
   const spots: Record<string, number> = {};
   if (tool === "options-payoff-calculator") for (const q of await getQuotes()) spots[q.symbol] = Number(q.quote.ltp);
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/calculators", label: "Tools" }, { href: `/tools/${tool}`, label: t.h1 }]} />
       <PageHero variant="calculators" intro={t.intro}><PageHeader eyebrow="Tools" title={t.h1} subtitle={t.desc} /></PageHero>
       <Notice tone="info">Formulas are shown with each result and unit-tested in the repository. Outputs are estimates for education, not advice.</Notice>

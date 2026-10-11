@@ -10,9 +10,9 @@ export const metadata = { ...metadataFor("/briefing") };
 
 export default async function Briefing() {
   const b = await getBriefing();
-  if (!b) return <div className="mx-auto max-w-5xl px-4 py-12 text-muted">Briefing unavailable.</div>;
+  if (!b) return <div className="mx-auto max-w-[1200px] px-4 py-12 text-muted">Briefing unavailable.</div>;
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="briefing" intro={seoFor("/briefing").intro}><PageHeader eyebrow="AIRAVAT Morning Intelligence" title="Daily briefing" subtitle={<>Generated {istTime(b.generated_at)} · session <strong>{b.market.status}</strong> · <SimBadge label="Simulated sandbox data" /></>} /></PageHero>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {b.indices.map((i) => <div key={i.symbol} className="m-crystal p-4"><div className="text-xs text-muted">{i.symbol}</div><div className="tnum font-display text-2xl font-semibold">{price(i.ltp)}</div><div className={clsx("tnum text-sm", i.change_pct >= 0 ? "text-profit" : "text-loss")}>{pct(i.change_pct)}</div></div>)}

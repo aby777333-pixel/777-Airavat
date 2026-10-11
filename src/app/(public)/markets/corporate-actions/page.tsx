@@ -12,7 +12,7 @@ export default async function CorporateActions() {
   const { data: rows } = await supabase.from("corporate_actions").select("*, instrument:instruments(symbol,name)").order("ex_date").limit(200);
   const list = (rows ?? []).map((r) => ({ ...r, instrument: (Array.isArray(r.instrument) ? r.instrument[0] : r.instrument) as { symbol: string; name: string } | null }));
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Corporate actions" />
       <PageHero variant="daily" intro="Corporate actions change what you own or receive: dividends pay cash per share to holders on the record date, splits and bonuses change the number of shares and adjust historical prices, buybacks and rights give you a choice. AIRAVAT posts each action to your ledger and holdings on the ex-date and adjusts candle history for splits and bonuses."><PageHeader eyebrow="Markets" title="Corporate actions" subtitle="Provenance is shown on every row." /></PageHero>
       <Notice tone="warn">No exchange corporate-action feed is connected. Rows marked SIMULATED SAMPLE exist so the posting workflow can be demonstrated; staff can enter actions in Broker Core.</Notice>

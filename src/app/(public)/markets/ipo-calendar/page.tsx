@@ -12,7 +12,7 @@ export default async function IpoCalendar() {
   const { data: rows } = await supabase.from("ipos").select("*").order("open_date", { ascending: false });
   const tone = (s: string) => (s === "open" ? "ok" : s === "upcoming" ? "info" : "default");
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="IPO calendar" />
       <PageHero variant="partners" intro="The IPO calendar lists public issues by status with their price band, lot size, issue size and key dates. A retail application blocks funds through ASBA until allotment; in the sandbox, applications block simulated funds and a simulated lottery allots shares."><PageHeader eyebrow="Markets" title="IPO calendar" /></PageHero>
       <Notice tone="warn">No exchange IPO feed is connected; issues marked SIMULATED SAMPLE demonstrate the application and allotment workflow end to end.</Notice>

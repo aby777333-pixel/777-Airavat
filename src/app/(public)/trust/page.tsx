@@ -20,7 +20,7 @@ const identity = [
 export default async function Trust() {
   const ms = await getMarketStatus();
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6">
       <PageHero variant="trust" intro={seoFor("/trust").intro}><PageHeader eyebrow="Trust Centre" title="Exactly what AIRAVAT is, and is not, today" subtitle="We publish only verified facts. There are no trust badges here because none have been earned yet." /></PageHero>
       <Notice tone="warn">AIRAVAT is a technology platform in sandbox development. It is not a registered stock broker and cannot accept real funds or real orders.</Notice>
 

@@ -2,6 +2,7 @@
 import { useSyncExternalStore } from "react";
 
 export const THEMES = [
+  { id: "gio4x", name: "GIO4X House (paper & night)", family: "signature" },
   { id: "midnight-sovereign", name: "Midnight Sovereign", family: "signature" },
   { id: "royal-sapphire", name: "Royal Sapphire", family: "signature" },
   { id: "ivory-reserve", name: "Ivory Reserve", family: "light" },
@@ -22,7 +23,7 @@ export const THEMES = [
 const listeners = new Set<() => void>();
 export function applyTheme(id: string) {
   document.documentElement.setAttribute("data-theme", id);
-  try { localStorage.setItem("airavat-theme", id); } catch {}
+  try { localStorage.setItem("airavat-theme-v2", id); } catch {}
   listeners.forEach((l) => l());
 }
 export function applyPref(key: "material" | "motion" | "density", value: string) {

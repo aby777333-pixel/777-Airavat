@@ -18,7 +18,7 @@ export default async function Universe() {
   const [{ data: matrix }, quotes] = await Promise.all([supabase.from("market_access_matrix").select("*").order("id"), getQuotes()]);
   const research = quotes.filter((q) => ["COMM", "CDS"].includes(q.segment));
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="universe" intro={seoFor("/markets/universe").intro}><PageHeader eyebrow="Market Atlas" title="One architecture, many markets, regulated access" subtitle="Every market AIRAVAT is designed to serve, with its real stage. Only the simulated NSE equity sandbox is live. Nothing here is a claim of exchange membership or authorization." /></PageHero>
       <Notice tone="warn">Technology readiness is not legal permission. Offshore leveraged FX and CFDs are explicitly not enabled for Indian residents.</Notice>
       <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

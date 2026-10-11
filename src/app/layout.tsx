@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import PwaRegister from "@/components/PwaRegister";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+// House display face (same files as gio4x.com); Manrope stays as the fallback for the older palettes.
+const norms = localFont({ variable: "--font-norms", display: "swap", src: [{ path: "../fonts/TTNorms-Light.woff2", weight: "300", style: "normal" }, { path: "../fonts/TTNorms-Regular.woff2", weight: "400", style: "normal" }, { path: "../fonts/TTNorms-Medium.woff2", weight: "500", style: "normal" }, { path: "../fonts/TTNorms-Bold.woff2", weight: "700", style: "normal" }] });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://777-airavat.netlify.app";
 export const metadata: Metadata = {
@@ -29,18 +32,18 @@ const jsonLd = {
   ],
 };
 
-export const viewport: Viewport = { themeColor: "#070c1c", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0c1116", width: "device-width", initialScale: 1 };
 
-const themeInit = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('airavat-theme');if(t){d.setAttribute('data-theme',t);}['material','motion','density'].forEach(function(k){var v=localStorage.getItem('airavat-'+k);if(v){d.setAttribute('data-'+k,v);}});}catch(e){}})();`;
+const themeInit = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('airavat-theme-v2');if(t){d.setAttribute('data-theme',t);}['material','motion','density'].forEach(function(k){var v=localStorage.getItem('airavat-'+k);if(v){d.setAttribute('data-'+k,v);}});}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="midnight-sovereign" suppressHydrationWarning>
+    <html lang="en" data-theme="gio4x" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body className={`${inter.variable} ${manrope.variable} font-sans`}>{children}<PwaRegister /></body>
+      <body className={`${inter.variable} ${manrope.variable} ${norms.variable} font-sans`}>{children}<PwaRegister /></body>
     </html>
   );
 }

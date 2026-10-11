@@ -23,7 +23,7 @@ export default async function ResearchPage() {
     supabase.from("scanner_results").select("matched_at, scanner:scanners(name), instrument:instruments(symbol)").order("matched_at", { ascending: false }).limit(8),
   ]);
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="research" intro={seoFor("/research").intro}><PageHeader eyebrow="Research ONE" title="Evidence first. Opinions second." subtitle="An AI-assisted research environment that separates facts, estimates, hypotheses and contradictions, and never turns a conclusion into an order." /></PageHero>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {pillars.map((p) => (

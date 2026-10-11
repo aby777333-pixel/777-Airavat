@@ -14,7 +14,7 @@ export default async function Indices() {
   const eq = rows.filter((r) => r.segment === "EQ" && r.tradable);
   const banks = eq.filter((r) => (r.sector ?? "").toLowerCase().includes("bank") || (r.sector ?? "").toLowerCase().includes("financ"));
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Indices" />
       <PageHero variant="markets" intro="Index pages show the level and day change of each benchmark with the performance of its constituents. In the sandbox the NIFTY 50 universe is the tradable large-cap list and the NIFTY BANK constituents are the banking and financial names within it."><PageHeader eyebrow="Markets" title="Index pages" subtitle={<><SimBadge /> Index levels and constituents are simulated.</>} /></PageHero>
       <div className="grid gap-4 sm:grid-cols-2">

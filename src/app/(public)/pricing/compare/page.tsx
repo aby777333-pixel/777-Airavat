@@ -20,7 +20,7 @@ export default async function Compare() {
     return { brokerage, total: Math.round((brokerage + base.stt + base.exchange + base.sebi + base.stamp + gst) * 100) / 100 };
   };
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/pricing", label: "Pricing" }, { href: "/pricing/compare", label: "Compare" }]} />
       <PageHero variant="pricing" intro="Compare the all-in cost of typical trades under each approved plan. Statutory levies are the same in every column; only the brokerage line changes."><PageHeader eyebrow="Pricing" title="Plan comparison" /></PageHero>
       <Notice tone="info">Figures use the published schedule (NSE equity) and the plan&apos;s brokerage rule. Use the calculator for any other size.</Notice>

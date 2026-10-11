@@ -10,7 +10,7 @@ export default async function Plans() {
   const supabase = await createClient();
   const { data: plans } = await supabase.from("pricing_plans").select("*").eq("status", "approved").order("id");
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/pricing", label: "Pricing" }, { href: "/pricing/plans", label: "Plans" }]} />
       <PageHero variant="pricing" intro="A brokerage plan changes only the broker fee lines; statutory and exchange levies are identical for everyone. Plans are versioned in RevenueOS and appear here only after approval, so this page never shows a tariff that is not actually applied by the ledger."><PageHeader eyebrow="Pricing" title="Brokerage plans" /></PageHero>
       <Notice tone="info">Plans are assigned by the broker with a recorded eligibility note. The STANDARD plan applies to every account by default.</Notice>

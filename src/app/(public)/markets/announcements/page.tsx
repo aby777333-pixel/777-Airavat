@@ -16,7 +16,7 @@ export default async function Announcements() {
   ]);
   const sym = (r: { instrument: unknown }) => ((Array.isArray(r.instrument) ? r.instrument[0] : r.instrument) as { symbol: string } | null)?.symbol;
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <MarketCrumbs label="Announcements & disclosures" />
       <PageHero variant="daily" intro="Corporate announcements, insider (SAST/PIT) disclosures and quarterly shareholding patterns tell you what companies and their insiders are doing. In production these come from exchange filings; in the sandbox the rows are staff-entered or labelled SIMULATED SAMPLE."><PageHeader eyebrow="Markets" title="Announcements, insider disclosures and shareholding" /></PageHero>
       <Notice tone="warn">No exchange filings feed is connected. Every row shows its source.</Notice>
