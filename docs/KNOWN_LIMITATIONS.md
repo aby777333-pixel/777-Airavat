@@ -3,20 +3,25 @@
 - **Everything is simulated.** Prices, fills, deposits, settlement and KYC approval are synthetic. No exchange, bank, clearing or depository connectivity exists.
 - **No regulatory status.** No SEBI registration, exchange membership, DP arrangement or market-data licence. The Trust Centre says so.
 - Quotes update only when a page renders; there is no WebSocket streaming yet.
-- Only NSE equity cash (CNC/MIS). No F&O, currency, commodity, MF, IPO, bonds.
+- Only NSE equity cash (CNC/MIS) is tradable. F&O, currency, commodity, MF, bonds are research/reference only; the IPO desk is a simulated application book. Conditional orders (GTT, AMO, bracket, cover, OCO, trailing, iceberg, basket) run on the sandbox engine.
 - Per-account risk limits and daily-loss limits are modelled but not enforced; only global limits apply.
 - Holdings settle immediately on CNC fills (no T+1 obligations, no auctions/short delivery).
-- KYC collects data and validates formats only; no document upload, KRA/CKYC, PAN verification, bank verification, eSign or IPV.
-- Legal documents are drafts, not counsel-reviewed. Statutory and exchange charge rates follow a published market reference (2026-10-11) and still need official-notification citations before live use.
+- KYC verification steps (PAN, CKYC, KRA, DigiLocker, Aadhaar offline, bank, IPV, eSign, FATCA, UCC, demat) are simulated adapters that record a provider reference and the production blocker; no vendor is connected and no document file is stored (only a document reference).
+- Legal documents (including the MTF agreement) are drafts, not counsel-reviewed. Statutory and exchange charge rates were benchmarked against prevailing market rates on 2026-10-11 and still need official-notification citations before live use.
 - DP sell charges, AMC/BSDA, pledge, call & trade and other account charges are published but not debited: the sandbox has no depository arrangement or dealer desk. Non-equity segment charges are published for transparency only; those segments are not tradable.
 - Sarvam translation route is wired but was not exercised against the vendor in this build.
 - Security gaps: no MFA/passkeys, CSP, rate limiting, WAF, SIEM, pen test, DR drills.
 - Email confirmation behaviour depends on Supabase auth settings, which were not changed in this session.
 - Competitor research is a method, not a verified matrix.
 - 15 of the 22 specified palettes; Theme Studio ships; no voice/gesture/avatar modes.
-- Mobile apps, PRO terminal, dealer desk, institutional, developer API, Regulatory Fortress reporting: not started. Partner network, CRM, RevenueOS, Research ONE (sandbox data), Scanner Matrix, Strategy DNA, Shadow Portfolio, Sentinel X and AIRAVAT DAILY ship in 0.2.0.
+- Native mobile apps, dealer desk, institutional desk, FIX connectivity, Regulatory Fortress reporting: not started. Terminal X, API v1 (REST + SSE), conditional orders, Website CMS, entity onboarding, portfolio & wealth ship in 0.3.0–0.4.0 as sandbox equivalents.
 - Research modules run on simulated prices only; no fundamentals, filings, ownership or news data (Evidence Graph, Digital Twin, Financial MRI need licensed feeds).
 - Backtests use ~300 synthetic daily candles; results demonstrate the engine, not any edge.
 - AIRAVAT DAILY stores newsletter opt-ins with confirmation tokens but no email provider is connected.
 - Showroom entries without a captured screenshot render as pending.
 - Commission plan legal bases are placeholders pending counsel review; no partner remuneration is real.
+- Capital gains are FIFO on delivery trades with charges apportioned; no grandfathering, exemptions, indexation or tax rates. Contract notes and statements are simulated documents.
+- Pledged collateral is valued and reported but not usable as margin (no F&O). MTF is a sandbox funding book: 50% funded, 18% p.a., no lender, no auto-liquidation on shortfall.
+- Portfolio benchmark is the simulated NIFTY 50 level; the first snapshot was taken on 2026-10-11, so comparisons accrue from the next trading day.
+- Website CMS media upload goes to the `site-media` bucket; no image optimisation pipeline or CDN purge.
+- Back-office settlement obligations (T+1), margin shortfall calls, refund exceptions, per-account RMS limits, stress tests, options backtesting, futures rollover and a PWA service worker are designed but not built.

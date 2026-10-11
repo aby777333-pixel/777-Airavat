@@ -101,3 +101,40 @@ Load, failover, DR, accessibility automation, mobile device matrix, email delive
 - `compute_charges('CNC','BUY',100000)` now 118.74 (exchange 3.07, GST 0.57); `('MIS','SELL',100000)` 52.34. Calculator unit tests updated to the same numbers; 6 new schedule tests (equity options, futures, currency, commodity, agri SEBI fee).
 - Migration 0015 adds the `segment = 'EQ'` guard: after inserting 23 approved reference rows for FO/CDS/COMM, equity charges are unchanged (re-run of the two figures above: 118.74 / 52.34).
 - `npm run typecheck && npm run lint && npm test && npm run build`: pass (see commit).
+
+## Release 0.4.0 — 2026-10-11
+### Static and unit
+- `npx tsc --noEmit`: pass · `npm run lint`: 0 errors (3 benign warnings) · `npx vitest run`: 5 files, 55 tests passed (calculators, backtest, charges-schedule, options, indicators) · `npm run build`: pass.
+
+### Portfolio & wealth engine E2E (live sandbox DB, transaction-scoped JWT claims as client1, rolled back)
+| Step | Expected | Observed |
+|---|---|---|
+| capital_gains FY2025-26 | FIFO rows for delivery sells; totals | ✅ 0 sells in window → rows 0, stcg 0, intraday 0 |
+| contract_note (last trade day) | numbered note with 12 trades, net obligation | ✅ CN-SIM-20261011-0024, n=12, net −97,119.09 |
+| pledge 1 share | holdings −1, collateral = ltp×0.8 | ✅ collateral 271.76, holdings −1 |
+| pledge 100,000 | INSUFFICIENT_FREE_HOLDINGS | ✅ |
+| collateral_summary | 271.76 | ✅ |
+| unpledge; unpledge again | holdings restored; ALREADY_RELEASED | ✅ / ✅ |
+| mtf_convert without consent | MTF_AGREEMENT_REQUIRED | ✅ |
+| mtf_convert after consent | funded 50% of value; journal Dr 1300 / Cr client | ✅ funded 169.85 |
+| accrue_mtf_interest same day / next day | 0 / 1 row, interest 0.08 | ✅ / ✅ |
+| mtf_close | repaid, holdings restored | ✅ repaid 169.85, interest 0.08 |
+| grant_portfolio_view(client2) → family_portfolio as client2 | owner name + 6 holdings | ✅ |
+| family_portfolio of self without grant; after revoke | FORBIDDEN / FORBIDDEN | ✅ / ✅ |
+
+### Website CMS E2E (editor → admin → client, rolled back)
+| Step | Expected | Observed |
+|---|---|---|
+| save_site_page as editor | draft | ✅ |
+| in_review; self-approve | ok; MAKER_CHECKER_VIOLATION | ✅ / ✅ |
+| approve + publish as admin | approved → published; 4 transitions | ✅ |
+| menu: editor publishes own; admin publishes | MAKER_CHECKER_VIOLATION; published | ✅ / ✅ |
+| client reads published page; client save/publish | 1 row; FORBIDDEN | ✅ / ✅ |
+
+### Entity onboarding E2E (fresh users, rolled back)
+| Step | Expected | Observed |
+|---|---|---|
+| company with 7 required documents, signatories, ITR income proof | approved, UCC/demat assigned, derivatives flag | ✅ (first run exposed MUST_BE_ADULT for a 2020 incorporation → migration 0025) |
+| NRI with PIS type, FATCA AE + TIN | approved; FATCA step passed | ✅ |
+| company missing documents | DOCUMENTS_MISSING listing all 7 | ✅ |
+| unknown entity; minor individual | UNKNOWN_ENTITY_TYPE; MUST_BE_ADULT | ✅ / ✅ |

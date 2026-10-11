@@ -97,9 +97,10 @@ Editorial workflow, compliance review for sensitive classifications, author-cann
 2. `accrue_partner_commission` and `partner_passport` raised "column reference pl.id is ambiguous" (PL/pgSQL variable shadowed a query alias), which would have blocked KYC approval for any referred client → migration 0014.
 3. Supabase advisor warnings for mutable `search_path` on three helpers → pinned in 0013.
 
-## 4. What is honestly not done
-- Native mobile apps, PRO terminal, institutional desk, developer API, voice/gesture modes.
-- Non-equity trading, F&O, IPO/MF/bonds execution.
+## 4. What is honestly not done (updated for 0.4.0)
+- Native mobile apps, institutional desk, FIX connectivity, voice/gesture modes, PWA service worker.
+- Non-equity execution (F&O, currency, commodity, MF, bonds); IPO desk is a simulated application book.
+- Back-office T+1 obligations, margin shortfall calls, per-account RMS limits, stress tests, options backtesting, futures rollover.
 - Real KYC rails, bank rails, exchange connectivity, market-data licences, email provider.
 - 7 remaining palettes; screenshot captures for every showroom entry; competitor pricing data.
 - Load, failover, DR, penetration testing, accessibility automation.
@@ -109,3 +110,15 @@ Editorial workflow, compliance review for sensitive classifications, author-cann
 npm run typecheck && npm run lint && npm test && npm run build
 python -I demo/verify-logins.py
 ```
+
+## 6. Release 0.3.0–0.4.0 additions (2026-10-11)
+| Area | Delivered | Evidence |
+|---|---|---|
+| Project Navigator website | 8 mega-menu groups, utility nav, keyword-rich pages, unique hero FX, SEO metadata/JSON-LD/sitemap, Website CMS with maker-checker | docs/NAVIGATOR_DELIVERY.md, migration 0021 |
+| Entity onboarding | 7 entity types, document matrix, 13 verification steps, re-KYC, dormancy | migrations 0022/0025, TEST_RESULTS 0.4.0 |
+| Orders | conditional orders (GTT, AMO, bracket, cover, OCO, trailing, iceberg, basket), Terminal X | migrations 0016/0017 |
+| Charting | indicator library + AdvancedChart with annotations and chart-to-order | src/lib/indicators.ts (tests) |
+| Portfolio & wealth | XIRR, benchmark snapshots, FIFO tax P&L, contract notes, statements, pledge, MTF, family views | migration 0024, TEST_RESULTS 0.4.0 |
+| Developer API | API v1 REST + SSE, keys, idempotency, alerts, OpenAPI | migrations 0019/0020 |
+| Market data | corporate actions, economic calendar, IPO calendar, announcements, insider, shareholding, deals, flows | migrations 0018/0023 |
+| Completion proof | 10 reports | docs/COMPLETION_REPORTS.md |

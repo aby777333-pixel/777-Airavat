@@ -64,7 +64,22 @@ flowchart LR
 | airavat-scanners | every 5 min | `run_scanners()` | yes, 53 matches today |
 | airavat-sentinel | 2-59/5 | `sentinel_scan()` | yes after migration 0013 (was failing: `account_funds` refused no-JWT callers) |
 | airavat-publish-articles | every minute | `publish_scheduled_articles()` | yes (0 failures) |
+| airavat-conditional-orders | every minute | `process_conditional_orders()` | yes (GTT/AMO/bracket E2E) |
+| airavat-corporate-actions | 10:05 weekdays | `apply_corporate_actions()` | yes |
+| airavat-price-alerts | every minute | `process_price_alerts()` | yes |
+| airavat-publish-site-pages | every minute | `publish_scheduled_site_pages()` | yes |
+| airavat-dormancy | 01:30 daily | `mark_dormant_accounts()` | yes |
+| airavat-market-stats | */15 9–16 weekdays | `compute_market_stats_daily()` | yes |
+| airavat-portfolio-snapshots | 16:05 IST weekdays | `snapshot_portfolios()` | yes (first run 2026-10-11) |
+| airavat-mtf-interest | 23:45 IST daily | `accrue_mtf_interest()` | yes (E2E forced accrual 0.08) |
 
 ## 5. Events between browser components
 - `airavat:command` → opens the palette (fired by `CommandButton` and Ctrl/Cmd+K).
 - `airavat:live` `{question}` → opens the LIVE orb pre-filled with the question (fired by the palette when nothing matches).
+
+## 6. Release 0.3.0–0.4.0 wiring
+- **Website CMS**: `/admin/website` → server actions → `save_site_page`, `site_page_transition`, `save_site_menu`, `publish_site_menu`, `save_site_hero`, `save_site_faq`, `register_site_media`, `save_site_setting`. Public `(public)/[...slug]` and `Header` read `publishedPageOverride`/`publishedMenu` (`src/lib/cms.ts`); registry content is the fallback.
+- **Entity onboarding**: `OnboardingForm` → `submitKycEntity` → `submit_kyc_entity` (document and entity rules) → `submit_kyc` (0025: adult rule for natural persons only) → verification steps (`run_kyc_verification`) → `approve_kyc_internal` → UCC/demat assignment → `touch_account_activity` trigger. `/app/kyc` reads `kyc_verification_summary`, `client_bank_accounts`, `kyc_events`.
+- **Portfolio & wealth**: `/app/portfolio` reads `portfolio_snapshots`, `pledges`, `mtf_positions`, `portfolio_viewers`, ledger fund flows (XIRR in `src/lib/calculators.ts`); actions call `pledge_holdings`, `unpledge_holdings`, `mtf_convert`, `mtf_close`, `grant_portfolio_view`, `revoke_portfolio_view`. `/app/reports` calls `capital_gains` and `contract_note`; `/api/statements/[kind]` streams CSV through RLS. `/app/family/[owner]` calls `family_portfolio`.
+- **MTF money flow**: `mtf_convert` posts Dr 1300 MTF receivable / Cr C-client (funding); `accrue_mtf_interest` posts Dr C-client / Cr 4300 interest income daily; `mtf_close` posts the repayment entry. Trial balance stays balanced (verified).
+- **Charting**: server fetches daily and 1-minute candles (`getCandles`) → `AdvancedChart` (lightweight-charts v5, `createSeriesMarkers` for trade annotations) → click dispatches `airavat:prefill-price` consumed by `OrderTicket`.

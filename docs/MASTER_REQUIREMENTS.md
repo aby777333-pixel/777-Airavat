@@ -79,3 +79,23 @@ Everything in the master prompt not listed above (PRO terminal, dealer, institut
 | REQ-0224 | Replay, visual builder, Evidence Graph, Digital Twin, MRI | Research | Designed | licensed data needed |
 | REQ-0225 | Employees, HR, incentives, dealer allocation | Sales | Designed | |
 | REQ-0226 | Complete published charge schedule (all segments, other charges, AMC/BSDA) aligned to market reference | RevenueOS | Tested | /pricing, charges-schedule.ts, migration 0015 |
+
+## Release 0.3.0–0.4.0 requirements (added 2026-10-11; mirrored in the `requirements` table)
+| ID | Requirement | Module | Status | Evidence |
+|---|---|---|---|---|
+| REQ-0227 | Website CMS: pages, menus, heroes, FAQs, media, settings, approvals, versions, scheduling, audit | Website | Tested | migration 0021; /admin/website; E2E: draft→review→approve (other user)→publish; maker-checker on menus |
+| REQ-0228 | Project Navigator: 8 mega-menu groups, utility nav, keyword-rich pages, SEO metadata, JSON-LD, sitemap, breadcrumbs | Website | Implemented | src/lib/navigation.ts, src/content/*, sitemap.ts; CMS override per path |
+| REQ-0229 | Unique hero animations per page | Design | Implemented | PageHero + HeroFx variants (materialverse.css fx-* keyframes) |
+| REQ-0230 | Entity onboarding: individual/NRI/HUF/company/partnership/LLP/trust with document requirements | Onboarding | Tested | migration 0022/0025; E2E company + NRI approved; minor and unknown entity rejected |
+| REQ-0231 | Verification adapters: PAN, CKYC, KRA, DigiLocker, Aadhaar offline, bank, IPV, eSign, FATCA/CRS, nomination, income proof, UCC, demat | Onboarding | Implemented | simulated adapters record provider, reference and production blocker; /app/kyc and admin badges |
+| REQ-0232 | Re-KYC, dormancy and reactivation | Onboarding | Implemented | request_rekyc, mark_dormant_accounts (cron 01:30), reactivate_account |
+| REQ-0233 | Advanced charting: indicators, chart types, drawings, replay, templates, trade annotations, chart-to-order | Trading | Tested | src/lib/indicators.ts (9 tests), AdvancedChart on instrument page and Terminal X |
+| REQ-0234 | Market-data extras: delivery %, announcements, insider, shareholding, bulk/block deals, institutional flows | Markets | Implemented | migration 0023 (simulated samples); /markets/announcements, /markets/deals |
+| REQ-0235 | Portfolio: XIRR, benchmark comparison, dividends, snapshots | Portfolio | Tested | migration 0024; /app/portfolio; snapshot job 16:05 IST |
+| REQ-0236 | Tax P&L (FIFO STCG/LTCG/intraday), contract notes, CSV statements | Portfolio | Tested | capital_gains, contract_note, /app/reports, /api/statements/* |
+| REQ-0237 | Pledge/unpledge, collateral valuation with haircut | Portfolio | Tested | pledge_holdings/unpledge_holdings; pledged qty leaves free holdings; not yet usable as margin (no F&O) |
+| REQ-0238 | Margin Trading Facility: funding book, daily interest to ledger, agreement consent gate, repayment | Portfolio | Tested | mtf_convert/mtf_close/accrue_mtf_interest; ledger 1300/4300; journal balanced |
+| REQ-0239 | Family / authorised read-only portfolio views | Portfolio | Tested | grant/revoke_portfolio_view, family_portfolio; FORBIDDEN after revoke verified |
+| REQ-0240 | Public independence: no third-party broker named on public surfaces | Website | Tested | grep of src/ shows none; pricing cites AIRAVAT schedule |
+
+Status of remaining Independence directive items (honest): back office settlement obligations/margin shortfall/refund exceptions (Designed: payouts maker-checker and settlement page exist; T+1 obligations not modelled), independent RMS per-account limits and stress tests (Designed: global limits enforced), options backtesting and futures rollover (Designed), PWA manifest/service worker (Designed), FIX connectivity (Blocked: no counterparty; documented in API_SPECIFICATIONS.md).

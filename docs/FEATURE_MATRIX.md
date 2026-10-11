@@ -72,3 +72,26 @@ Status legend: ✅ working in sandbox · 🟡 partial · ⬜ not started · 🔒
 | Project Infinity (zero-omission audit) | ✅ | AIRAVAT_MASTER_COMPLETION.md |
 | Project Trinity | ✅ | ⌘K, showroom, briefing |
 | Operation Absolute Completion | ✅ | demo accounts verified, wiring map, evidence |
+
+## Operation Complete Independence / Project Navigator (0.3.0–0.4.0)
+| Section | Status | Where |
+|---|---|---|
+| 1 Independence (no third-party platform on public surfaces) | ✅ | pricing page, charges-schedule REFERENCE; internal research keeps sources |
+| 2 Blueprint reconciliation with REQ IDs | ✅ | MASTER_REQUIREMENTS REQ-0201–0240, `requirements` table |
+| 3 Account opening, all entity types + verification stack | ✅ sandbox / 🔒 vendors | migrations 0022/0025, /app/onboarding, /app/kyc, /admin/kyc |
+| 4 Order types (market, limit, SL, SL-L, GTT, AMO, basket, iceberg, OCO, trailing, bracket, cover) | ✅ | migrations 0016/0017, /app/orders, Terminal X |
+| 4 Multi-leg option strategies | 🟡 | Options Lab payoff/greeks; no F&O execution |
+| 5 Advanced charting | ✅ | indicators.ts, AdvancedChart |
+| 6 Derivatives intelligence | 🟡 | Options Lab (BS, greeks, IV, max pain, PCR, simulated chain); no live chain |
+| 7 Portfolio & wealth | ✅ | migration 0024, /app/portfolio, /app/reports, /app/family |
+| 8 Back office (settlement obligations, shortfall, refunds, exceptions, collateral ledger) | 🟡 | payouts maker-checker, settlement page, collateral summary; T+1 obligations ⬜ |
+| 9 Independent RMS (per-account limits, real-time MTM, fat-finger, surveillance, stress) | 🟡 | global limits + band/tick/value checks + Sentinel; per-account limits, stress ⬜ |
+| 10 Developer APIs (REST, SSE, keys, idempotency, alerts; FIX) | ✅ / 🔒 FIX | /api/v1, /developers, /app/developer |
+| 11 Asset classes with gates | ✅ matrix | market_access_matrix incl. ETF, REIT, MF, IPO, G-sec, bonds, SGB, SLB, MTF, pledge |
+| 12 Multi-platform parity (web, Terminal X, PWA) | 🟡 | PWA manifest/service worker ⬜ |
+| 13 Misc market data | ✅ | migration 0023, /markets/* |
+| 14 Zero-deferment sandbox equivalents | ✅ | every blocker has a simulated adapter naming the real dependency |
+| 15 Demo access manifest per role | ✅ | demo/DEMO_ACCESS_MANIFEST.local.md (local only), 12/12 logins verified |
+| 16 Final independence audit | ✅ | docs/COMPLETION_REPORTS.md §1 |
+| 17 Completion proof reports | ✅ | docs/COMPLETION_REPORTS.md |
+| Navigator: menus, pages, homepage, heroes, CMS, SEO, delivery docs | ✅ | docs/NAVIGATOR_DELIVERY.md |
