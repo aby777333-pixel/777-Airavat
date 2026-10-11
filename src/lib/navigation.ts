@@ -29,6 +29,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/trade/algo-studio", label: "Algo Studio", desc: "Strategy DNA backtests and paper trading", icon: "🤖", badge: "sandbox" },
       { href: "/trade/trading-apis", label: "Trading APIs", desc: "REST, streaming, sandbox keys, OpenAPI", icon: "🔌", badge: "sandbox" },
       { href: "/platforms/terminal-demo", label: "Public Terminal Demo", desc: "Try the terminal with no account", icon: "🎮", badge: "new" },
+      { href: "/platforms/order-passport", label: "Order Passport Replay", desc: "Ticket to ledger, one event at a time", icon: "🛂", badge: "new" },
       { href: "/trade/basket-gtt", label: "Smart Order Types", desc: "GTT, OCO, bracket, cover, iceberg, basket", icon: "🧩" },
       { href: "/platforms/mobile", label: "Mobile & PWA", desc: "Install on Android, iOS and desktop", icon: "📱" },
       { href: "/trade/algo-marketplace", label: "Algo Marketplace", desc: "Showcase of reproducible strategy listings", icon: "🏪" },

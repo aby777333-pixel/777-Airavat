@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 0.8.4 — 2026-10-11 — Order passport replay
+- /platforms/order-passport: step-by-step replay (play, pause, speed, click any step) of a real seeded sandbox order (BUY 50 SBIN MIS MARKET) from RECEIVED through RMS checks, routing, acknowledgement, fill with every charge line and the balanced journal entry #22, plus a rejection scenario (PRICE_OUTSIDE_BAND) taken from the 0.5.0 RMS test record. Status rail, payload tables, source note. Trade menu and platforms hub updated.
+
 ## 0.8.3 — 2026-10-11 — Interactive charges explainer
 - /pricing/explainer: slide the trade value from ₹1,000 to ₹1 crore across all eight published segments, switch side and exchange (and premium share for options); a stacked bar and a formula table update live from `estimateCharges` (the same schedule the ledger uses), with round-trip cost, breakeven move, the broker's share of the bill and preset scenarios. Pricing menu updated.
 

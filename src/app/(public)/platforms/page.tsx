@@ -20,8 +20,9 @@ export default function Platforms() {
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="platforms" intro={seoFor("/platforms").intro}><PageHeader eyebrow="Platforms" title="The AIRAVAT product family" subtitle="Status labels are honest: 'Sandbox live' means working against simulated infrastructure. 'Planned' means designed, not built." /></PageHero>
-      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+      <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Link href="/platforms/terminal-demo" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Public terminal demo</div><div className="text-xs text-muted">Watchlist, chart and pre-trade checks, no account</div></Link>
+        <Link href="/platforms/order-passport" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Order passport replay</div><div className="text-xs text-muted">Ticket to ledger, one event at a time</div></Link>
         <Link href="/platforms/mobile" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Mobile and PWA</div><div className="text-xs text-muted">Install on Android, iOS and desktop</div></Link>
         <Link href="/developers/docs" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">API reference</div><div className="text-xs text-muted">Routes, errors, snippets in four languages</div></Link>
       </div>
