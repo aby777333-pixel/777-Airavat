@@ -20,6 +20,7 @@ export default function Developers() {
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/calculators", label: "Tools" }, { href: "/developers", label: "Developer Hub" }]} />
       <PageHero variant="contact" intro="The AIRAVAT API exposes the same engine the apps use. Issue a sandbox key in the app, call the versioned REST endpoints with an X-API-Key header, and every order you place passes the identical risk engine, fund holds, journal postings and audit trail. Streaming uses server-sent events; the OpenAPI document is machine-readable."><PageHeader eyebrow="Developer Hub" title="AIRAVAT API v1" subtitle="Sandbox keys · scopes · 120 requests per minute per key · idempotent POSTs · OpenAPI 3.1" /></PageHero>
       <Notice tone="warn">Sandbox only: simulated market data and funds. Production API access, FIX connectivity and WebSocket streaming require exchange approvals and certified infrastructure that do not exist yet.</Notice>
+      <div className="mt-4"><Link href="/developers/docs" className="btn btn-primary btn-sm">Full API reference and SDK snippets →</Link></div>
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.618fr_1fr]">
         <div className="space-y-5">
           <div className="glass p-5">

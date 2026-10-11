@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## 0.7.7 — 2026-10-11 — Trading platforms block
+- /platforms/terminal-demo: public, read-only Terminal X demo with the simulated watchlist (?s=SYMBOL), daily and one-minute AdvancedChart, instrument facts and an order ticket that runs illustrative pre-trade checks (lot, tick, band, stop direction, fat-finger, funds/holdings) in the browser and cannot place orders.
+- /platforms/mobile: PWA install guide for Android, iOS and desktop, what works installed, what is never cached, native roadmap (no store listing claimed).
+- /developers/docs: API v1 reference generated from the actual route map (auth, envelope, idempotency, scopes, every route, error table with risk-engine codes) with snippets in curl, Python, Node/TypeScript and Go; linked from the Developer Hub.
+- Registry pages: /trade/basket-gtt (eight smart order types and how RMS treats each), /trade/algo-marketplace (listing-format showcase, SIMULATED SAMPLE, research only).
+- Trade menu, platforms hub cards, SEO and sitemap updated.
+
 ## 0.7.6 — 2026-10-11 — Account & service block
 - /open-account/guide: interactive document checklist by entity type (individual, NRI, HUF, company, partnership/LLP, trust, minor), the eight onboarding steps, typical timelines, after-approval notes, FAQ JSON-LD; /open-account still goes straight to signup.
 - /contact/callback: callback or documentation-visit scheduler (next seven working days, two-hour IST windows, nine languages) stored through the existing `submit_enquiry` RPC with reference and SLA.
