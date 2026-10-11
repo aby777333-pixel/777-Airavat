@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 0.6.8 — 2026-10-11 — Contact enquiries
+- Migration 0027 `site_enquiries` + `submit_enquiry` (anonymous allowed; name/contact/consent/message validation, honeypot, 5-per-hour rate limit per email or phone, reference ENQ-YYYYMMDD-xxxxxx, optional CRM lead with marketing consent, audit) and `update_enquiry` (staff). Detailed general-enquiry form on /contact (11 enquiry kinds with kind-specific questions, segments, horizon, capital, language, state, callback slot, consents) plus support hours, escalation matrix (support → compliance → SEBI SCORES / exchange IG / SMART ODR) and office placeholders. Console /admin/enquiries with status workflow.
+
 ## 0.6.0 — 2026-10-11 — AIRAVAT House look, wider content
 - New default theme `airavat-house` (Default: paper & night): paper body (#eaede5) with night chrome, hero and footer (#0c1116), TT Norms display face (Manrope stays for the other palettes), rectangular uppercase buttons with the off-white primary and emerald glow, white hairline panels, 3–8px radii, tracked uppercase table headers and eyebrows. Scoped `.on-night` token override gives night sections inside a light page. All 15 earlier palettes remain in Theme Studio.
 - Content width: public pages and site components use a 1400px container (was 1280/1152). The app shell stays at 1600px.

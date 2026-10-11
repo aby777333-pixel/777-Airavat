@@ -13,7 +13,7 @@ const nav = [
   ["/admin", "Control tower"], ["/admin/clients", "Clients & roles"], ["/admin/kyc", "KYC queue"], ["/admin/orders", "Orders"], ["/admin/trades", "Trades"],
   ["/admin/funds", "Funds & payouts"], ["/admin/ledger", "Ledger & reconciliation"], ["/admin/risk", "Risk limits"], ["/admin/rms", "Independent RMS"], ["/admin/settlement", "Settlement"], ["/admin/backoffice", "Back office"],
   ["/admin/revenue", "RevenueOS"], ["/admin/approvals", "Approvals"], ["/admin/partners", "Partners & CRM"], ["/admin/editorial", "Editorial (DAILY)"], ["/admin/website", "Website CMS"], ["/admin/markets", "Market matrix"], ["/admin/market-data", "Market data"], ["/admin/sentinel", "Sentinel overview"],
-  ["/admin/support", "Support desk"], ["/admin/audit", "Audit log"], ["/admin/ai", "AI operations"], ["/admin/regulatory", "Regulatory register"], ["/admin/requirements", "Requirements register"], ["/admin/settings", "System settings"],
+  ["/admin/support", "Support desk"], ["/admin/enquiries", "Website enquiries"], ["/admin/audit", "Audit log"], ["/admin/ai", "AI operations"], ["/admin/regulatory", "Regulatory register"], ["/admin/requirements", "Requirements register"], ["/admin/settings", "System settings"],
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
