@@ -3,18 +3,12 @@ import { getSession } from "@/lib/auth";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { SandboxBanner } from "@/components/ui";
 import MobileNav from "./MobileNav";
+import MegaMenu from "./MegaMenu";
 import { CommandButton } from "@/components/CommandPalette";
+import { NAV_GROUPS, UTILITY_NAV } from "@/lib/navigation";
 
-export const NAV = [
-  { href: "/platforms", label: "Platforms" },
-  { href: "/markets", label: "Markets" },
-  { href: "/research", label: "Research" },
-  { href: "/daily", label: "DAILY" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/showroom", label: "Showroom" },
-  { href: "/academy", label: "Academy" },
-  { href: "/trust", label: "Trust" },
-];
+// Legacy flat list kept for the command registry and tests; the header renders NAV_GROUPS.
+export const NAV = NAV_GROUPS.map((g) => ({ href: g.links[0].href, label: g.label }));
 
 export default async function Header() {
   const { user, profile } = await getSession();
@@ -22,15 +16,17 @@ export default async function Header() {
     <>
       <SandboxBanner />
       <header className="sticky top-0 z-40 border-b border-border bg-bg/70 backdrop-blur-xl">
+        <div className="mx-auto hidden h-7 max-w-7xl items-center justify-end gap-4 px-4 text-[11px] text-faint sm:px-6 lg:flex" aria-label="Utility">
+          {UTILITY_NAV.map((u) => <Link key={u.href} href={u.href} className="hover:text-text">{u.label}</Link>)}
+          <span aria-hidden="true">·</span><span>English · हिन्दी via BHASHA</span>
+        </div>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5" aria-label="AIRAVAT home">
             <Logo />
             <span className="font-display text-lg font-bold tracking-[0.18em]">AIRAVAT</span>
           </Link>
-          <nav className="hidden items-center gap-6 text-sm text-muted md:flex" aria-label="Primary">
-            {NAV.map((n) => <Link key={n.href} href={n.href} className="hover:text-text">{n.label}</Link>)}
-          </nav>
-          <div className="hidden items-center gap-3 md:flex">
+          <nav aria-label="Primary"><MegaMenu groups={NAV_GROUPS} /></nav>
+          <div className="hidden items-center gap-2 lg:flex">
             <CommandButton />
             <ThemeSwitcher compact />
             {user ? (
@@ -47,7 +43,7 @@ export default async function Header() {
               </>
             )}
           </div>
-          <MobileNav nav={NAV} signedIn={!!user} />
+          <MobileNav groups={NAV_GROUPS} utility={UTILITY_NAV} signedIn={!!user} />
         </div>
       </header>
     </>

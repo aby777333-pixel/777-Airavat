@@ -88,3 +88,23 @@ describe("misc", () => {
     expect(m.leverage).toBe(5);
   });
 });
+
+describe("xirr and emi", () => {
+  it("XIRR of a single investment doubling in two years is about 41.4%", async () => {
+    const { xirr } = await import("./calculators");
+    expect(xirr([{ date: "2024-01-01", amount: -100000 }, { date: "2026-01-01", amount: 200000 }])).toBeCloseTo(41.42, 0);
+  });
+  it("XIRR handles SIP-style flows and returns null for one-sided flows", async () => {
+    const { xirr } = await import("./calculators");
+    const flows = Array.from({ length: 12 }, (_, i) => ({ date: new Date(2025, i, 1), amount: -10000 }));
+    flows.push({ date: new Date(2026, 0, 1), amount: 130000 });
+    const r = xirr(flows)!; expect(r).toBeGreaterThan(10); expect(r).toBeLessThan(40);
+    expect(xirr([{ date: "2025-01-01", amount: -1 }, { date: "2025-06-01", amount: -1 }])).toBeNull();
+  });
+  it("EMI for 10 lakh at 9% over 240 months is about 8,997", async () => {
+    const { emi } = await import("./calculators");
+    const e = emi(1000000, 9, 240);
+    expect(e.emi).toBeCloseTo(8997.26, 0);
+    expect(e.totalInterest).toBeGreaterThan(1100000);
+  });
+});

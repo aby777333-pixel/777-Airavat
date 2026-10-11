@@ -93,3 +93,24 @@ export function marginEstimate(product: Product, qty: number, price: number, mis
   const margin = (value * misMarginPct) / 100;
   return { value: r2(value), margin: r2(margin), leverage: r2(100 / misMarginPct) };
 }
+
+/** XIRR: annualised return of dated cash flows (negative = investment, positive = withdrawal/value). Newton with bisection fallback. */
+export function xirr(flows: { date: string | Date; amount: number }[]): number | null {
+  if (flows.length < 2) return null;
+  const t0 = new Date(flows[0].date).getTime();
+  const yrs = flows.map((f) => (new Date(f.date).getTime() - t0) / (365 * 86400000));
+  const npv = (r: number) => flows.reduce((s, f, i) => s + f.amount / Math.pow(1 + r, yrs[i]), 0);
+  if (!flows.some((f) => f.amount < 0) || !flows.some((f) => f.amount > 0)) return null;
+  let lo = -0.9999, hi = 10;
+  if (npv(lo) * npv(hi) > 0) return null;
+  for (let i = 0; i < 200; i++) { const mid = (lo + hi) / 2; if (npv(lo) * npv(mid) <= 0) hi = mid; else lo = mid; }
+  return Math.round(((lo + hi) / 2) * 10000) / 100;
+}
+
+/** EMI for a loan: P × i × (1+i)^n / ((1+i)^n − 1), monthly compounding. */
+export function emi(principal: number, annualRatePct: number, months: number) {
+  const i = annualRatePct / 1200;
+  const m = i === 0 ? principal / months : (principal * i * Math.pow(1 + i, months)) / (Math.pow(1 + i, months) - 1);
+  const total = m * months;
+  return { emi: r2(m), totalPayment: r2(total), totalInterest: r2(total - principal) };
+}

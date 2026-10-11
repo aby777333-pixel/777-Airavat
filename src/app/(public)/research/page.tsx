@@ -1,9 +1,11 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Badge, PageHeader, SimBadge } from "@/components/ui";
 import { istTime } from "@/lib/format";
 
-export const metadata = { title: "Research ONE", description: "AIRAVAT Research ONE: Market Detective investigations, Scanner Matrix, Strategy DNA backtests with robustness, Shadow Portfolio simulation and Sentinel X early warnings. Sandbox, simulated data." };
+export const metadata = { ...metadataFor("/research") };
 
 const pillars = [
   { name: "Market Detective", status: "Sandbox live", body: "Open a case on any instrument. The evidence board is seeded with sourced facts from the sandbox engine, scanner matches and an explicit list of what data is missing. The AI Research Council then argues bull, bear and neutral cases and an auditor flags contradictions.", href: "/login?next=/app/research" },
@@ -22,7 +24,7 @@ export default async function ResearchPage() {
   ]);
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="Research ONE" title="Evidence first. Opinions second." subtitle="An AI-assisted research environment that separates facts, estimates, hypotheses and contradictions, and never turns a conclusion into an order." />
+      <PageHero variant="research" intro={seoFor("/research").intro}><PageHeader eyebrow="Research ONE" title="Evidence first. Opinions second." subtitle="An AI-assisted research environment that separates facts, estimates, hypotheses and contradictions, and never turns a conclusion into an order." /></PageHero>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {pillars.map((p) => (
           <Link key={p.name} href={p.href} className={p.status === "Planned" ? "glass p-6" : "m-crystal magnetic p-6"}>

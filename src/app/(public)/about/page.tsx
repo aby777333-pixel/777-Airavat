@@ -1,11 +1,13 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import { PageHeader } from "@/components/ui";
 
-export const metadata = { title: "About" };
+export const metadata = { ...metadataFor("/about") };
 
 export default function About() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="About" title="AIRAVAT" subtitle="Strength without aggression. Intelligence without arrogance. Luxury without excess." />
+      <PageHero variant="about" intro={seoFor("/about").intro}><PageHeader eyebrow="About" title="AIRAVAT" subtitle="Strength without aggression. Intelligence without arrogance. Luxury without excess." /></PageHero>
       <div className="glass prose p-8">
         <p>AIRAVAT is being engineered as a complete, independent Indian securities brokerage platform: a public website, client trading applications, a professional terminal, an algorithmic and research environment, and the broker back office that reconciles and settles every trade.</p>
         <h2>Our philosophy</h2>

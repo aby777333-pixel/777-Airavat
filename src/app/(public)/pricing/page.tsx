@@ -1,3 +1,5 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import Link from "next/link";
 import clsx from "clsx";
 import { PageHeader, Notice, Badge } from "@/components/ui";
@@ -6,7 +8,7 @@ import { money } from "@/lib/format";
 import { isoAgo } from "@/lib/time";
 import { AMC, OTHER_CHARGES, REFERENCE, SCHEDULE_VERSION, SEGMENTS, type Segment } from "@/lib/charges-schedule";
 
-export const metadata = { title: "Charges", description: "AIRAVAT's complete published charge schedule: equity, F&O, currency and commodity brokerage with every statutory and exchange levy, DP and account charges, AMC and BSDA rules." };
+export const metadata = { ...metadataFor("/pricing") };
 
 type Fee = { id: number; fee_code: string; version: number; name: string; description: string | null; classification: string; product: string | null; side: string | null; calc_method: string; rate: number; cap: number | null; min_amount: number | null; gst_applicable: boolean; authority: string | null; source_url: string | null; effective_from: string; status: string; segment: string };
 type Plan = { id: number; code: string; name: string; description: string | null; brokerage: Record<string, { pct: number; cap: number }>; eligibility: string | null };
@@ -41,7 +43,7 @@ export default async function Pricing() {
   const rows: [string, (s: Segment) => string][] = [["Brokerage", brokerageText], ["STT / CTT", sttText], ["Transaction charges", txnText], ["GST", () => "18% on brokerage + SEBI charges + transaction charges"], ["SEBI charges", sebiText], ["Stamp charges", (s) => s.stampNote], ["Investor protection fund (IPFT)", (s) => s.ipft ?? "—"]];
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="Charges" title="Every charge, published in full" subtitle={`AIRAVAT's complete charge schedule across equity, F&O, currency and commodity segments, plus account, depository and maintenance charges. Schedule version ${SCHEDULE_VERSION}.`} />
+      <PageHero variant="pricing" intro={seoFor("/pricing").intro}><PageHeader eyebrow="Charges" title="Every charge, published in full" subtitle={`AIRAVAT's complete charge schedule across equity, F&O, currency and commodity segments, plus account, depository and maintenance charges. Schedule version ${SCHEDULE_VERSION}.`} /></PageHero>
       <Notice tone="warn">Sandbox: only NSE equity cash (delivery and intraday) is tradable, with simulated money. Every other segment is published for transparency and marked as not enabled. Statutory and exchange rates are re-verified against official notifications before any live use.</Notice>
 
       <nav className="mt-6 flex flex-wrap gap-2 text-sm">{[...groups, "Other charges", "AMC & BSDA", "Plans & catalogue", "Charges explained"].map((g) => <a key={g} href={`#${g.replace(/[^a-z]/gi, "-").toLowerCase()}`} className="btn btn-ghost btn-sm">{g}</a>)}</nav>

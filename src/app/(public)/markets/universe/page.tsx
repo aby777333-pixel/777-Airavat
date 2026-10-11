@@ -1,3 +1,5 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import Link from "next/link";
 import clsx from "clsx";
 import { createClient } from "@/lib/supabase/server";
@@ -5,7 +7,7 @@ import { getQuotes } from "@/lib/market";
 import { changeOf, pct, price } from "@/lib/format";
 import { Badge, Notice, PageHeader, SimBadge } from "@/components/ui";
 
-export const metadata = { title: "Market Atlas", description: "Universal Markets Architecture: every exchange and segment AIRAVAT is designed for, with its honest launch stage." };
+export const metadata = { ...metadataFor("/markets/universe") };
 
 const STAGES = ["research", "regulatory_assessment", "infrastructure", "development", "testing", "certification", "compliance_approval", "pilot", "sandbox_live", "production_live", "not_enabled"];
 const label = (s: string) => s.replace(/_/g, " ");
@@ -17,7 +19,7 @@ export default async function Universe() {
   const research = quotes.filter((q) => ["COMM", "CDS"].includes(q.segment));
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="Market Atlas" title="One architecture, many markets, regulated access" subtitle="Every market AIRAVAT is designed to serve, with its real stage. Only the simulated NSE equity sandbox is live. Nothing here is a claim of exchange membership or authorization." />
+      <PageHero variant="universe" intro={seoFor("/markets/universe").intro}><PageHeader eyebrow="Market Atlas" title="One architecture, many markets, regulated access" subtitle="Every market AIRAVAT is designed to serve, with its real stage. Only the simulated NSE equity sandbox is live. Nothing here is a claim of exchange membership or authorization." /></PageHero>
       <Notice tone="warn">Technology readiness is not legal permission. Offshore leveraged FX and CFDs are explicitly not enabled for Indian residents.</Notice>
       <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {(matrix ?? []).map((m) => (

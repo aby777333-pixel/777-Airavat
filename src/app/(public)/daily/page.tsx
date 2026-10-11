@@ -1,3 +1,5 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import Link from "next/link";
 import { getBriefing, getCategories, getPublishedArticles } from "@/lib/daily";
 import { istTime, pct } from "@/lib/format";
@@ -5,7 +7,7 @@ import { Badge, PageHeader, SimBadge } from "@/components/ui";
 import NewsletterForm from "./NewsletterForm";
 import clsx from "clsx";
 
-export const metadata = { title: "AIRAVAT DAILY — The Financial Journal", description: "Daily market briefs, explainers and financial education from AIRAVAT. Simulated sandbox data; educational content." };
+export const metadata = { ...metadataFor("/daily") };
 
 export default async function Daily({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
   const { category } = await searchParams;
@@ -13,7 +15,7 @@ export default async function Daily({ searchParams }: { searchParams: Promise<{ 
   const [featured, ...rest] = articles;
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="AIRAVAT DAILY" title="The Financial Journal" subtitle="Market briefs, explainers and financial literacy, reviewed by humans before publication. Educational content, not advice." action={<Link href="/briefing" className="btn btn-primary btn-sm">Today&apos;s briefing →</Link>} />
+      <PageHero variant="daily" intro={seoFor("/daily").intro}><PageHeader eyebrow="AIRAVAT DAILY" title="The Financial Journal" subtitle="Market briefs, explainers and financial literacy, reviewed by humans before publication. Educational content, not advice." action={<Link href="/briefing" className="btn btn-primary btn-sm">Today&apos;s briefing →</Link>} /></PageHero>
       <div className="mb-6 flex flex-wrap gap-2">
         <Link href="/daily" className={clsx("btn btn-sm", !category ? "btn-primary" : "btn-ghost")}>All</Link>
         {cats.map((c) => <Link key={c.slug} href={`/daily?category=${c.slug}`} className={clsx("btn btn-sm", category === c.slug ? "btn-primary" : "btn-ghost")}>{c.name}</Link>)}

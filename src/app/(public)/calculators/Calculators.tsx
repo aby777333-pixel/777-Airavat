@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import clsx from "clsx";
-import { cagr, inflationAdjusted, lumpsumFutureValue, marginEstimate, positionSize, riskReward, roundTrip, sipFutureValue, type Product } from "@/lib/calculators";
+import { cagr, emi, inflationAdjusted, lumpsumFutureValue, marginEstimate, positionSize, riskReward, roundTrip, sipFutureValue, xirr, type Product } from "@/lib/calculators";
 import { SEGMENTS, estimateCharges, type SegmentKey, type Side } from "@/lib/charges-schedule";
 import { money } from "@/lib/format";
 
-const tabs = ["Brokerage", "All segments", "SIP", "Lumpsum", "CAGR", "Position size", "Risk / Reward", "Margin", "Inflation"] as const;
-type Tab = (typeof tabs)[number];
+const tabs = ["Brokerage", "All segments", "SIP", "Lumpsum", "CAGR", "XIRR", "EMI", "Position size", "Risk / Reward", "Margin", "Inflation"] as const;
+export type Tab = (typeof tabs)[number];
 
 function Field({ label, value, onChange, step = "any", min = 0 }: { label: string; value: number; onChange: (v: number) => void; step?: string; min?: number }) {
   return (
@@ -20,8 +20,12 @@ function Row({ k, v, strong }: { k: string; v: string; strong?: boolean }) {
   return <div className={clsx("flex justify-between py-1.5 text-sm", strong ? "font-semibold" : "text-muted")}><span>{k}</span><span className="tnum">{v}</span></div>;
 }
 
-export default function Calculators() {
-  const [tab, setTab] = useState<Tab>("Brokerage");
+export default function Calculators({ initialTab = "Brokerage" }: { initialTab?: Tab }) {
+  const [tab, setTab] = useState<Tab>(initialTab);
+  // xirr
+  const [flows, setFlows] = useState<{ date: string; amount: number }[]>([{ date: "2024-01-01", amount: -100000 }, { date: "2024-07-01", amount: -50000 }, { date: "2026-01-01", amount: 190000 }]);
+  // emi
+  const [loan, setLoan] = useState(1000000); const [loanRate, setLoanRate] = useState(9); const [loanMonths, setLoanMonths] = useState(240);
   // brokerage
   const [product, setProduct] = useState<Product>("CNC");
   const [qty, setQty] = useState(100); const [buy, setBuy] = useState(1000); const [sell, setSell] = useState(1010);
@@ -41,6 +45,8 @@ export default function Calculators() {
   const [infAmt, setInfAmt] = useState(1000000); const [infRate, setInfRate] = useState(6); const [infYears, setInfYears] = useState(10);
 
   const rt = roundTrip(product, qty, buy, sell);
+  const xr = xirr(flows);
+  const em = emi(loan, loanRate, loanMonths);
   const seg = SEGMENTS.find((x) => x.key === segKey)!;
   const isOpt = segKey.endsWith("_options");
   const est = estimateCharges(segKey, segSide, segValue, { exchange: segExchange, premium: isOpt ? segPremium : undefined, agri: segAgri });
@@ -77,6 +83,12 @@ export default function Calculators() {
           </>)}
           {tab === "SIP" && (<><Field label="Monthly investment (₹)" value={sipAmt} onChange={setSipAmt} /><Field label="Expected annual return (%)" value={sipRate} onChange={setSipRate} /><Field label="Years" value={sipYears} onChange={setSipYears} /></>)}
           {tab === "Lumpsum" && (<><Field label="Investment (₹)" value={lsAmt} onChange={setLsAmt} /><Field label="Expected annual return (%)" value={lsRate} onChange={setLsRate} /><Field label="Years" value={lsYears} onChange={setLsYears} /></>)}
+          {tab === "XIRR" && (<>
+            <div className="text-xs text-muted">Cash flows: investments negative, withdrawals and current value positive.</div>
+            {flows.map((f, i) => (<div key={i} className="grid grid-cols-[1fr_1fr_auto] gap-1"><input className="input" type="date" value={f.date} onChange={(e) => setFlows((x) => x.map((y, j) => (j === i ? { ...y, date: e.target.value } : y)))} aria-label="Date" /><input className="input tnum" type="number" value={f.amount} onChange={(e) => setFlows((x) => x.map((y, j) => (j === i ? { ...y, amount: Number(e.target.value) } : y)))} aria-label="Amount" /><button type="button" className="btn btn-ghost btn-sm" disabled={flows.length <= 2} onClick={() => setFlows((x) => x.filter((_, j) => j !== i))} aria-label="Remove">✕</button></div>))}
+            <button type="button" className="btn btn-ghost btn-sm" onClick={() => setFlows((x) => [...x, { date: new Date().toISOString().slice(0, 10), amount: 0 }])}>+ Cash flow</button>
+          </>)}
+          {tab === "EMI" && (<><Field label="Loan amount (₹)" value={loan} onChange={setLoan} /><Field label="Interest rate (% p.a.)" value={loanRate} onChange={setLoanRate} /><Field label="Tenure (months)" value={loanMonths} onChange={setLoanMonths} step="1" /></>)}
           {tab === "CAGR" && (<><Field label="Starting value (₹)" value={cStart} onChange={setCStart} /><Field label="Ending value (₹)" value={cEnd} onChange={setCEnd} /><Field label="Years" value={cYears} onChange={setCYears} /></>)}
           {(tab === "Position size" || tab === "Risk / Reward") && (<>
             {tab === "Position size" && <><Field label="Capital (₹)" value={cap} onChange={setCap} /><Field label="Risk per trade (%)" value={riskPct} onChange={setRiskPct} /></>}
@@ -112,6 +124,10 @@ export default function Calculators() {
             <p className="mt-3 text-xs text-faint">FV = P × [((1+i)^n − 1) / i] × (1+i), i = annual rate / 12, n = months. Returns are assumptions, not promises.</p></>)}
           {tab === "Lumpsum" && (<><Row k="Invested" v={money(ls.invested)} /><Row k="Estimated value" v={money(ls.value)} strong /><Row k="Estimated gain" v={money(ls.gain)} />
             <p className="mt-3 text-xs text-faint">A = P × (1 + r)^t with annual compounding.</p></>)}
+          {tab === "XIRR" && (<><Row k="XIRR (annualised)" v={xr === null ? "needs at least one investment and one return" : `${xr}%`} strong /><Row k="Net invested" v={money(-flows.filter((f) => f.amount < 0).reduce((s, f) => s + f.amount, 0))} /><Row k="Returned / current value" v={money(flows.filter((f) => f.amount > 0).reduce((s, f) => s + f.amount, 0))} />
+            <p className="mt-3 text-xs text-faint">XIRR solves Σ amount / (1+r)^(years from first flow) = 0 by bisection. Use it for SIPs and portfolios with deposits on different dates.</p></>)}
+          {tab === "EMI" && (<><Row k="Monthly EMI" v={money(em.emi)} strong /><Row k="Total payment" v={money(em.totalPayment)} /><Row k="Total interest" v={money(em.totalInterest)} />
+            <p className="mt-3 text-xs text-faint">EMI = P × i × (1+i)^n / ((1+i)^n − 1), i = annual rate / 12.</p></>)}
           {tab === "CAGR" && (<><Row k="CAGR" v={`${cagr(cStart, cEnd, cYears)}%`} strong /><p className="mt-3 text-xs text-faint">CAGR = (End / Start)^(1/years) − 1</p></>)}
           {tab === "Position size" && (<><Row k="Risk amount" v={money(ps.riskAmount)} /><Row k="Risk per share" v={money(ps.perShareRisk)} /><Row k="Suggested quantity" v={String(ps.qty)} strong /><Row k="Exposure" v={money(ps.exposure)} />
             <p className="mt-3 text-xs text-faint">qty = floor(capital × risk% ÷ |entry − stop|). Educational only.</p></>)}

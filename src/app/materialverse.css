@@ -63,3 +63,39 @@
 .awaken .particle { position:absolute; left:50%; top:50%; width:3px; height:3px; border-radius:50%; background: rgba(212,180,106,0.9); animation: converge 2s ease-in forwards; }
 @keyframes converge { from { transform: translate(var(--dx), var(--dy)) scale(1); opacity:0.9 } to { transform: translate(0,0) scale(0.2); opacity:0 } }
 @media (prefers-reduced-motion: reduce) { .awaken { display:none; } .sheen::after, .aurora-ribbon, .m-dichroic::before { animation: none; } }
+
+/* ------------------------------------------------------------------------
+   Page hero effects (HeroFx): decorative only, reduced-motion aware
+   ------------------------------------------------------------------------ */
+.hero { background: radial-gradient(900px 300px at 85% 20%, rgba(var(--glow),0.12), transparent 70%); }
+.fx-orbit { animation: fx-spin 28s linear infinite; }
+.fx-orbit-rev { animation: fx-spin 40s linear infinite reverse; }
+.fx-orbit-slow { animation: fx-spin 60s linear infinite; }
+@keyframes fx-spin { to { transform: rotate(360deg); } }
+.fx-candle { animation: fx-grow 900ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes fx-grow { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+.fx-draw { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: fx-draw 2.4s ease-out forwards; }
+@keyframes fx-draw { to { stroke-dashoffset: 0; } }
+.fx-sweep { animation: fx-spin 6s linear infinite; }
+.fx-blip { animation: fx-blip 2.4s ease-in-out infinite; }
+@keyframes fx-blip { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+.fx-line { transform-origin: left; animation: fx-line 700ms ease-out both; }
+@keyframes fx-line { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+.fx-bar-l { transform-origin: right; animation: fx-line 800ms ease-out both; }
+.fx-bar-r { transform-origin: left; animation: fx-line 800ms ease-out both; }
+.fx-fade { animation: fx-fade 1.6s ease-out both; }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
+.fx-aperture { animation: fx-aperture 3.2s ease-in-out infinite alternate; }
+@keyframes fx-aperture { from { transform: rotate(0deg) scale(.92); } to { transform: rotate(22.5deg) scale(1.04); } }
+.fx-pulse { animation: fx-pulse 2.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes fx-pulse { 0%,100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.18); opacity: 1; } }
+.fx-ring { animation: fx-ring 3.6s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes fx-ring { from { transform: scale(.4); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+.fx-rise { animation: fx-rise 3s ease-out both; }
+@keyframes fx-rise { from { transform: translateY(80px); opacity: .2; } to { transform: translateY(0); opacity: 1; } }
+.fx-bead { animation: fx-bead 2.8s ease-in-out infinite alternate; }
+@keyframes fx-bead { from { transform: translateX(0); } to { transform: translateX(180px); } }
+.fx-ribbon { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: fx-ribbon 9s linear infinite; }
+@keyframes fx-ribbon { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { [class^="fx-"], [class*=" fx-"] { animation: none !important; stroke-dashoffset: 0 !important; transform: none !important; opacity: 1 !important; } }
+[data-motion="reduced"] [class^="fx-"], [data-motion="reduced"] [class*=" fx-"] { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1 !important; }

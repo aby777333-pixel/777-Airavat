@@ -5,11 +5,13 @@ import { istTime, price } from "@/lib/format";
 import { Badge, Empty, PageHeader, statusTone } from "@/components/ui";
 import { cancelOrder } from "../actions";
 import ActionForm from "@/components/ActionForm";
+import ConditionalOrders from "./ConditionalOrders";
 
 export default async function Orders() {
   const { supabase, user } = await requireUser("/app/orders");
   const { data: orders } = await supabase.from("orders").select("*, instrument:instruments(symbol)").eq("user_id", user.id).order("created_at", { ascending: false }).limit(200);
   const open = (orders ?? []).filter((o) => ["ACKNOWLEDGED", "PARTIALLY_FILLED"].includes(o.status));
+  const { data: conditional } = await supabase.from("conditional_orders").select("*, instrument:instruments(symbol)").eq("user_id", user.id).order("created_at", { ascending: false }).limit(100);
   return (
     <>
       <PageHeader eyebrow="Orders" title="Order book" subtitle={`${open.length} open · ${(orders ?? []).length} total`} />
@@ -37,6 +39,7 @@ export default async function Orders() {
           </table>
         </div>
       )}
+      <ConditionalOrders rows={(conditional ?? []) as never} />
     </>
   );
 }

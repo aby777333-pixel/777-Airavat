@@ -8,6 +8,7 @@ import { changeOf, istTime, pct, price } from "@/lib/format";
 import Chart from "@/components/market/Chart";
 import { Notice, SimBadge } from "@/components/ui";
 import OrderTicket from "./OrderTicket";
+import AdvancedOrders from "./AdvancedOrders";
 
 export default async function TradePage({ params, searchParams }: { params: Promise<{ symbol: string }>; searchParams: Promise<{ side?: string }> }) {
   const [{ symbol }, sp] = await Promise.all([params, searchParams]);
@@ -58,7 +59,10 @@ export default async function TradePage({ params, searchParams }: { params: Prom
           ) : !inst.tradable ? (
             <Notice tone="info">Indices are not tradable in the cash segment.</Notice>
           ) : (
-            <OrderTicket symbol={inst.symbol} ltp={Number(inst.quote.ltp)} tick={Number(inst.tick_size)} lot={inst.lot_size} available={funds?.available ?? 0} holdingQty={holding?.data?.qty ?? 0} accepting={ms.accepting_orders} defaultSide={sp.side === "SELL" ? "SELL" : "BUY"} />
+            <>
+              <OrderTicket symbol={inst.symbol} ltp={Number(inst.quote.ltp)} tick={Number(inst.tick_size)} lot={inst.lot_size} available={funds?.available ?? 0} holdingQty={holding?.data?.qty ?? 0} accepting={ms.accepting_orders} defaultSide={sp.side === "SELL" ? "SELL" : "BUY"} />
+              <AdvancedOrders symbol={inst.symbol} ltp={Number(inst.quote.ltp)} lot={inst.lot_size} holdingQty={holding?.data?.qty ?? 0} />
+            </>
           )}
         </div>
       </div>

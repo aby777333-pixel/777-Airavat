@@ -1,6 +1,8 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import { PageHeader } from "@/components/ui";
 
-export const metadata = { title: "Academy" };
+export const metadata = { ...metadataFor("/academy") };
 
 const lessons = [
   { level: "Beginner", title: "What a stockbroker actually does", body: "A broker routes your orders to an exchange, holds your funds in segregated client accounts, settles trades through a clearing corporation and keeps your shares in a demat account with a depository. AIRAVAT's sandbox simulates each of these roles separately so you can see where each rupee goes." },
@@ -22,7 +24,7 @@ const glossary = [
 export default function Academy() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="AIRAVAT Academy" title="Learn how markets actually work" subtitle="Plain-language lessons written to match what the sandbox does. Education, not advice. No course promises returns." />
+      <PageHero variant="academy" intro={seoFor("/academy").intro}><PageHeader eyebrow="AIRAVAT Academy" title="Learn how markets actually work" subtitle="Plain-language lessons written to match what the sandbox does. Education, not advice. No course promises returns." /></PageHero>
       <div className="grid gap-4 md:grid-cols-2">
         {lessons.map((l) => (
           <article key={l.title} className="glass p-6">

@@ -5,6 +5,7 @@ import { SimBadge } from "@/components/ui";
 import clsx from "clsx";
 import Awakening from "@/components/site/Awakening";
 import MorningIntelligence from "@/components/site/MorningIntelligence";
+import { AcademyPricingTrust, FinalCta, IntelligenceStrip, ProductDiscovery, TerminalShowcase } from "@/components/site/HomeSections";
 
 const products = [
   { name: "AIRAVAT ONE", who: "Everyday investors", body: "Clean investing, transparent charges and a portfolio that explains itself.", href: "/platforms#one" },
@@ -98,6 +99,9 @@ export default async function Home() {
         </div>
       </section>
 
+      <ProductDiscovery />
+      <TerminalShowcase />
+      <IntelligenceStrip />
       <MorningIntelligence />
 
       {/* JOURNEY */}
@@ -149,17 +153,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-        <div className="glass-strong glow-ring flex flex-col items-center gap-4 p-10 text-center">
-          <h2 className="font-display text-3xl font-bold">Try the sandbox brokerage</h2>
-          <p className="max-w-xl text-muted">Open a simulated account in two minutes. No real money, no real orders, real engineering.</p>
-          <div className="flex gap-3">
-            <Link href="/signup" className="btn btn-primary">Open sandbox account</Link>
-            <Link href="/trust" className="btn btn-ghost">Read our disclosures</Link>
-          </div>
-        </div>
-      </section>
+      <AcademyPricingTrust />
+      <FinalCta />
     </>
   );
 }

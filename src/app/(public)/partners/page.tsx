@@ -1,7 +1,9 @@
+import PageHero from "@/components/site/PageHero";
+import { seoFor, metadataFor } from "@/lib/seo";
 import { Badge, Notice, PageHeader } from "@/components/ui";
 import LeadForm from "@/components/site/LeadForm";
 
-export const metadata = { title: "Partner programme", description: "Introducers, affiliates, Authorized Persons and franchise operators: distinct eligibility, permissions and compensation, with compliance approval before any plan is active." };
+export const metadata = { ...metadataFor("/partners") };
 
 const categories = [
   { name: "Introducer", body: "Refers prospects through a referral link or code. No solicitation beyond approved activities; no access to client financial data.", comp: "Fixed per activation (only under a compliance-approved plan)" },
@@ -13,7 +15,7 @@ const categories = [
 export default function Partners() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <PageHeader eyebrow="Partner Universe" title="Distribution with discipline" subtitle="Each partner category has its own eligibility, permitted activities and compensation model. Nothing pays out without a compliance-approved plan, and a suspended partner keeps earned, verified remuneration while new business stops." />
+      <PageHero variant="partners" intro={seoFor("/partners").intro}><PageHeader eyebrow="Partner Universe" title="Distribution with discipline" subtitle="Each partner category has its own eligibility, permitted activities and compensation model. Nothing pays out without a compliance-approved plan, and a suspended partner keeps earned, verified remuneration while new business stops." /></PageHero>
       <Notice tone="info">The partner network is in sandbox: commissions accrue in a simulated ledger and payouts are maker-checker approved. Regulatory permissibility of each compensation basis is recorded as a legal basis on every plan and must be verified before live use.</Notice>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {categories.map((c) => <div key={c.name} className="glass p-6"><div className="font-display font-semibold">{c.name}</div><p className="mt-2 text-sm text-muted">{c.body}</p><div className="mt-3 text-xs"><Badge tone="accent">Compensation</Badge> <span className="text-muted">{c.comp}</span></div></div>)}
