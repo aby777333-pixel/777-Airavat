@@ -164,3 +164,22 @@ Load, failover, DR, accessibility automation, mobile device matrix, email delive
 | finance approves refund | approved, journal entry; ledger +25.50; decide twice → ALREADY_DECIDED | ✅ |
 | journal | Σdebit = Σcredit | ✅ |
 | fat-finger proof: account guard 2%, LIMIT 4% below LTP / 1% below / MARKET 20,000 qty | FAT_FINGER_PRICE_DEVIATION / accepted / global qty cap | ✅ / ✅ / ✅ MAX_ORDER_QTY_EXCEEDED (10,000 global cap precedes the volume guard) |
+
+## Releases 0.7.0–0.7.8 — 2026-10-11
+### Static and unit (run before every one of the nine commits)
+- `npx tsc --noEmit`: pass · `npm run lint`: 0 errors (pre-existing warnings only) · `npx vitest run`: 62 tests passed (planners.test.ts added 7) · `npm run build`: pass.
+
+### Local production render (next start, curl, content grep)
+| Route group | Routes checked | Result |
+|---|---|---|
+| Platforms (0.7.7) | /platforms/terminal-demo (+?s=TCS), /platforms/mobile, /developers/docs, /trade/basket-gtt, /trade/algo-marketplace | 200, expected markers present, no server errors |
+| Company (0.7.8) | /status, /company/{policies,security,press,newsletter,careers/roles,governance,csr}, /contact?kind=media, /.well-known/security.txt, /trust, /about | 200, expected markers present, no server errors |
+
+### Live verification after each cache-cleared Netlify deploy (curl, HTTP 200)
+- 0.7.5: /academy/glossary, /academy/tracks, two lesson pages, /learn/regulations, /academy, /.
+- 0.7.6: /open-account/guide, /contact/callback, /company/{service-network,referral,loyalty}, /pricing/industry-comparison, /contact, /.
+- 0.7.7: /platforms/terminal-demo (+?s=TCS), /platforms/mobile, /developers/docs, /trade/{basket-gtt,algo-marketplace}, /platforms, /developers.
+- 0.7.8: see CHANGELOG; verified the same way (recorded in the deploy log of the session).
+
+### Not executed
+- Browser-level interaction tests of the demo ticket, lesson quizzes, callback and talent-pool forms (manual only). The forms reuse `submit_enquiry`, whose validation E2E ran in 0.6.8.

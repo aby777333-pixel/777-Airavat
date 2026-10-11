@@ -95,3 +95,8 @@ Status legend: ✅ working in sandbox · 🟡 partial · ⬜ not started · 🔒
 | 16 Final independence audit | ✅ | docs/COMPLETION_REPORTS.md §1 |
 | 17 Completion proof reports | ✅ | docs/COMPLETION_REPORTS.md |
 | Navigator: menus, pages, homepage, heroes, CMS, SEO, delivery docs | ✅ | docs/NAVIGATOR_DELIVERY.md |
+| 0.7.x Markets, Invest, Tools hubs | ✅ | migrations 0028–0030; /markets/*, /invest/*, /tools/* incl. screener and portfolio analyser |
+| 0.7.x Learn: Chart School, tracks, glossary, regulation digest | ✅ | animated SVG patterns, quizzes, browser progress; /academy/*, /learn/regulations |
+| 0.7.x Account & service pages | ✅ | checklist, callback scheduler (submit_enquiry), service network / referral / loyalty (designs, not enabled), industry comparison |
+| 0.7.x Platforms: public terminal demo, PWA page, API reference, smart orders, algo marketplace showcase | ✅ | read-only demo; docs generated from the v1 route map |
+| 0.7.x Company & trust: status, policies, security + security.txt, press kit, roles, newsletter, governance, CSR | ✅ | no names/entities/branches/openings claimed |
