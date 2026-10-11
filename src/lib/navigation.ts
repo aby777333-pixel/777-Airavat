@@ -120,6 +120,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/pricing/margin-interest", label: "Margin & Interest", desc: "MTF, delayed payment, pledge", icon: "💹" },
       { href: "/pricing#equity", label: "Statutory & Exchange Charges", desc: "STT, SEBI, stamp, GST, IPFT", icon: "🏛️" },
       { href: "/pricing/faqs", label: "Pricing FAQs", desc: "What is charged when and why", icon: "❓" },
+      { href: "/pricing/industry-comparison", label: "Industry Comparison", desc: "Our schedule vs typical market ranges", icon: "📊" },
     ] },
   { key: "company", label: "Company", blurb: "An independent Indian broker technology company, built in the open.",
     featured: { href: "/trust", title: "Trust & Security", body: "Regulatory status, fund segregation, risk controls, data protection." },
@@ -132,6 +133,11 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/company/careers", label: "Careers", desc: "Open roles and how we hire", icon: "🧑‍💻" },
       { href: "/contact", label: "Contact", desc: "Support, partnerships, media", icon: "✉️" },
       { href: "/company/support", label: "Support", desc: "Help centre and ticketing", icon: "🛟" },
+      { href: "/open-account/guide", label: "Account Opening Guide", desc: "Documents by entity type, steps, timelines", icon: "📋", badge: "new" },
+      { href: "/contact/callback", label: "Request a Callback", desc: "Pick a day and window, nine languages", icon: "📞" },
+      { href: "/company/service-network", label: "Service Network", desc: "Digital-first, partner service points", icon: "📍" },
+      { href: "/company/referral", label: "Refer a Friend", desc: "Published rules, credits not cash", icon: "🎁" },
+      { href: "/company/loyalty", label: "AIRAVAT Circle", desc: "Tiers by tenure and conduct, not volume", icon: "💍" },
       { href: "/company/grievance-redressal", label: "Grievance Redressal", desc: "Escalation matrix and timelines", icon: "📮" },
       { href: "/legal", label: "Legal & Regulatory", desc: "Disclosures, policies, documents", icon: "📄" },
     ] },
@@ -139,6 +145,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
 export const UTILITY_NAV = [
   { href: "/company/support", label: "Support" },
+  { href: "/contact/callback", label: "Callback" },
   { href: "/downloads", label: "Downloads" },
   { href: "/accessibility", label: "Accessibility" },
 ];

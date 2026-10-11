@@ -31,6 +31,8 @@ export default function Contact() {
           <Card title="Other ways in">
             <ul className="space-y-1.5 text-sm">
               <li><Link href="/open-account" className="hover:text-accent">Open an account →</Link></li>
+              <li><Link href="/contact/callback" className="hover:text-accent">Request a callback or visit →</Link></li>
+              <li><Link href="/open-account/guide" className="hover:text-accent">Account opening checklist →</Link></li>
               <li><Link href="/partners" className="hover:text-accent">Partner programme →</Link></li>
               <li><Link href="/developers" className="hover:text-accent">Developer portal →</Link></li>
               <li><Link href="/learn/investor-protection" className="hover:text-accent">Investor charter →</Link></li>

@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 0.7.6 — 2026-10-11 — Account & service block
+- /open-account/guide: interactive document checklist by entity type (individual, NRI, HUF, company, partnership/LLP, trust, minor), the eight onboarding steps, typical timelines, after-approval notes, FAQ JSON-LD; /open-account still goes straight to signup.
+- /contact/callback: callback or documentation-visit scheduler (next seven working days, two-hour IST windows, nine languages) stored through the existing `submit_enquiry` RPC with reference and SLA.
+- Registry pages: /company/service-network (digital-first, service points marked SIMULATED SAMPLE, no branches claimed), /company/referral (published design, credits not cash, not enabled), /company/loyalty (AIRAVAT Circle tiers by tenure and conduct, not enabled), /pricing/industry-comparison (our schedule vs typical discount and full-service ranges, no broker named).
+- Company and Pricing menus, utility bar (Callback), contact page links, SEO and sitemap updated.
+
 ## 0.7.5 — 2026-10-11 — Learn block, part 2: glossary, learning tracks, regulation explained; hero card more transparent
 - /academy/glossary: 120+ Indian-market terms (STT, CTT, UCC, DP, BSDA, CKYC, KRA, ASBA, T+1, MTF, SLB, ASM/GSM, SPAN, GTT, VWAP …) in ten categories with search, category filter, A–Z jump links, DefinedTermSet JSON-LD and "see it" links to the screen where each term appears.
 - /academy/tracks: three structured tracks (First steps · 7 lessons, Long-term investor · 6, F&O foundations · 5) at /academy/tracks/[track]/[lesson], each with a try-it link into the sandbox and a quiz; completion stored per browser with a progress bar (no account needed).
