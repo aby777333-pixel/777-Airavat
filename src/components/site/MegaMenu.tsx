@@ -10,7 +10,7 @@ const badgeText: Record<string, string> = { sandbox: "sandbox", soon: "coming", 
 
 // Accessible mega menu: buttons toggle panels, Escape closes, focus/blur management, hover-intent on desktop.
 // One distinct animation per menu group inside the featured card (CSS/SVG only, reduced-motion aware).
-const FEATURED_FX: Record<string, HeroVariant> = { invest: "briefing", trade: "markets", markets: "universe", intelligence: "research", tools: "calculators", learn: "academy", pricing: "pricing", company: "about" };
+export const FEATURED_FX: Record<string, HeroVariant> = { invest: "briefing", trade: "markets", markets: "universe", intelligence: "research", tools: "calculators", learn: "academy", pricing: "pricing", company: "about" };
 
 export default function MegaMenu({ groups }: { groups: NavGroup[] }) {
   const [open, setOpen] = useState<string | null>(null);

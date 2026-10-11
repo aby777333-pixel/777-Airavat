@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import type { NavGroup } from "@/lib/navigation";
+import HeroFx from "./HeroFx";
+import { FEATURED_FX } from "./MegaMenu";
 
 export default function MobileNav({ groups, utility, signedIn }: { groups: NavGroup[]; utility: { href: string; label: string }[]; signedIn: boolean }) {
   const [open, setOpen] = useState(false);
@@ -16,7 +18,17 @@ export default function MobileNav({ groups, utility, signedIn }: { groups: NavGr
             {groups.map((g) => (
               <div key={g.key} className="border-b border-border/60 py-1">
                 <button type="button" className="flex w-full items-center justify-between py-2 text-base font-medium" aria-expanded={sec === g.key} onClick={() => setSec((s) => (s === g.key ? null : g.key))}>{g.label}<span aria-hidden="true">{sec === g.key ? "−" : "+"}</span></button>
-                {sec === g.key && <ul className="mb-2 grid gap-1 pl-2">{g.links.map((l) => <li key={l.href}><Link href={l.href} onClick={() => setOpen(false)} className="block py-1.5 text-sm text-muted hover:text-text"><span aria-hidden="true" className="mr-2">{l.icon}</span>{l.label}</Link></li>)}</ul>}
+                {sec === g.key && (
+                  <div className="mb-2">
+                    {g.featured && (
+                      <Link href={g.featured.href} onClick={() => setOpen(false)} className="m-crystal relative mb-2 block min-h-[140px] overflow-hidden p-4">
+                        <HeroFx variant={FEATURED_FX[g.key] ?? "platforms"} />
+                        <div className="relative flex h-full flex-col justify-end pt-14"><div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Featured</div><div className="font-display text-base font-semibold">{g.featured.title}</div><p className="text-xs text-muted">{g.featured.body}</p></div>
+                      </Link>
+                    )}
+                    <ul className="grid gap-1 pl-2">{g.links.map((l) => <li key={l.href}><Link href={l.href} onClick={() => setOpen(false)} className="block py-1.5 text-sm text-muted hover:text-text"><span aria-hidden="true" className="mr-2">{l.icon}</span>{l.label}</Link></li>)}</ul>
+                  </div>
+                )}
               </div>
             ))}
             <div className="mt-2 flex flex-wrap gap-3 text-sm text-muted">{utility.map((u) => <Link key={u.href} href={u.href} onClick={() => setOpen(false)}>{u.label}</Link>)}</div>

@@ -43,17 +43,20 @@ export default function LiveOrb({ context }: { context: LiveContext }) {
 
   return (
     <>
-      <button
-        aria-label={open ? "Close AIRAVAT LIVE" : "Open AIRAVAT LIVE assistant"}
-        onClick={() => setOpen(!open)}
-        className={clsx("orb fixed bottom-5 right-5 z-50 transition", state === "thinking" && "breathe", state === "warning" && "ring-2 ring-warn")}
-      />
+      <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3">
+        {!open && <button type="button" onClick={() => setOpen(true)} className="glass-strong hidden items-center gap-2 px-3 py-2 text-left sm:flex" aria-label="Open AIRAVAT LIVE assistant with BHASHA languages"><span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">AIRAVAT LIVE</span><span className="text-[11px] text-muted">Ask · BHASHA हिन्दी தமிழ் +7</span></button>}
+        <button
+          aria-label={open ? "Close AIRAVAT LIVE" : "Open AIRAVAT LIVE assistant"}
+          onClick={() => setOpen(!open)}
+          className={clsx("orb transition", state === "thinking" && "breathe", state === "warning" && "ring-2 ring-warn")}
+        />
+      </div>
       {open && (
         <div role="dialog" aria-label="AIRAVAT LIVE" className="glass-strong fixed bottom-24 right-5 z-50 flex h-[min(70vh,560px)] w-[min(92vw,400px)] flex-col overflow-hidden">
           <header className="flex items-center justify-between border-b border-border px-4 py-3">
             <div>
               <div className="font-display text-sm font-semibold">AIRAVAT LIVE</div>
-              <div className="text-[11px] text-faint">AI assistant · cannot place orders · may make mistakes</div>
+              <div className="text-[11px] text-faint">Anthropic Claude via the AIRAVAT gateway · answers translated by BHASHA (Sarvam) in 9 Indian languages · cannot place orders · may make mistakes</div>
             </div>
             <select aria-label="Language" className="select !w-auto !py-1 !text-xs" value={lang} onChange={(e) => setLang(e.target.value)}>
               {LANGS.map(([c, n]) => <option key={c} value={c}>{n}</option>)}

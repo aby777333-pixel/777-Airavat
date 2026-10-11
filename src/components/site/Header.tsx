@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import LiveLink from "@/components/live/LiveLink";
 import { SandboxBanner } from "@/components/ui";
 import MobileNav from "./MobileNav";
 import MegaMenu from "./MegaMenu";
@@ -20,7 +21,7 @@ export default async function Header() {
       <header className="on-night sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-xl">
         <div className="mx-auto hidden h-7 max-w-[1400px] items-center justify-end gap-4 px-4 text-[11px] text-faint sm:px-6 lg:flex" aria-label="Utility">
           {UTILITY_NAV.map((u) => <Link key={u.href} href={u.href} className="hover:text-text">{u.label}</Link>)}
-          <span aria-hidden="true">·</span><span>English · हिन्दी via BHASHA</span>
+          <span aria-hidden="true">·</span><LiveLink /><span aria-hidden="true">·</span><span>English · हिन्दी via BHASHA</span>
         </div>
         <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5" aria-label="AIRAVAT home">
