@@ -6,7 +6,7 @@ import PwaRegister from "@/components/PwaRegister";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
-// House display face (same files as gio4x.com); Manrope stays as the fallback for the older palettes.
+// House display face (house typeface); Manrope stays as the fallback for the older palettes.
 const norms = localFont({ variable: "--font-norms", display: "swap", src: [{ path: "../fonts/TTNorms-Light.woff2", weight: "300", style: "normal" }, { path: "../fonts/TTNorms-Regular.woff2", weight: "400", style: "normal" }, { path: "../fonts/TTNorms-Medium.woff2", weight: "500", style: "normal" }, { path: "../fonts/TTNorms-Bold.woff2", weight: "700", style: "normal" }] });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://777-airavat.netlify.app";
@@ -38,7 +38,7 @@ const themeInit = `(function(){try{var d=document.documentElement;var t=localSto
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="gio4x" suppressHydrationWarning>
+    <html lang="en" data-theme="airavat-house" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

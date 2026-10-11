@@ -22,7 +22,7 @@ export function Breadcrumbs({ items }: { items: { href: string; label: string }[
 export default function ContentPageView({ page, groupHref }: { page: ContentPage; groupHref: string }) {
   const b = availBadge[page.availability];
   const faqLd = page.faqs.length ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: page.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) } : null;
-  const related = page.related.map((r) => ({ href: r, label: contentPage(r)?.h1 ?? r.split("/").pop()?.replace(/-/g, " ") ?? r }));
+  const related = [...new Set(page.related)].filter((r) => r !== page.path).map((r) => ({ href: r, label: contentPage(r)?.h1 ?? r.split("/").pop()?.replace(/-/g, " ") ?? r }));
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6">
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: groupHref, label: page.group }, { href: page.path, label: page.h1 }]} />

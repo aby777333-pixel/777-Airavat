@@ -221,10 +221,10 @@ body {
 .menu-panel .m-crystal, .menu-panel .glass { background: var(--surface-solid); backdrop-filter: none; -webkit-backdrop-filter: none; }
 
 /* ------------------------------------------------------------------------
-   GIO4X — the house look (paper body, night chrome and heroes, TT Norms display type,
+   AIRAVAT House — the house look (paper body, night chrome and heroes, TT Norms display type,
    rectangular uppercase buttons, hairline panels). Default theme from release 0.6.0.
    ------------------------------------------------------------------------ */
-[data-theme="gio4x"] {
+[data-theme="airavat-house"] {
   color-scheme: light;
   --bg: #eaede5;
   --bg-2: #f4f6f0;
@@ -253,7 +253,7 @@ body {
   --radius-lg: 12px;
   --font-display: var(--font-norms), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
-[data-theme="gio4x"] .on-night, [data-theme="gio4x"] .hero {
+[data-theme="airavat-house"] .on-night, [data-theme="airavat-house"] .hero {
   color-scheme: dark;
   --bg: #0c1116;
   --bg-2: #121a21;
@@ -279,33 +279,33 @@ body {
   background: var(--bg);
   color: var(--text);
 }
-[data-theme="gio4x"] body { background: var(--bg); }
-[data-theme="gio4x"] .bg-atmosphere { background: linear-gradient(180deg, var(--bg-2), var(--bg) 40%); }
-[data-theme="gio4x"] .font-display { font-weight: 400; letter-spacing: -0.02em; }
-[data-theme="gio4x"] h1.font-display, [data-theme="gio4x"] .hero h1 { font-weight: 300; letter-spacing: -0.024em; line-height: 1.06; }
-[data-theme="gio4x"] .btn { border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8125rem; font-weight: 600; padding: 0.8rem 1.3125rem; }
-[data-theme="gio4x"] .btn-sm { padding: 0.55rem 0.8125rem; font-size: 0.75rem; }
-[data-theme="gio4x"] .btn-primary { background: linear-gradient(#ffffff, #dfe3e6); color: #0c1116; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(20,25,29,0.08), 0 0 21px -5px rgba(76,194,130,0.9); }
-[data-theme="gio4x"] .btn-primary:hover:not(:disabled) { background: linear-gradient(#ffffff, #eef0f1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(20,25,29,0.1), 0 0 26px -4px rgba(76,194,130,1); }
-[data-theme="gio4x"] .on-night .btn-primary, [data-theme="gio4x"] .hero .btn-primary { box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.14), 0 0 21px -5px rgba(76,194,130,0.9); }
-[data-theme="gio4x"] .btn-ghost { background: linear-gradient(#ffffff, #f4f6f0); border-color: var(--border-strong); color: var(--text); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(20,25,29,0.06); }
-[data-theme="gio4x"] .btn-ghost:hover:not(:disabled) { background: linear-gradient(#ffffff, #eef0f1); border-color: var(--text); }
-[data-theme="gio4x"] .on-night .btn-ghost, [data-theme="gio4x"] .hero .btn-ghost { background: linear-gradient(#1b252e, #141b22); border-color: rgba(238,240,241,0.3); color: #eef0f1; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 0 0 1px rgba(236,238,240,0.04), 0 5px 13px -5px rgba(0,0,0,0.6); }
-[data-theme="gio4x"] .on-night .btn-ghost:hover:not(:disabled), [data-theme="gio4x"] .hero .btn-ghost:hover:not(:disabled) { border-color: #eef0f1; }
-[data-theme="gio4x"] .glass { background: linear-gradient(#ffffff, #faf8f2); border: 1px solid var(--border); border-radius: var(--radius); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(20,25,29,0.06), 0 13px 34px -13px rgba(8,80,140,0.26), 0 5px 13px -8px rgba(20,25,29,0.14); }
-[data-theme="gio4x"] .glass-strong { background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 13px 34px -13px rgba(8,80,140,0.26), 0 5px 13px -8px rgba(20,25,29,0.14); }
-[data-theme="gio4x"] .on-night .glass, [data-theme="gio4x"] .hero .glass, [data-theme="gio4x"] .on-night .glass-strong, [data-theme="gio4x"] .hero .glass-strong { background: linear-gradient(180deg, #1b252e 0%, #141b22 100%); border-color: var(--border); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.45); }
-[data-theme="gio4x"] .menu-panel { background: #121a21; color: #eef0f1; border-radius: 8px; border-color: rgba(238,240,241,0.13); }
-[data-theme="gio4x"] .badge { border-radius: 3px; letter-spacing: 0.12em; font-size: 0.6875rem; }
-[data-theme="gio4x"] .input, [data-theme="gio4x"] .select { background: #ffffff; border-color: var(--border-strong); border-radius: 5px; color: var(--text); }
-[data-theme="gio4x"] .on-night .input, [data-theme="gio4x"] .on-night .select, [data-theme="gio4x"] .hero .input, [data-theme="gio4x"] .hero .select { background: #0f161c; color: #eef0f1; border-color: rgba(238,240,241,0.3); }
-[data-theme="gio4x"] .select option { background: var(--surface-solid); color: var(--text); }
-[data-theme="gio4x"] .table th { color: var(--text-faint); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.6875rem; }
-[data-theme="gio4x"] .hero { border-bottom: 1px solid rgba(238,240,241,0.13); }
-[data-theme="gio4x"] .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); }
-[data-theme="gio4x"] .eyebrow::before { content: ""; width: 1.3125rem; height: 1px; background: var(--accent); }
-[data-theme="gio4x"] .m-crystal, [data-theme="gio4x"] .m-frost { background: linear-gradient(#ffffff, #faf8f2); border: 1px solid var(--border); backdrop-filter: none; -webkit-backdrop-filter: none; }
-[data-theme="gio4x"] .on-night .m-crystal, [data-theme="gio4x"] .hero .m-crystal { background: linear-gradient(180deg, #1b252e, #141b22); }
+[data-theme="airavat-house"] body { background: var(--bg); }
+[data-theme="airavat-house"] .bg-atmosphere { background: linear-gradient(180deg, var(--bg-2), var(--bg) 40%); }
+[data-theme="airavat-house"] .font-display { font-weight: 400; letter-spacing: -0.02em; }
+[data-theme="airavat-house"] h1.font-display, [data-theme="airavat-house"] .hero h1 { font-weight: 300; letter-spacing: -0.024em; line-height: 1.06; }
+[data-theme="airavat-house"] .btn { border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8125rem; font-weight: 600; padding: 0.8rem 1.3125rem; }
+[data-theme="airavat-house"] .btn-sm { padding: 0.55rem 0.8125rem; font-size: 0.75rem; }
+[data-theme="airavat-house"] .btn-primary { background: linear-gradient(#ffffff, #dfe3e6); color: #0c1116; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(20,25,29,0.08), 0 0 21px -5px rgba(76,194,130,0.9); }
+[data-theme="airavat-house"] .btn-primary:hover:not(:disabled) { background: linear-gradient(#ffffff, #eef0f1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(20,25,29,0.1), 0 0 26px -4px rgba(76,194,130,1); }
+[data-theme="airavat-house"] .on-night .btn-primary, [data-theme="airavat-house"] .hero .btn-primary { box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.14), 0 0 21px -5px rgba(76,194,130,0.9); }
+[data-theme="airavat-house"] .btn-ghost { background: linear-gradient(#ffffff, #f4f6f0); border-color: var(--border-strong); color: var(--text); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(20,25,29,0.06); }
+[data-theme="airavat-house"] .btn-ghost:hover:not(:disabled) { background: linear-gradient(#ffffff, #eef0f1); border-color: var(--text); }
+[data-theme="airavat-house"] .on-night .btn-ghost, [data-theme="airavat-house"] .hero .btn-ghost { background: linear-gradient(#1b252e, #141b22); border-color: rgba(238,240,241,0.3); color: #eef0f1; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 0 0 1px rgba(236,238,240,0.04), 0 5px 13px -5px rgba(0,0,0,0.6); }
+[data-theme="airavat-house"] .on-night .btn-ghost:hover:not(:disabled), [data-theme="airavat-house"] .hero .btn-ghost:hover:not(:disabled) { border-color: #eef0f1; }
+[data-theme="airavat-house"] .glass { background: linear-gradient(#ffffff, #faf8f2); border: 1px solid var(--border); border-radius: var(--radius); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(20,25,29,0.06), 0 13px 34px -13px rgba(8,80,140,0.26), 0 5px 13px -8px rgba(20,25,29,0.14); }
+[data-theme="airavat-house"] .glass-strong { background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 13px 34px -13px rgba(8,80,140,0.26), 0 5px 13px -8px rgba(20,25,29,0.14); }
+[data-theme="airavat-house"] .on-night .glass, [data-theme="airavat-house"] .hero .glass, [data-theme="airavat-house"] .on-night .glass-strong, [data-theme="airavat-house"] .hero .glass-strong { background: linear-gradient(180deg, #1b252e 0%, #141b22 100%); border-color: var(--border); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.45); }
+[data-theme="airavat-house"] .menu-panel { background: #121a21; color: #eef0f1; border-radius: 8px; border-color: rgba(238,240,241,0.13); }
+[data-theme="airavat-house"] .badge { border-radius: 3px; letter-spacing: 0.12em; font-size: 0.6875rem; }
+[data-theme="airavat-house"] .input, [data-theme="airavat-house"] .select { background: #ffffff; border-color: var(--border-strong); border-radius: 5px; color: var(--text); }
+[data-theme="airavat-house"] .on-night .input, [data-theme="airavat-house"] .on-night .select, [data-theme="airavat-house"] .hero .input, [data-theme="airavat-house"] .hero .select { background: #0f161c; color: #eef0f1; border-color: rgba(238,240,241,0.3); }
+[data-theme="airavat-house"] .select option { background: var(--surface-solid); color: var(--text); }
+[data-theme="airavat-house"] .table th { color: var(--text-faint); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.6875rem; }
+[data-theme="airavat-house"] .hero { border: 1px solid rgba(238,240,241,0.13); }
+[data-theme="airavat-house"] .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); }
+[data-theme="airavat-house"] .eyebrow::before { content: ""; width: 1.3125rem; height: 1px; background: var(--accent); }
+[data-theme="airavat-house"] .m-crystal, [data-theme="airavat-house"] .m-frost { background: linear-gradient(#ffffff, #faf8f2); border: 1px solid var(--border); backdrop-filter: none; -webkit-backdrop-filter: none; }
+[data-theme="airavat-house"] .on-night .m-crystal, [data-theme="airavat-house"] .hero .m-crystal { background: linear-gradient(180deg, #1b252e, #141b22); }
 .menu-panel .glass-strong { background: var(--surface-solid); backdrop-filter: none; -webkit-backdrop-filter: none; }
 .glass-strong {
   background: var(--surface-2);

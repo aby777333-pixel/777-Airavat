@@ -1,10 +1,11 @@
 # CHANGELOG.md
 
-## 0.6.0 — 2026-10-11 — GIO4X house look, wider content
-- New default theme `gio4x` (GIO4X House: paper & night): paper body (#eaede5) with night chrome, hero and footer (#0c1116), TT Norms display face (same files as gio4x.com; Manrope stays for the other palettes), rectangular uppercase buttons with the off-white primary and emerald glow, white hairline panels, 3–8px radii, tracked uppercase table headers and eyebrows. Scoped `.on-night` token override reproduces GIO4X's night sections inside a light page. All 15 earlier palettes remain in Theme Studio.
+## 0.6.0 — 2026-10-11 — AIRAVAT House look, wider content
+- New default theme `airavat-house` (Default: paper & night): paper body (#eaede5) with night chrome, hero and footer (#0c1116), TT Norms display face (Manrope stays for the other palettes), rectangular uppercase buttons with the off-white primary and emerald glow, white hairline panels, 3–8px radii, tracked uppercase table headers and eyebrows. Scoped `.on-night` token override gives night sections inside a light page. All 15 earlier palettes remain in Theme Studio.
 - Content width: public pages and site components use a 1400px container (was 1280/1152). The app shell stays at 1600px.
-- Theme storage key bumped to `airavat-theme-v2` so every visitor sees the new default until they choose another palette; saved profile default is now `gio4x`.
+- Theme storage key bumped to `airavat-theme-v2` so every visitor sees the new default until they choose another palette; saved profile default is now `airavat-house`.
 - Fix: a stylesheet insertion split the opaque-menu rule; repaired and verified (menu panels, glass panels, theme tokens all resolve).
+- Fix: /app/settings returned a server error because the theme registry was exported from a client module and read by a server page; the registry now lives in `src/lib/themes.ts`. Page heroes align with the content edges; related links deduplicated.
 
 ## 0.5.0 — 2026-10-11 — Back office, independent RMS, PWA, opaque menus
 - Migration 0026 back office: `settlement_obligations` (T+1 pay-in/pay-out and securities per account per trading day, generated from the trade book, settled by the 18:30 IST cycle or on demand; a negative ledger on settlement day becomes a shortfall), `margin_shortfalls` (hourly detection in market hours, margin call with client notification, resolution), `backoffice_exceptions` (refund, charge dispute, reversal, reconciliation, other; raiser cannot decide; approved refunds post Dr 4000 brokerage / Cr client). Console `/admin/backoffice`; clients raise refund requests from `/app/risk`.
