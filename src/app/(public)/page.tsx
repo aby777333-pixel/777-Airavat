@@ -37,7 +37,7 @@ export default async function Home() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl drift" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-[1400px] gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-24">
+        <div className="relative mx-auto flex max-w-[1400px] flex-col px-4 pb-0 pt-16 sm:px-6 md:pt-24">
           <div>
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
@@ -45,7 +45,7 @@ export default async function Home() {
             <h1 className="rise-2 font-display mt-5 text-4xl font-bold leading-[1.05] sm:text-6xl">
               Power with <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">precision.</span>
             </h1>
-            <p className="rise-3 mt-6 max-w-xl text-lg text-muted">
+            <p className="rise-3 mt-6 max-w-2xl text-lg text-muted">
               AIRAVAT is an independent Indian securities platform in sandbox development. Open a simulated account, fund it with simulated money,
               and watch every order pass through a real risk engine, a real order state machine and a real double-entry ledger.
             </p>
@@ -63,9 +63,9 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="rise-2 relative hidden min-h-[520px] md:-mb-20 md:block">
-            <div className="pointer-events-none absolute inset-x-8 bottom-10 top-10 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.22),transparent_65%)] blur-2xl" aria-hidden="true" />
-            <Image src="/brand/hero-people.webp" alt="Investors and traders from across India greeting with namaste, holding charts" fill priority sizes="(min-width: 768px) 46vw, 100vw" className="object-cover object-[50%_100%]" />
+          <div className="rise-2 relative mt-10 aspect-[2172/724] w-full">
+            <div className="pointer-events-none absolute inset-x-[10%] bottom-0 top-[20%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.2),transparent_65%)] blur-3xl" aria-hidden="true" />
+            <Image src="/brand/hero-people.webp" alt="Investors and traders from across India greeting with namaste, holding charts" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-bottom" />
           </div>
         </div>
       </section>
