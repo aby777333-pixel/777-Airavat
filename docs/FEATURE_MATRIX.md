@@ -84,11 +84,11 @@ Status legend: ✅ working in sandbox · 🟡 partial · ⬜ not started · 🔒
 | 5 Advanced charting | ✅ | indicators.ts, AdvancedChart |
 | 6 Derivatives intelligence | 🟡 | Options Lab (BS, greeks, IV, max pain, PCR, simulated chain); no live chain |
 | 7 Portfolio & wealth | ✅ | migration 0024, /app/portfolio, /app/reports, /app/family |
-| 8 Back office (settlement obligations, shortfall, refunds, exceptions, collateral ledger) | 🟡 | payouts maker-checker, settlement page, collateral summary; T+1 obligations ⬜ |
-| 9 Independent RMS (per-account limits, real-time MTM, fat-finger, surveillance, stress) | 🟡 | global limits + band/tick/value checks + Sentinel; per-account limits, stress ⬜ |
+| 8 Back office (settlement obligations, shortfall, refunds, exceptions, collateral ledger) | ✅ | migration 0026, /admin/backoffice, /app/risk; auctions/short delivery 🔒 |
+| 9 Independent RMS (per-account limits, real-time MTM, fat-finger, surveillance, stress) | ✅ | migration 0026, /admin/rms, /app/risk |
 | 10 Developer APIs (REST, SSE, keys, idempotency, alerts; FIX) | ✅ / 🔒 FIX | /api/v1, /developers, /app/developer |
 | 11 Asset classes with gates | ✅ matrix | market_access_matrix incl. ETF, REIT, MF, IPO, G-sec, bonds, SGB, SLB, MTF, pledge |
-| 12 Multi-platform parity (web, Terminal X, PWA) | 🟡 | PWA manifest/service worker ⬜ |
+| 12 Multi-platform parity (web, Terminal X, PWA) | ✅ | manifest.ts, sw.js, install prompt; native apps ⬜ |
 | 13 Misc market data | ✅ | migration 0023, /markets/* |
 | 14 Zero-deferment sandbox equivalents | ✅ | every blocker has a simulated adapter naming the real dependency |
 | 15 Demo access manifest per role | ✅ | demo/DEMO_ACCESS_MANIFEST.local.md (local only), 12/12 logins verified |

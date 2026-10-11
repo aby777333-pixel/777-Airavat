@@ -98,9 +98,9 @@ Editorial workflow, compliance review for sensitive classifications, author-cann
 3. Supabase advisor warnings for mutable `search_path` on three helpers → pinned in 0013.
 
 ## 4. What is honestly not done (updated for 0.4.0)
-- Native mobile apps, institutional desk, FIX connectivity, voice/gesture modes, PWA service worker.
+- Native mobile apps, institutional desk, FIX connectivity, voice/gesture modes.
 - Non-equity execution (F&O, currency, commodity, MF, bonds); IPO desk is a simulated application book.
-- Back-office T+1 obligations, margin shortfall calls, per-account RMS limits, stress tests, options backtesting, futures rollover.
+- Options backtesting, futures rollover; auctions/short delivery; auto square-off on RMS breach.
 - Real KYC rails, bank rails, exchange connectivity, market-data licences, email provider.
 - 7 remaining palettes; screenshot captures for every showroom entry; competitor pricing data.
 - Load, failover, DR, penetration testing, accessibility automation.
@@ -122,3 +122,10 @@ python -I demo/verify-logins.py
 | Developer API | API v1 REST + SSE, keys, idempotency, alerts, OpenAPI | migrations 0019/0020 |
 | Market data | corporate actions, economic calendar, IPO calendar, announcements, insider, shareholding, deals, flows | migrations 0018/0023 |
 | Completion proof | 10 reports | docs/COMPLETION_REPORTS.md |
+
+## 7. Release 0.5.0 additions (2026-10-11)
+| Area | Delivered | Evidence |
+|---|---|---|
+| Back office | T+1 obligations and cycle, margin shortfalls and calls, exceptions/refunds with maker-checker | migration 0026, /admin/backoffice, TEST_RESULTS 0.5.0 |
+| Independent RMS | per-account limits in place_order, fat-finger, exposure/daily-loss, MTM auto-block, surveillance, stress test | migration 0026, /admin/rms, /app/risk |
+| PWA | manifest, icons, service worker, install prompt | src/app/manifest.ts, public/sw.js |

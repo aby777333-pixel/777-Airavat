@@ -209,6 +209,16 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
+/* Opaque dropdown panels: menus must never show the page through them. */
+.menu-panel {
+  background: var(--surface-solid);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow), 0 24px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.menu-panel .m-crystal, .menu-panel .glass, .menu-panel .glass-strong { background: var(--surface-solid); backdrop-filter: none; -webkit-backdrop-filter: none; }
 .glass-strong {
   background: var(--surface-2);
   border: 1px solid var(--border-strong);

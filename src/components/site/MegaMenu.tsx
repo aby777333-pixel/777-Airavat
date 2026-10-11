@@ -29,7 +29,7 @@ export default function MegaMenu({ groups }: { groups: NavGroup[] }) {
         </div>
       ))}
       {groups.map((g) => open === g.key && (
-        <div key={g.key} id={`menu-${g.key}`} role="region" aria-label={`${g.label} menu`} className="glass-strong absolute left-1/2 top-full z-50 mt-2 w-[min(960px,92vw)] -translate-x-1/2 p-5" onMouseEnter={() => enter(g.key)}>
+        <div key={g.key} id={`menu-${g.key}`} role="region" aria-label={`${g.label} menu`} className="menu-panel absolute left-1/2 top-full z-50 mt-2 w-[min(960px,92vw)] -translate-x-1/2 p-5" onMouseEnter={() => enter(g.key)}>
           <div className="grid gap-5 md:grid-cols-[1.618fr_1fr]">
             <div>
               <div className="mb-3 text-xs text-muted">{g.blurb}</div>

@@ -72,6 +72,10 @@ flowchart LR
 | airavat-market-stats | */15 9–16 weekdays | `compute_market_stats_daily()` | yes |
 | airavat-portfolio-snapshots | 16:05 IST weekdays | `snapshot_portfolios()` | yes (first run 2026-10-11) |
 | airavat-mtf-interest | 23:45 IST daily | `accrue_mtf_interest()` | yes (E2E forced accrual 0.08) |
+| airavat-rms-mtm | */5 min, 08:30–16:30 IST weekdays | `rms_mtm_scan()` | yes (E2E auto-block) |
+| airavat-surveillance | */15 min market hours | `run_surveillance()` | yes |
+| airavat-margin-shortfalls | hourly market hours | `detect_margin_shortfalls()` | yes |
+| airavat-settlement-cycle | 18:30 IST weekdays | `generate_settlement_obligations()` + `settle_due_obligations()` | yes (E2E) |
 
 ## 5. Events between browser components
 - `airavat:command` → opens the palette (fired by `CommandButton` and Ctrl/Cmd+K).
@@ -83,3 +87,10 @@ flowchart LR
 - **Portfolio & wealth**: `/app/portfolio` reads `portfolio_snapshots`, `pledges`, `mtf_positions`, `portfolio_viewers`, ledger fund flows (XIRR in `src/lib/calculators.ts`); actions call `pledge_holdings`, `unpledge_holdings`, `mtf_convert`, `mtf_close`, `grant_portfolio_view`, `revoke_portfolio_view`. `/app/reports` calls `capital_gains` and `contract_note`; `/api/statements/[kind]` streams CSV through RLS. `/app/family/[owner]` calls `family_portfolio`.
 - **MTF money flow**: `mtf_convert` posts Dr 1300 MTF receivable / Cr C-client (funding); `accrue_mtf_interest` posts Dr C-client / Cr 4300 interest income daily; `mtf_close` posts the repayment entry. Trial balance stays balanced (verified).
 - **Charting**: server fetches daily and 1-minute candles (`getCandles`) → `AdvancedChart` (lightweight-charts v5, `createSeriesMarkers` for trade annotations) → click dispatches `airavat:prefill-price` consumed by `OrderTicket`.
+
+## 7. Release 0.5.0 wiring
+- **place_order** (0026) keeps the 0001 checks verbatim and adds, in order: account-level block/limits, fat-finger price and volume guards, exposure (`account_exposure`) and daily loss (`account_day_pnl`) limits; the `rms_result` JSON carries an `account_limits` entry.
+- **Auto-block loop**: `rms_mtm_scan` → `rms_mtm_snapshots` + `sentinel_alerts` (warning at 80%) → at 100% upserts the account `risk_limits` row with `kill_switch=true, auto_blocked=true` → `place_order` rejects with RMS_ACCOUNT_AUTO_BLOCKED → risk desk clears it via `set_account_risk_limits({kill_switch:false})`.
+- **Settlement**: trades (CNC) → `generate_settlement_obligations` → `settle_due_obligations` (ledger check) → `margin_shortfalls` on negative ledger → `call_margin_shortfall` notifies the client → `resolve_margin_shortfall`.
+- **Refunds**: `/app/risk` or `/admin/backoffice` → `raise_backoffice_exception` → a different staff member in ops/finance/admin → `decide_backoffice_exception` → `post_journal('backoffice_refund')` Dr 4000 / Cr C-client → client notification.
+- **PWA**: root layout registers `/sw.js` through `PwaRegister`; the worker caches `/_next/static`, `/icons`, fonts and `/offline.html` only, and bypasses `/api`, `/app`, `/admin`, `/auth`, `/markets`.

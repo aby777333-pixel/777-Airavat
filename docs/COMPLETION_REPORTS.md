@@ -43,9 +43,10 @@ Scope: releases 0.3.0 and 0.4.0 on top of 0.2.1. Everything runs in the sandbox;
 - Status: **Done (sandbox)**; collateral as margin **Designed** (needs F&O).
 
 ## 8. Back office and independent RMS
-- Built: payouts maker-checker, ledger and reconciliation, settlement page, risk limits and kill switch, band/tick/value/holdings checks, Sentinel trade-health, collateral ledger (pledges), audit on every sensitive action.
-- Gaps: T+1 obligations and auctions, margin shortfall calls, refund exceptions queue, per-account limits enforcement, real-time MTM cron, stress tests → **Designed**.
-- Status: **Partial**.
+- Back office (0026): T+1 settlement obligations generated from the trade book and settled by the 18:30 IST cycle; margin shortfall detection, margin calls and resolution; exceptions queue (refund, charge dispute, reversal, reconciliation) with maker-checker and ledger posting; plus the earlier payouts maker-checker, ledger reconciliation, EOD square-off and collateral ledger.
+- Independent RMS (0026): per-account limits enforced in `place_order`, fat-finger price/volume guards, exposure and daily-loss limits, 5-minute MTM scan with auto-block at the daily loss limit, surveillance flags, stress tests for clients and staff. 31-step E2E passed.
+- Gaps: auctions and short delivery (needs clearing), auto square-off on breach (policy decision), push notifications.
+- Status: **Done (sandbox)**.
 
 ## 9. Developer APIs
 - API v1 (`/api/v1/*`): key auth, scopes, idempotency, rate-limited usage log, SSE stream, OpenAPI document; actions for auth, instruments, quotes, candles, orders, conditional orders, portfolio, funds, alerts, partner and admin health. Verified end to end (0.3.0).
@@ -54,5 +55,5 @@ Scope: releases 0.3.0 and 0.4.0 on top of 0.2.1. Everything runs in the sandbox;
 
 ## 10. Demo access and platform parity
 - 12 role accounts verified 12/12 by `python -I demo/verify-logins.py`; manifest with role, purpose, consoles and journeys kept local only (`demo/DEMO_ACCESS_MANIFEST.local.md`, never committed). One super_admin login opens every client and broker console.
-- Parity: website, client app, Terminal X and Broker Core share one engine; mobile PWA manifest/service worker **Designed**; native apps **Designed**.
+- Parity: website, client app, Terminal X and Broker Core share one engine; installable PWA shipped (manifest, icons, service worker that never caches account or market data); native apps **Designed**.
 - Status: **Done** (demo) / **Partial** (parity).

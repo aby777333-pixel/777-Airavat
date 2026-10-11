@@ -99,3 +99,15 @@ Everything in the master prompt not listed above (PRO terminal, dealer, institut
 | REQ-0240 | Public independence: no third-party broker named on public surfaces | Website | Tested | grep of src/ shows none; pricing cites AIRAVAT schedule |
 
 Status of remaining Independence directive items (honest): back office settlement obligations/margin shortfall/refund exceptions (Designed: payouts maker-checker and settlement page exist; T+1 obligations not modelled), independent RMS per-account limits and stress tests (Designed: global limits enforced), options backtesting and futures rollover (Designed), PWA manifest/service worker (Designed), FIX connectivity (Blocked: no counterparty; documented in API_SPECIFICATIONS.md).
+
+## Release 0.5.0 requirements (added 2026-10-11; mirrored in the `requirements` table)
+| ID | Requirement | Module | Status | Evidence |
+|---|---|---|---|---|
+| REQ-0241 | Back office: T+1 settlement obligations generated from trades and settled by cycle | Back office | Tested | migration 0026; run_settlement_cycle; /admin/backoffice |
+| REQ-0242 | Margin shortfall detection, margin calls and resolution | Back office | Tested | detect_margin_shortfalls (hourly), call/resolve RPCs; client notification |
+| REQ-0243 | Exceptions and refunds with maker-checker posting to the ledger | Back office | Tested | raise/decide_backoffice_exception; refund journal Dr 4000 / Cr client; journal balanced |
+| REQ-0244 | Independent RMS: per-account limits enforced in place_order, fat-finger guards, exposure and daily-loss limits | RMS | Tested | set_account_risk_limits; rejection codes ACCOUNT_*, FAT_FINGER_*, MAX_POSITION_VALUE_EXCEEDED, DAILY_LOSS_LIMIT_BREACHED |
+| REQ-0245 | Real-time MTM scan with auto-block, surveillance flags, stress test | RMS | Tested | rms_mtm_scan (*/5 market hours), run_surveillance, stress_test; /admin/rms, /app/risk |
+| REQ-0246 | PWA: manifest, icons, service worker with no caching of account or market data, install prompt | Platform | Implemented | src/app/manifest.ts, public/sw.js, PwaRegister |
+
+Remaining after 0.5.0: options backtesting and futures rollover (Designed), native mobile apps (Designed), FIX connectivity (Blocked), vendor KYC/exchange/depository/lender rails (Blocked).

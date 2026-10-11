@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import PwaRegister from "@/components/PwaRegister";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
     "AIRAVAT is an independent Indian stock broking and trading technology platform: zero delivery brokerage schedule, fail-closed risk engine, double-entry ledger, research tools and an explainable AI assistant. Sandbox with simulated data.",
   keywords: ["Indian stock broker", "online trading platform India", "demat account", "zero brokerage", "NSE trading app", "F&O trading", "mutual funds SIP", "IPO", "stock research tools"],
   applicationName: "AIRAVAT",
+  manifest: "/manifest.webmanifest",
+  icons: { icon: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }], apple: "/icons/apple-touch-icon.png" },
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "AIRAVAT" },
   robots: { index: true, follow: true },
   openGraph: { title: "AIRAVAT", description: "Power with precision. An independent Indian stock broker and trading platform, built in the open (sandbox).", type: "website", siteName: "AIRAVAT", url: SITE_URL },
   twitter: { card: "summary_large_image", title: "AIRAVAT", description: "Independent Indian stock broker technology, built in the open (sandbox)." },
@@ -36,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body className={`${inter.variable} ${manrope.variable} font-sans`}>{children}</body>
+      <body className={`${inter.variable} ${manrope.variable} font-sans`}>{children}<PwaRegister /></body>
     </html>
   );
 }

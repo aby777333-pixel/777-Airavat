@@ -42,6 +42,7 @@ export const COMMANDS: Command[] = [
   { kind: "app", title: "Positions", href: "/app/positions", keywords: ["positions", "pnl", "exit", "decision twin"], auth: true },
   { kind: "app", title: "Holdings", href: "/app/holdings", keywords: ["holdings", "demat"], auth: true },
   { kind: "app", title: "Portfolio", href: "/app/portfolio", keywords: ["portfolio", "allocation", "sector", "xirr", "pledge", "mtf", "family"], auth: true },
+  { kind: "app", title: "My risk limits, MTM and stress test", href: "/app/risk", keywords: ["risk", "limits", "stress test", "margin", "shortfall", "refund"], auth: true },
   { kind: "app", title: "Reports, tax P&L and statements", href: "/app/reports", keywords: ["tax", "capital gains", "contract note", "statement", "csv", "ltcg", "stcg"], auth: true },
   { kind: "app", title: "Funds", href: "/app/funds", keywords: ["funds", "deposit", "withdraw", "margin"], auth: true },
   { kind: "app", title: "Ledger", href: "/app/ledger", keywords: ["ledger", "statement", "journal"], auth: true },

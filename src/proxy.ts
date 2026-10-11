@@ -27,6 +27,16 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
+  // Auth links that land outside /auth/callback (e.g. when the Supabase Site URL fallback is used) still complete sign-in.
+  const authCode = request.nextUrl.searchParams.get("code");
+  if (authCode && path !== "/auth/callback" && !path.startsWith("/api/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/callback";
+    url.search = "";
+    url.searchParams.set("code", authCode);
+    url.searchParams.set("next", request.nextUrl.searchParams.get("next") ?? (user ? "/app" : "/app/onboarding"));
+    return NextResponse.redirect(url);
+  }
   const protectedArea = path.startsWith("/app") || path.startsWith("/admin");
   if (protectedArea && !user) {
     const url = request.nextUrl.clone();

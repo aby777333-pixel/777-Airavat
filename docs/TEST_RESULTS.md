@@ -138,3 +138,29 @@ Load, failover, DR, accessibility automation, mobile device matrix, email delive
 | NRI with PIS type, FATCA AE + TIN | approved; FATCA step passed | ✅ |
 | company missing documents | DOCUMENTS_MISSING listing all 7 | ✅ |
 | unknown entity; minor individual | UNKNOWN_ENTITY_TYPE; MUST_BE_ADULT | ✅ / ✅ |
+
+## Release 0.5.0 — 2026-10-11
+### Static and unit
+- `npx tsc --noEmit`: pass · `npm run lint`: 0 errors · `npx vitest run`: 55 tests passed · `npm run build`: pass (manifest route emitted).
+
+### Independent RMS and back office E2E (live sandbox DB, JWT claims per role, rolled back)
+| Step | Expected | Observed |
+|---|---|---|
+| baseline LIMIT 3% below LTP | ACKNOWLEDGED (unchanged behaviour) | ✅ |
+| LIMIT 12% below LTP | rejected (band check precedes fat-finger) | ✅ PRICE_OUTSIDE_BAND |
+| risk desk sets account max_order_value 1000, MIS off | row created | ✅ |
+| MARKET BUY 1 RELIANCE (value > 1000) | ACCOUNT_MAX_ORDER_VALUE_EXCEEDED | ✅ |
+| client sets own limits | FORBIDDEN | ✅ |
+| daily loss limit 1 + realised −500 → rms_mtm_scan | account auto-blocked, critical alert, audit | ✅ kill_switch=true auto_blocked=true, 1 alert |
+| order while auto-blocked | RMS_ACCOUNT_AUTO_BLOCKED | ✅ |
+| risk desk unblocks | kill_switch=false, auto_blocked=false | ✅ |
+| stress_test as owner (−10%) / as staff (defaults) | scenario with P&L and post-shock available / 4 scenarios | ✅ pnl −9,743.36 / ✅ |
+| run_surveillance | 0 flags on demo activity | ✅ |
+| generate obligations for last trade day | 3 accounts; client1 pay-in 40,745.12, 6 securities, settles next weekday | ✅ |
+| settle_due_obligations (forced due) | settled 1, short 0 | ✅ |
+| margin call → resolve | called (notification) → resolved | ✅ |
+| client raises refund 25.50; client raises reconciliation; client decides | id / FORBIDDEN / FORBIDDEN | ✅ |
+| ops decides own exception | MAKER_CHECKER_VIOLATION | ✅ |
+| finance approves refund | approved, journal entry; ledger +25.50; decide twice → ALREADY_DECIDED | ✅ |
+| journal | Σdebit = Σcredit | ✅ |
+| fat-finger proof: account guard 2%, LIMIT 4% below LTP / 1% below / MARKET 20,000 qty | FAT_FINGER_PRICE_DEVIATION / accepted / global qty cap | ✅ / ✅ / ✅ MAX_ORDER_QTY_EXCEEDED (10,000 global cap precedes the volume guard) |

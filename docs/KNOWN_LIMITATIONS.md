@@ -4,8 +4,8 @@
 - **No regulatory status.** No SEBI registration, exchange membership, DP arrangement or market-data licence. The Trust Centre says so.
 - Quotes update only when a page renders; there is no WebSocket streaming yet.
 - Only NSE equity cash (CNC/MIS) is tradable. F&O, currency, commodity, MF, bonds are research/reference only; the IPO desk is a simulated application book. Conditional orders (GTT, AMO, bracket, cover, OCO, trailing, iceberg, basket) run on the sandbox engine.
-- Per-account risk limits and daily-loss limits are modelled but not enforced; only global limits apply.
-- Holdings settle immediately on CNC fills (no T+1 obligations, no auctions/short delivery).
+- Per-account risk limits, exposure and daily-loss limits are enforced in `place_order` (0026); the MTM scan auto-blocks at 100% of the daily loss limit. Auto square-off of positions on breach is not performed.
+- Holdings settle immediately on CNC fills; T+1 obligations are recorded and settled by the back-office cycle for reporting, with no auctions or short delivery.
 - KYC verification steps (PAN, CKYC, KRA, DigiLocker, Aadhaar offline, bank, IPV, eSign, FATCA, UCC, demat) are simulated adapters that record a provider reference and the production blocker; no vendor is connected and no document file is stored (only a document reference).
 - Legal documents (including the MTF agreement) are drafts, not counsel-reviewed. Statutory and exchange charge rates were benchmarked against prevailing market rates on 2026-10-11 and still need official-notification citations before live use.
 - DP sell charges, AMC/BSDA, pledge, call & trade and other account charges are published but not debited: the sandbox has no depository arrangement or dealer desk. Non-equity segment charges are published for transparency only; those segments are not tradable.
@@ -24,4 +24,4 @@
 - Pledged collateral is valued and reported but not usable as margin (no F&O). MTF is a sandbox funding book: 50% funded, 18% p.a., no lender, no auto-liquidation on shortfall.
 - Portfolio benchmark is the simulated NIFTY 50 level; the first snapshot was taken on 2026-10-11, so comparisons accrue from the next trading day.
 - Website CMS media upload goes to the `site-media` bucket; no image optimisation pipeline or CDN purge.
-- Back-office settlement obligations (T+1), margin shortfall calls, refund exceptions, per-account RMS limits, stress tests, options backtesting, futures rollover and a PWA service worker are designed but not built.
+- Options backtesting and futures rollover are designed but not built. The PWA caches only the static shell; there is no push notification channel.
