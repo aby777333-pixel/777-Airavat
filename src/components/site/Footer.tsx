@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NAV_GROUPS } from "@/lib/navigation";
+import { Logo } from "./Header";
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
-            <div className="font-display text-lg font-bold tracking-[0.18em]">AIRAVAT</div>
+            <Link href="/" aria-label="AIRAVAT home"><Logo size={88} /></Link>
             <p className="mt-3 max-w-sm text-sm text-muted">Power with precision. An independent Indian stock broker and trading technology platform, currently in sandbox development.</p>
             <p className="mt-4 text-xs text-faint">Registered legal name, SEBI registration, exchange memberships and depository arrangements: <strong>not yet obtained</strong>. Nothing on this site is a claim of authorization. All market data and funds shown are simulated.</p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs"><Link className="btn btn-ghost btn-sm" href="/open-account">Open account</Link><Link className="btn btn-ghost btn-sm" href="/company/support">Support</Link><Link className="btn btn-ghost btn-sm" href="/company/grievance-redressal">Grievance redressal</Link><Link className="btn btn-ghost btn-sm" href="/accessibility">Accessibility</Link></div>

@@ -24,9 +24,9 @@ export default async function Header() {
           {UTILITY_NAV.map((u) => <Link key={u.href} href={u.href} className="hover:text-text">{u.label}</Link>)}
           <span aria-hidden="true">·</span><LiveLink /><span aria-hidden="true">·</span><span>English · हिन्दी via BHASHA</span>
         </div>
-        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-4 sm:px-6">
+        <div className="mx-auto flex h-[4.75rem] max-w-[1400px] items-center justify-between gap-6 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5" aria-label="AIRAVAT home">
-            <Logo size={42} />
+            <Logo size={58} />
           </Link>
           <nav aria-label="Primary"><MegaMenu groups={groups} /></nav>
           <div className="hidden items-center gap-2 lg:flex">

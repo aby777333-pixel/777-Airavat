@@ -13,7 +13,7 @@ export default function MobileNav({ groups, utility, signedIn }: { groups: NavGr
     <div className="lg:hidden">
       <button className="btn btn-ghost btn-sm" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}</button>
       {open && (
-        <div id="mobile-nav" className="absolute inset-x-0 top-16 max-h-[80vh] overflow-y-auto border-b border-border bg-bg/95 p-4 backdrop-blur-xl">
+        <div id="mobile-nav" className="absolute inset-x-0 top-[4.75rem] max-h-[80vh] overflow-y-auto border-b border-border bg-bg/95 p-4 backdrop-blur-xl">
           <nav className="flex flex-col gap-1" aria-label="Mobile">
             {groups.map((g) => (
               <div key={g.key} className="border-b border-border/60 py-1">
