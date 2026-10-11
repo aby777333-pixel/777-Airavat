@@ -183,3 +183,25 @@ Load, failover, DR, accessibility automation, mobile device matrix, email delive
 
 ### Not executed
 - Browser-level interaction tests of the demo ticket, lesson quizzes, callback and talent-pool forms (manual only). The forms reuse `submit_enquiry`, whose validation E2E ran in 0.6.8.
+
+## Releases 0.8.0–0.8.5 — 2026-10-11
+### Static and unit (before each of the six commits)
+- `npx tsc --noEmit`: pass · `npm run lint`: 0 errors · `npx vitest run`: 62 passed · `npm run build`: pass.
+
+### Local production render (next start, curl, content grep)
+- /markets/heatmap (NIFTY 50: 98 SVG rects; NIFTY BANK: 35; NIFTY IT: 34), /markets/option-chain, /markets/watchlist, /api/quotes, /markets/RELIANCE (Watch star), /pricing/explainer, /platforms/order-passport: all 200 with expected markers.
+
+### MFA end-to-end (Node script against sandbox Auth + local production server; demo client account; factor removed afterwards)
+| Step | Expected | Observed |
+|---|---|---|
+| Password sign-in, no factor | AAL aal1/aal1; /app 200 | ✅ |
+| Enrol TOTP, verify code | AAL aal2/aal2 | ✅ (QR data-url, otpauth URI) |
+| Fresh password sign-in with factor enrolled, GET /app | 307 → /auth/mfa?next=/app | ✅ (after fix: first run returned 200 because supabase-js read factors from the cached session) |
+| GET /auth/mfa with that session | 200 challenge page | ✅ |
+| Verify code at sign-in, GET /app and /app/settings/security | 200 | ✅ |
+| Wrong code | rejected | ✅ |
+| Unenrol with AAL2 session; list factors | ok; 0 | ✅ |
+| Global sign-out | ok | ✅ |
+
+### Live verification after each cache-cleared deploy
+- 0.8.0–0.8.4: new routes 200 (heatmap, option-chain, watchlist, quotes API, explainer, order-passport).

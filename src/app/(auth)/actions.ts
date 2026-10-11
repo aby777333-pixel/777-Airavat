@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { mfaState } from "@/lib/mfa";
 
 const creds = z.object({
   email: z.string().email(),
@@ -15,10 +16,14 @@ export async function signIn(_prev: AuthState, form: FormData): Promise<AuthStat
   const parsed = creds.safeParse({ email: form.get("email"), password: form.get("password") });
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword(parsed.data);
+  const { data: signed, error } = await supabase.auth.signInWithPassword(parsed.data);
   if (error) return { error: "Invalid email or password." };
   const next = String(form.get("next") || "/app");
-  redirect(next.startsWith("/") ? next : "/app");
+  const safeNext = next.startsWith("/") ? next : "/app";
+  // Users with a verified TOTP factor must present a code before the session reaches protected pages.
+  const mfa = await mfaState(supabase, signed.user);
+  if (mfa.required) redirect(`/auth/mfa?next=${encodeURIComponent(safeNext)}`);
+  redirect(safeNext);
 }
 
 export async function signUp(_prev: AuthState, form: FormData): Promise<AuthState> {

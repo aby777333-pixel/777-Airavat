@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { getAccount } from "@/lib/account";
 import { istTime } from "@/lib/format";
@@ -36,8 +37,9 @@ export default async function Settings() {
             <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
               <li>Password login with HTTP-only session cookies: <Badge tone="ok">active</Badge></li>
               <li>Email confirmation on sign-up: depends on project auth settings</li>
-              <li>MFA / passkeys / device binding: <Badge tone="bad">not implemented</Badge></li>
-              <li>Session revocation from other devices: <Badge tone="bad">not implemented</Badge></li>
+              <li>Two-factor authentication (TOTP): <Badge tone="ok">available</Badge> · <Link href="/app/settings/security" className="text-accent underline">manage</Link></li>
+              <li>Passkeys / device binding: <Badge tone="bad">not implemented</Badge></li>
+              <li>Sign out everywhere (all devices): <Badge tone="ok">available</Badge> · per-device list not implemented</li>
             </ul>
           </Card>
           <Card title="AI interaction log" subtitle="Every AIRAVAT LIVE request is recorded (no transcript stored)">

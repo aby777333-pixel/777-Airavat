@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 0.8.5 — 2026-10-11 — Two-factor authentication (TOTP) and sign-out everywhere
+- /app/settings/security: enrol an authenticator app (QR and manual key from Supabase Auth MFA), verify with a code, add up to three factors, remove a factor (needs a code-verified session), and "Sign out everywhere" (global token revocation). The browser talks to Auth directly; no secret passes through AIRAVAT servers.
+- /auth/mfa: second step of sign-in for enrolled users. The sign-in action, the proxy gate for /app and /admin and the challenge page all use `src/lib/mfa.ts`, which reads the assurance level from the access-token claim and the verified factors from the freshly fetched user (supabase-js's helper reads a cached user and missed the gate in testing).
+- Settings, Trust Centre, security disclosures, mobile page and KNOWN_LIMITATIONS updated: TOTP MFA available; passkeys, recovery codes and a device list still absent.
+- Verified end to end against the sandbox Auth and the local production server: enrol → verify (AAL2) → fresh password sign-in is redirected from /app to /auth/mfa → code verifies → /app and /app/settings/security return 200 → wrong code rejected → unenrol → zero factors → global sign-out.
+
 ## 0.8.4 — 2026-10-11 — Order passport replay
 - /platforms/order-passport: step-by-step replay (play, pause, speed, click any step) of a real seeded sandbox order (BUY 50 SBIN MIS MARKET) from RECEIVED through RMS checks, routing, acknowledgement, fill with every charge line and the balanced journal entry #22, plus a rejection scenario (PRICE_OUTSIDE_BAND) taken from the 0.5.0 RMS test record. Status rail, payload tables, source note. Trade menu and platforms hub updated.
 

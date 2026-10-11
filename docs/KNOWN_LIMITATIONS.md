@@ -10,7 +10,7 @@
 - Legal documents (including the MTF agreement) are drafts, not counsel-reviewed. Statutory and exchange charge rates were benchmarked against prevailing market rates on 2026-10-11 and still need official-notification citations before live use.
 - DP sell charges, AMC/BSDA, pledge, call & trade and other account charges are published but not debited: the sandbox has no depository arrangement or dealer desk. Non-equity segment charges are published for transparency only; those segments are not tradable.
 - Sarvam translation route is wired but was not exercised against the vendor in this build.
-- Security gaps: no MFA/passkeys, CSP, rate limiting, WAF, SIEM, pen test, DR drills.
+- Security gaps: no passkeys or recovery codes (TOTP MFA exists since 0.8.5), no CSP, rate limiting, WAF, SIEM, pen test, DR drills.
 - Email confirmation behaviour depends on Supabase auth settings, which were not changed in this session.
 - Competitor research is a method, not a verified matrix.
 - 15 of the 22 specified palettes; Theme Studio ships; no voice/gesture/avatar modes.

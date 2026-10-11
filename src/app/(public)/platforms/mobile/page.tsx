@@ -34,7 +34,7 @@ export default function MobilePage() {
         </div>
         <aside className="space-y-4">
           <div className="m-crystal p-5"><div className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Try it</div><div className="mt-3 flex flex-col gap-2"><Link href="/login?next=/app" className="btn btn-primary">Open the web app</Link><Link href="/platforms/terminal-demo" className="btn btn-ghost">Public terminal demo</Link><Link href="/trust" className="btn btn-ghost">Security model</Link></div></div>
-          <div className="glass p-5"><div className="font-display font-semibold">Security on a shared phone</div><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted"><li>Use device lock; sessions expire and can be revoked from settings</li><li>Never share OTPs; AIRAVAT never asks for them on a call</li><li>Push alerts, when they arrive, will never contain balances</li></ul></div>
+          <div className="glass p-5"><div className="font-display font-semibold">Security on a shared phone</div><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted"><li>Use device lock; turn on two-factor authentication and sign out everywhere from Settings → Security</li><li>Never share OTPs; AIRAVAT never asks for them on a call</li><li>Push alerts, when they arrive, will never contain balances</li></ul></div>
           <Notice tone="info">Sandbox: all market data and money in the app are simulated.</Notice>
         </aside>
       </div>

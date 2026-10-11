@@ -52,7 +52,7 @@ export default async function Trust() {
             <li>Financial actions run server-side in transactional database functions. The browser is never the source of truth.</li>
             <li>Withdrawals require approval by a different staff member than the requester (maker-checker).</li>
             <li>Secrets live only in server environment variables. AI providers never receive your ledger or identity documents.</li>
-            <li>Not yet implemented: MFA, passkeys, device binding, penetration testing, SOC/ISO audits, DR drills.</li>
+            <li>Implemented: optional TOTP two-factor authentication enforced on every sign-in once enabled; sign-out on all devices. Not yet: passkeys, device binding, recovery codes, penetration testing, SOC/ISO audits, DR drills.</li>
           </ul>
         </section>
         <section className="glass p-6">

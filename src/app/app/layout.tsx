@@ -17,7 +17,7 @@ const nav = [
   ["/app", "Dashboard"], ["/app/pro", "Terminal X"], ["/app/markets", "Market watch"], ["/app/orders", "Orders"], ["/app/positions", "Positions"], ["/app/holdings", "Holdings"],
   ["/app/portfolio", "Portfolio"], ["/app/reports", "Reports & tax"], ["/app/funds", "Funds"], ["/app/ledger", "Ledger"],
   ["/app/scanners", "Scanner Matrix"], ["/app/research", "Research cases"], ["/app/strategies", "Strategy DNA"], ["/app/shadow", "Shadow Portfolio"], ["/app/sentinel", "Sentinel X"], ["/app/risk", "My risk & limits"],
-  ["/app/ipo", "IPO desk"], ["/app/developer", "API & alerts"], ["/app/plan", "My plan & offers"], ["/app/partner", "Partner portal"], ["/app/kyc", "KYC & account"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/theme", "Theme Studio"], ["/app/settings", "Settings"],
+  ["/app/ipo", "IPO desk"], ["/app/developer", "API & alerts"], ["/app/plan", "My plan & offers"], ["/app/partner", "Partner portal"], ["/app/kyc", "KYC & account"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/theme", "Theme Studio"], ["/app/settings", "Settings"], ["/app/settings/security", "Security"],
 ];
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {

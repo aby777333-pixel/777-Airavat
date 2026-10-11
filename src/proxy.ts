@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { mfaState } from "@/lib/mfa";
 import { NextResponse, type NextRequest } from "next/server";
 
 // Next.js 16 proxy (formerly middleware): refreshes the Supabase session cookie and
@@ -38,6 +39,17 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
   const protectedArea = path.startsWith("/app") || path.startsWith("/admin");
+  if (protectedArea && user) {
+    // Enrolled users must have verified their second factor in this session (AAL2) before reaching protected pages.
+    const mfa = await mfaState(supabase, user);
+    if (mfa.required) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/auth/mfa";
+      url.search = "";
+      url.searchParams.set("next", path);
+      return NextResponse.redirect(url);
+    }
+  }
   if (protectedArea && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
