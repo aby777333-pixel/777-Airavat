@@ -5,6 +5,7 @@
   "description": "AIRAVAT - independent Indian securities brokerage and trading ecosystem (sandbox foundation)",
   "scripts": {
     "dev": "next dev",
+    "showroom:capture": "node demo/capture-showroom.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -31,6 +32,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "puppeteer-core": "^25.13.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^5.0.3"
