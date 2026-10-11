@@ -94,3 +94,10 @@ No exposed internal functions. Remaining WARN items are intentional: `create_lea
 
 ## Not executed
 Load, failover, DR, accessibility automation, mobile device matrix, email delivery, Sarvam vendor call, War Room/editorial copilot against the vendor in this session (routes validated for auth and schema only).
+
+---
+# 0.2.1 — 2026-10-11 — charge schedule alignment
+- Catalogue: `EXCH_TXN` v2 (0.00307%) submitted by the compliance demo user and approved by the super_admin demo user through `decide_approval`; v1 retired automatically.
+- `compute_charges('CNC','BUY',100000)` now 118.74 (exchange 3.07, GST 0.57); `('MIS','SELL',100000)` 52.34. Calculator unit tests updated to the same numbers; 6 new schedule tests (equity options, futures, currency, commodity, agri SEBI fee).
+- Migration 0015 adds the `segment = 'EQ'` guard: after inserting 23 approved reference rows for FO/CDS/COMM, equity charges are unchanged (re-run of the two figures above: 118.74 / 52.34).
+- `npm run typecheck && npm run lint && npm test && npm run build`: pass (see commit).

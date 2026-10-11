@@ -10,10 +10,10 @@ describe("brokerage breakdown", () => {
     expect(b.brokerage).toBe(0);
     expect(b.stt).toBe(100);
     expect(b.stamp).toBe(15);
-    expect(b.exchange).toBe(2.97);
+    expect(b.exchange).toBe(3.07);
     expect(b.sebi).toBe(0.1);
-    expect(b.gst).toBe(0.55);
-    expect(b.total).toBe(118.62);
+    expect(b.gst).toBe(0.57);
+    expect(b.total).toBe(118.74);
   });
   it("MIS brokerage is capped at 20", () => {
     expect(brokerageBreakdown("MIS", "SELL", 1000000).brokerage).toBe(20);

@@ -7,7 +7,8 @@
 - Per-account risk limits and daily-loss limits are modelled but not enforced; only global limits apply.
 - Holdings settle immediately on CNC fills (no T+1 obligations, no auctions/short delivery).
 - KYC collects data and validates formats only; no document upload, KRA/CKYC, PAN verification, bank verification, eSign or IPV.
-- Legal documents are drafts, not counsel-reviewed. Statutory charge rates are illustrative.
+- Legal documents are drafts, not counsel-reviewed. Statutory and exchange charge rates follow a published market reference (2026-10-11) and still need official-notification citations before live use.
+- DP sell charges, AMC/BSDA, pledge, call & trade and other account charges are published but not debited: the sandbox has no depository arrangement or dealer desk. Non-equity segment charges are published for transparency only; those segments are not tradable.
 - Sarvam translation route is wired but was not exercised against the vendor in this build.
 - Security gaps: no MFA/passkeys, CSP, rate limiting, WAF, SIEM, pen test, DR drills.
 - Email confirmation behaviour depends on Supabase auth settings, which were not changed in this session.

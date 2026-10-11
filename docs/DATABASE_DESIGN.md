@@ -55,3 +55,4 @@ Public read: instruments, quotes, candles, holidays, legal documents, charge sch
 - Cron: `airavat-scanners` (*/5), `airavat-sentinel` (2-59/5), `airavat-publish-articles` (* * * * *).
 - Totals after Phase 2: 75 tables, 86 functions in `public`.
 - Fix history: 0013 lets internal (no-JWT) callers read `account_funds` and pins `search_path` on three helpers; 0014 renames query aliases that collided with PL/pgSQL variables in `accrue_partner_commission` and `partner_passport`.
+- 0015: `compute_charges_v2` restricted to `segment = 'EQ'`; 23 approved reference rows for FO/CDS/COMM segments (inert in the engine). `EXCH_TXN` v2 = 0.00307% approved via the workflow.

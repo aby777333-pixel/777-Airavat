@@ -1,11 +1,12 @@
 // Financial calculators. Pure functions with documented formulas. Money is rounded to paise at the edges only.
-// Statutory charge rates are illustrative sandbox values and must be verified before production.
+// Statutory and exchange rates follow the published market reference of 2026-10-11 (see charges-schedule.ts) and are
+// re-verified against official notifications before production.
 
 export type Product = "CNC" | "MIS";
 
 export const SANDBOX_CHARGES = {
-  CNC: { brokeragePct: 0, brokerageCap: 0, sttBuyPct: 0.1, sttSellPct: 0.1, exchangePct: 0.00297, sebiPct: 0.0001, stampBuyPct: 0.015, gstPct: 18 },
-  MIS: { brokeragePct: 0.03, brokerageCap: 20, sttBuyPct: 0, sttSellPct: 0.025, exchangePct: 0.00297, sebiPct: 0.0001, stampBuyPct: 0.003, gstPct: 18 },
+  CNC: { brokeragePct: 0, brokerageCap: 0, sttBuyPct: 0.1, sttSellPct: 0.1, exchangePct: 0.00307, sebiPct: 0.0001, stampBuyPct: 0.015, gstPct: 18 },
+  MIS: { brokeragePct: 0.03, brokerageCap: 20, sttBuyPct: 0, sttSellPct: 0.025, exchangePct: 0.00307, sebiPct: 0.0001, stampBuyPct: 0.003, gstPct: 18 },
 } as const;
 
 const r2 = (n: number) => Math.round(n * 100) / 100;

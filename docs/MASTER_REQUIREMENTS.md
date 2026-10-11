@@ -78,3 +78,4 @@ Everything in the master prompt not listed above (PRO terminal, dealer, institut
 | REQ-0223 | Signup referral attribution | Partners | Tested | |
 | REQ-0224 | Replay, visual builder, Evidence Graph, Digital Twin, MRI | Research | Designed | licensed data needed |
 | REQ-0225 | Employees, HR, incentives, dealer allocation | Sales | Designed | |
+| REQ-0226 | Complete published charge schedule (all segments, other charges, AMC/BSDA) aligned to market reference | RevenueOS | Tested | /pricing, charges-schedule.ts, migration 0015 |

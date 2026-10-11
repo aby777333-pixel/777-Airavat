@@ -1,5 +1,13 @@
 # CHANGELOG.md
 
+## 0.2.1 — 2026-10-11 — Published charge schedule aligned to the market reference
+- Full charge schedule for equity delivery/intraday, equity F&O, currency and commodity derivatives, other charges, AMC and BSDA, published on /pricing and encoded in `src/lib/charges-schedule.ts` (schedule version 2026-10-11, reference https://zerodha.com/charges/).
+- Exchange transaction charge for NSE equity corrected from 0.00297% to 0.00307% through the maker-checker flow (fee version EXCH_TXN v2, compliance submitted, super_admin approved, source URL recorded). Calculator rates and tests updated (CNC buy of ₹1,00,000 now 118.74; MIS sell 52.34).
+- Migration 0015: engine guard restricting equity charge computation to segment `EQ`; approved reference catalogue rows for F&O, currency and commodity segments (inert in the engine; published for transparency).
+- Reference entries for DP sell charge, pledge, call & trade, delayed payment, off-market transfer, payment gateway, corporate action and AMC recorded as pending catalogue items (not applied: no depository or dealer desk in the sandbox).
+- Calculators: new "All segments" charge estimator.
+
+
 ## 0.2.0 — 2026-10-11 — RevenueOS, Partner OS, Research ONE, Sentinel X, AIRAVAT DAILY (additive)
 - Database migrations 0006–0014: roles (finance, editor, sales, partner); RevenueOS (versioned fee catalogue, plans, waivers, offers, adjustments, subscriptions, approvals, revenue summary); partners/CRM (categories, commission plans, accruals, payouts, passport, referral attribution, leads); market access matrix + research-only MCX/CDS instruments; instrument metrics + scanners; research cases/evidence/findings; strategies + backtest runs; shadow portfolios; CMS (articles, revisions, transitions, newsletter, daily briefing); Sentinel (alerts, preferences, trade health, pre-mortem, decision twin, what-changed); fixes (internal funds access for cron, alias collisions, search_path pins).
 - `apply_fill` now prices through `compute_charges_v2` (plan + waivers + offers) and posts contra-income for discounts; legacy `compute_charges` kept and verified identical.
