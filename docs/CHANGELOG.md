@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## 0.8.1 — 2026-10-11 — Option chain explorer
+- /markets/option-chain: public chain for four indices and twelve F&O stocks across weekly and monthly expiries: OI bars with change in OI versus a simulated previous session and build-up classification, IV, delta, ATM highlight, PCR, max pain, OI-based support and resistance, expected move from the ATM straddle; charts for OI by strike, IV smile and the max-pain curve; click premiums to build a quick strategy with payoff, breakevens, net premium and max profit/loss, then hand off to the Options Lab.
+- The 0.8.0 treemap replaced the earlier simple sector tile list at /markets/heatmap; the Markets menu entry is relabelled "Market Heatmap".
+
 ## 0.8.0 — 2026-10-11 — Market heatmap
 - /markets/heatmap: squarified treemap of every constituent of NIFTY 50, NIFTY BANK and the sector indices (?i=slug), sized by index weight (or equal), coloured by the day's change, grouped by sector with weighted sector labels, staggered fade-in, hover card, click-through to instrument pages; sector table, advances/declines and biggest movers beside it. Component `src/components/market/Treemap.tsx`. Simulated data labelled.
 
