@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## 0.7.2 — 2026-10-11 — Business TV, header and hero polish
+- Home: Business TV panel beside the market pulse with the official YouTube live streams of CNBC-TV18, ET Now, NDTV Profit, Zee Business, CNBC Awaaz and Business Today; nothing loads until the viewer presses play (youtube-nocookie embed), with a broadcaster disclaimer. Market pulse indices in a three-column grid.
+- Header: Search and the theme selector moved to the utility bar so the main row stays inside the content edge. Hero copy card is more transparent (45% night with blur).
+
 ## 0.7.1 — 2026-10-11 — Invest hub (block 2): mutual funds, bonds, ETFs/REITs, IPO centre
 - Migration 0029: 17 sample direct-plan schemes across 13 categories with 60 months of generated NAV history and 1/3/5-year returns; bond catalogue (G-Secs, T-bills, SDLs, corporate bonds, an NCD public issue, two SGB tranches) with coupons, YTM, ratings, tax notes and how-to-buy; ETF, REIT and InvIT instruments with iNAV, expense ratio, tracking error and distribution yield; IPO listing outcomes and a note that grey-market premium is never published.
 - Pages: /invest/mutual-funds (category filters, sort, expense vs category average, direct-vs-regular and ELSS explainers), /invest/mutual-funds/[code] (NAV chart, drawdown, peers, per-scheme SIP projection), /invest/bonds (kinds, catalogue, RBI Retail Direct, duration and credit-risk notes), /invest/etfs-reits (premium/discount to iNAV, trust yields, income-per-lakh). IPO calendar gains day-wise subscription, a retail allotment helper and listing-day performance.

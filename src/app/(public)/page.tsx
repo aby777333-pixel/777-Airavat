@@ -5,6 +5,7 @@ import { changeOf, price, pct } from "@/lib/format";
 import { SimBadge } from "@/components/ui";
 import clsx from "clsx";
 import Awakening from "@/components/site/Awakening";
+import BusinessTv from "@/components/site/BusinessTv";
 import MorningIntelligence from "@/components/site/MorningIntelligence";
 import { AcademyPricingTrust, FinalCta, IntelligenceStrip, ProductDiscovery, TerminalShowcase } from "@/components/site/HomeSections";
 
@@ -44,7 +45,7 @@ export default async function Home() {
               <Image src="/brand/hero-people.webp" alt="" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-[100%_100%]" />
             </div>
             <div className="relative z-10 max-w-[620px] py-12 md:py-16">
-              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.16)] bg-[#0c1116]/72 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
+              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.16)] bg-[#0c1116]/45 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-md">
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
             </div>
@@ -75,50 +76,53 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* MARKET PULSE (moved out of the hero so the artwork stands alone) */}
-      <section className="mx-auto max-w-[1400px] px-4 pt-6 sm:px-6" aria-label="Market pulse">
-        <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-faint"><span className="h-px w-6 bg-accent" /> Market pulse · simulated</div>
-        <div className="glass p-5 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] md:gap-8">
-              <div>
-              <div className="mb-3 flex items-center justify-between">
-                <div className="font-display text-sm font-semibold">Market pulse</div>
-                <SimBadge />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {indices.map((i) => {
-                  const c = changeOf(i.quote.ltp, i.quote.prev_close);
-                  return (
-                    <div key={i.symbol} className="rounded-xl border border-border bg-bg/40 p-3">
-                      <div className="text-xs text-muted">{i.symbol}</div>
-                      <div className="tnum font-display text-xl font-semibold">{price(i.quote.ltp)}</div>
-                      <div className={clsx("tnum text-xs", c.change >= 0 ? "text-profit" : "text-loss")}>{pct(c.changePct)}</div>
-                    </div>
-                  );
-                })}
-              </div>
-              </div>
-              <div>
-              <div className="grid grid-cols-2 gap-4 text-xs md:mt-0">
+      {/* MARKET PULSE + BUSINESS TV */}
+      <section className="mx-auto max-w-[1400px] px-4 pt-6 sm:px-6" aria-label="Market pulse and business television">
+        <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-faint"><span className="h-px w-6 bg-accent" /> Market pulse · simulated · business TV</div>
+        <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
+          <div className="glass p-5">
                 <div>
-                  <div className="mb-1 font-semibold text-profit">Top gainers</div>
-                  {gainers.map((g) => (
-                    <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
-                      <span>{g.symbol}</span><span className="text-profit">{pct(g.changePct)}</span>
-                    </Link>
-                  ))}
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="font-display text-sm font-semibold">Market pulse</div>
+                  <SimBadge />
+                </div>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {indices.map((i) => {
+                    const c = changeOf(i.quote.ltp, i.quote.prev_close);
+                    return (
+                      <div key={i.symbol} className="rounded-xl border border-border bg-bg/40 p-3">
+                        <div className="text-xs text-muted">{i.symbol}</div>
+                        <div className="tnum font-display text-xl font-semibold">{price(i.quote.ltp)}</div>
+                        <div className={clsx("tnum text-xs", c.change >= 0 ? "text-profit" : "text-loss")}>{pct(c.changePct)}</div>
+                      </div>
+                    );
+                  })}
+                </div>
                 </div>
                 <div>
-                  <div className="mb-1 font-semibold text-loss">Top losers</div>
-                  {losers.map((g) => (
-                    <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
-                      <span>{g.symbol}</span><span className="text-loss">{pct(g.changePct)}</span>
-                    </Link>
-                  ))}
+                <div className="mt-4 grid grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <div className="mb-1 font-semibold text-profit">Top gainers</div>
+                    {gainers.map((g) => (
+                      <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
+                        <span>{g.symbol}</span><span className="text-profit">{pct(g.changePct)}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="mb-1 font-semibold text-loss">Top losers</div>
+                    {losers.map((g) => (
+                      <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
+                        <span>{g.symbol}</span><span className="text-loss">{pct(g.changePct)}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
+                <Link href="/markets" className="mt-4 block text-center text-xs text-accent hover:underline">Open market overview →</Link>
               </div>
-              <Link href="/markets" className="mt-4 block text-center text-xs text-accent hover:underline">Open market overview →</Link>
-            </div>
-              </div>
+                </div>
+          <div className="glass p-5"><BusinessTv /></div>
+        </div>
       </section>
 
       <ProductDiscovery />

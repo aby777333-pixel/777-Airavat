@@ -20,7 +20,10 @@ export default async function Header() {
     <>
       <SandboxBanner />
       <header className="on-night sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-xl">
-        <div className="mx-auto hidden h-7 max-w-[1400px] items-center justify-end gap-4 px-4 text-[11px] text-faint sm:px-6 lg:flex" aria-label="Utility">
+        <div className="mx-auto hidden h-10 max-w-[1400px] items-center justify-end gap-4 px-4 text-[11px] text-faint sm:px-6 lg:flex" aria-label="Utility">
+          <CommandButton className="!h-7 !px-2.5 !text-[10px]" />
+          <ThemeSwitcher compact />
+          <span aria-hidden="true">·</span>
           {UTILITY_NAV.map((u) => <Link key={u.href} href={u.href} className="hover:text-text">{u.label}</Link>)}
           <span aria-hidden="true">·</span><LiveLink /><span aria-hidden="true">·</span><span>English · हिन्दी via BHASHA</span>
         </div>
@@ -30,8 +33,6 @@ export default async function Header() {
           </Link>
           <nav aria-label="Primary"><MegaMenu groups={groups} /></nav>
           <div className="hidden items-center gap-2 lg:flex">
-            <CommandButton />
-            <ThemeSwitcher compact />
             {user ? (
               <>
                 {profile && ["dealer", "ops", "risk", "compliance", "admin", "super_admin"].includes(profile.role) && (
