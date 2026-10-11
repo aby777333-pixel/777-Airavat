@@ -2,7 +2,8 @@
 
 ## Environments
 - **Database**: Supabase `nscoslbooxtndhxlnyyv`. Apply migrations in order from `supabase/migrations/` (via Supabase MCP `apply_migration` or `supabase db push`). After DDL, run security advisors.
-- **Web**: Netlify site `777-airavat`, build `npm run build`, publish `.next`, Node 24.
+- **Web**: Netlify site `777-airavat` (id `3cd30e29-0561-4587-b868-691e37fcb974`, team Abetrex), URL https://777-airavat.netlify.app, build `npm run build`, publish `.next`, Node 24, `@netlify/plugin-nextjs` declared in `netlify.toml`.
+- **CI**: GitHub repo linked by deploy key + webhook; every push to `main` builds and deploys. Local `netlify deploy --build` is not supported on Windows (edge bundler path bug with the Next 16 proxy); push to `main` or trigger via `netlify api createSiteBuild` instead.
 
 ## Netlify environment variables
 | Key | Scope | Secret |

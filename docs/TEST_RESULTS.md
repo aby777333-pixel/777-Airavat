@@ -32,6 +32,16 @@
 
 The fixture client remains in the sandbox database for inspection in Broker Core (its PAN is a format-only test value).
 
+## Deployment verification (Netlify, https://777-airavat.netlify.app)
+- Build on Netlify Linux builders with `@netlify/plugin-nextjs` (declared in netlify.toml): plugin success, 1 function + 1 edge function (proxy).
+- `/api/health` → `status: ok`, `live_trading: false`, `data_source: SIMULATED`, pg_cron tick fresh (last tick within the minute), AI gateway keys present.
+- Public routes return 200: `/`, `/markets`, `/markets/RELIANCE`, `/calculators`, `/pricing`, `/platforms`, `/trust`, `/academy`, `/legal/terms-of-use`, `/login`, `/signup`, `/about`, `/contact`. `/app` and `/admin` redirect (307) to `/login?next=…`; `/open-account` → `/signup`.
+- `/api/live` with an invalid body returns 400 (schema validation).
+- Security headers present: HSTS, X-Frame-Options DENY, nosniff, referrer policy.
+- Visual check in browser: home hero + market pulse, instrument page with candlestick chart, calculators.
+- Found and fixed during verification: `market_status()` read `app_settings` under anon RLS and reported extended hours as off on public pages (migration 0005 makes it security definer).
+- Sign-up probe: Supabase Auth rejects reserved/test email domains (`.sandbox`, `example.com`) as invalid, so the email-confirmation behaviour could not be verified without a real mailbox. To be confirmed by the owner on first real sign-up.
+
 ## Supabase security advisors
 After migration 0004: no exposed internal `security definer` functions; `search_path` set on all functions.
 
