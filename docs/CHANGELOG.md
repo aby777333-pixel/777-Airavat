@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 0.8.0 — 2026-10-11 — Market heatmap
+- /markets/heatmap: squarified treemap of every constituent of NIFTY 50, NIFTY BANK and the sector indices (?i=slug), sized by index weight (or equal), coloured by the day's change, grouped by sector with weighted sector labels, staggered fade-in, hover card, click-through to instrument pages; sector table, advances/declines and biggest movers beside it. Component `src/components/market/Treemap.tsx`. Simulated data labelled.
+
 ## 0.7.8 — 2026-10-11 — Company & trust block
 - /status: live sandbox status (engine latency, simulated feed freshness, order routing session, risk and surveillance jobs, AI gateways, and the honest "None/Disabled" rows for exchange, bank rails and the live trading gate), auto-refresh every 30 s, linked to /api/health.
 - /company/policies: policy register of twelve policies (RMS, PMLA, surveillance, conduct, error trades, BCP, data retention, conflicts, advertising, outsourcing, information security, MTF) each marked "Enforced in software", "Published document" or "Drafted", linked to the versioned legal documents.
