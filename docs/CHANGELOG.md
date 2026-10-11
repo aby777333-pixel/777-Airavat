@@ -5,6 +5,7 @@
 - Content width: public pages and site components use a 1400px container (was 1280/1152). The app shell stays at 1600px.
 - Theme storage key bumped to `airavat-theme-v2` so every visitor sees the new default until they choose another palette; saved profile default is now `airavat-house`.
 - Fix: a stylesheet insertion split the opaque-menu rule; repaired and verified (menu panels, glass panels, theme tokens all resolve).
+- Mega-menu featured cards carry a distinct animation per group (sunrise, candlesticks, atlas, radar, abacus, constellation, ledger, timeline), reduced-motion aware.
 - Fix: /app/settings returned a server error because the theme registry was exported from a client module and read by a server page; the registry now lives in `src/lib/themes.ts`. Page heroes align with the content edges; related links deduplicated.
 
 ## 0.5.0 — 2026-10-11 — Back office, independent RMS, PWA, opaque menus

@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import HeroFx from "./HeroFx";
+import type { HeroVariant } from "@/lib/seo";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import type { NavGroup } from "@/lib/navigation";
@@ -7,6 +9,9 @@ import type { NavGroup } from "@/lib/navigation";
 const badgeText: Record<string, string> = { sandbox: "sandbox", soon: "coming", research: "research-only", new: "new" };
 
 // Accessible mega menu: buttons toggle panels, Escape closes, focus/blur management, hover-intent on desktop.
+// One distinct animation per menu group inside the featured card (CSS/SVG only, reduced-motion aware).
+const FEATURED_FX: Record<string, HeroVariant> = { invest: "briefing", trade: "markets", markets: "universe", intelligence: "research", tools: "calculators", learn: "academy", pricing: "pricing", company: "about" };
+
 export default function MegaMenu({ groups }: { groups: NavGroup[] }) {
   const [open, setOpen] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -43,12 +48,12 @@ export default function MegaMenu({ groups }: { groups: NavGroup[] }) {
               </ul>
             </div>
             {g.featured && (
-              <Link href={g.featured.href} onClick={() => setOpen(null)} className="m-crystal flex flex-col justify-end p-5">
+              <Link href={g.featured.href} onClick={() => setOpen(null)} className="m-crystal relative flex min-h-[220px] flex-col justify-end overflow-hidden p-5"><HeroFx variant={FEATURED_FX[g.key] ?? "platforms"} /><div className="relative">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Featured</div>
                 <div className="font-display mt-2 text-lg font-semibold">{g.featured.title}</div>
                 <p className="mt-1 text-sm text-muted">{g.featured.body}</p>
                 <span className="mt-3 text-xs text-accent">Open →</span>
-              </Link>
+              </div></Link>
             )}
           </div>
         </div>
