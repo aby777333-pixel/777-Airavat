@@ -145,12 +145,21 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/company/loyalty", label: "AIRAVAT Circle", desc: "Tiers by tenure and conduct, not volume", icon: "💍" },
       { href: "/company/grievance-redressal", label: "Grievance Redressal", desc: "Escalation matrix and timelines", icon: "📮" },
       { href: "/legal", label: "Legal & Regulatory", desc: "Disclosures, policies, documents", icon: "📄" },
+      { href: "/company/governance", label: "Governance", desc: "Controls, committees, disclosures", icon: "🏛️" },
+      { href: "/company/policies", label: "Policy Register", desc: "RMS, PMLA, surveillance, BCP, privacy", icon: "📑" },
+      { href: "/company/security", label: "Security Disclosures", desc: "Controls and responsible disclosure", icon: "🛡️" },
+      { href: "/status", label: "Service Status", desc: "Live sandbox health and jobs", icon: "🟢" },
+      { href: "/company/press", label: "Press Kit", desc: "Logos, boilerplate, usage rules", icon: "📰" },
+      { href: "/company/careers/roles", label: "Roles & Talent Pool", desc: "Eight roles, register interest", icon: "🧭" },
+      { href: "/company/csr", label: "Social Responsibility", desc: "Free education, languages, access", icon: "🌱" },
+      { href: "/company/newsletter", label: "Newsletter Archive", desc: "Every market brief, dated", icon: "📬" },
     ] },
 ];
 
 export const UTILITY_NAV = [
   { href: "/company/support", label: "Support" },
   { href: "/contact/callback", label: "Callback" },
+  { href: "/status", label: "Status" },
   { href: "/downloads", label: "Downloads" },
   { href: "/accessibility", label: "Accessibility" },
 ];

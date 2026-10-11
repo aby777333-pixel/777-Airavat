@@ -19,10 +19,10 @@ const STATES = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhatt
 const LANGS = [["en", "English"], ["hi", "हिन्दी"], ["ta", "தமிழ்"], ["te", "తెలుగు"], ["kn", "ಕನ್ನಡ"], ["ml", "മലയാളം"], ["mr", "मराठी"], ["bn", "বাংলা"], ["gu", "ગુજરાતી"], ["pa", "ਪੰਜਾਬੀ"]];
 const SEGMENTS = [["EQ", "Equity (delivery / intraday)"], ["FO", "Futures & Options"], ["CDS", "Currency derivatives"], ["COMM", "Commodities (MCX / NCDEX)"], ["MF", "Mutual funds & SIP"], ["IPO", "IPO & SME IPO"], ["BONDS", "Bonds, G-Secs, T-bills, SGB"], ["ETF", "ETFs, REITs & InvITs"], ["ALGO", "Algo & API trading"]];
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ initialKind }: { initialKind?: string }) {
   const [result, setResult] = useState<EnquiryResult | null>(null);
   const [busy, setBusy] = useState(false);
-  const [kind, setKind] = useState("account_opening");
+  const [kind, setKind] = useState(KINDS.some(([k]) => k === initialKind) ? (initialKind as string) : "account_opening");
   const [existing, setExisting] = useState(false);
   if (result?.ok && result.data) {
     return (

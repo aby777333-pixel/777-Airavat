@@ -33,6 +33,7 @@ export default async function Trust() {
         </section>
         <section className="glass p-6">
           <h2 className="font-display text-lg font-semibold">Service status</h2>
+          <p className="mt-1 text-xs text-muted"><Link href="/status" className="text-accent">Live status page →</Link> · <Link href="/company/policies" className="text-accent">Policy register</Link> · <Link href="/company/security" className="text-accent">Security disclosures</Link></p>
           <table className="table mt-3 text-sm">
             <tbody>
               <tr><td>Environment</td><td className="text-right"><Badge tone="sim">Sandbox</Badge></td></tr>

@@ -1,5 +1,15 @@
 # CHANGELOG.md
 
+## 0.7.8 — 2026-10-11 — Company & trust block
+- /status: live sandbox status (engine latency, simulated feed freshness, order routing session, risk and surveillance jobs, AI gateways, and the honest "None/Disabled" rows for exchange, bank rails and the live trading gate), auto-refresh every 30 s, linked to /api/health.
+- /company/policies: policy register of twelve policies (RMS, PMLA, surveillance, conduct, error trades, BCP, data retention, conflicts, advertising, outsourcing, information security, MTF) each marked "Enforced in software", "Published document" or "Drafted", linked to the versioned legal documents.
+- /company/security plus /.well-known/security.txt: controls in place, responsible-disclosure scope, safe harbour, response commitments, known limitations stated.
+- /company/press: downloadable logo lockups and mark, boilerplate, facts (sandbox, no registration claimed), usage rules; media enquiries pre-select the topic via /contact?kind=media (the enquiry form now accepts an initial topic from the URL).
+- /company/careers/roles: eight fully written roles marked "Pipeline", talent-pool form through `submit_enquiry` (kind careers); no opening claimed.
+- /company/newsletter: archive of published market briefs with a consent-based subscription (lead source "newsletter").
+- Registry pages: /company/governance (controls enforced in code, planned committees, disclosures, conflicts; no names) and /company/csr (product-level commitments; statutory CSR after incorporation).
+- Company menu, utility bar (Status), Trust Centre and About links, SEO and sitemap updated.
+
 ## 0.7.7 — 2026-10-11 — Trading platforms block
 - /platforms/terminal-demo: public, read-only Terminal X demo with the simulated watchlist (?s=SYMBOL), daily and one-minute AdvancedChart, instrument facts and an order ticket that runs illustrative pre-trade checks (lot, tick, band, stop direction, fat-finger, funds/holdings) in the browser and cannot place orders.
 - /platforms/mobile: PWA install guide for Android, iOS and desktop, what works installed, what is never cached, native roadmap (no store listing claimed).

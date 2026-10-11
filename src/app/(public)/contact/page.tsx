@@ -6,12 +6,13 @@ import EnquiryForm from "./EnquiryForm";
 
 export const metadata = { ...metadataFor("/contact") };
 
-export default function Contact() {
+export default async function Contact({ searchParams }: { searchParams: Promise<{ kind?: string }> }) {
+  const { kind } = await searchParams;
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="contact" intro={seoFor("/contact").intro}><PageHeader eyebrow="Contact" title="Reach the AIRAVAT team" subtitle="General enquiries, account opening, partnerships, developer access, media and grievances. Every enquiry gets a reference number and a response time." /></PageHero>
       <div className="grid gap-6 lg:grid-cols-[1.618fr_1fr]">
-        <EnquiryForm />
+        <EnquiryForm initialKind={kind} />
         <div className="space-y-5">
           <Card title="Support hours" subtitle="Indian Standard Time">
             <dl className="grid grid-cols-2 gap-y-1 text-sm"><dt className="text-muted">Monday to Friday</dt><dd>09:00 – 18:00</dd><dt className="text-muted">Saturday</dt><dd>10:00 – 14:00</dd><dt className="text-muted">Sunday and exchange holidays</dt><dd>Closed</dd><dt className="text-muted">Market-hours priority line</dt><dd>09:00 – 15:45</dd></dl>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PageHero from "@/components/site/PageHero";
 import { seoFor, metadataFor } from "@/lib/seo";
 import { PageHeader } from "@/components/ui";
@@ -16,6 +17,7 @@ export default function About() {
         <p>Today AIRAVAT runs a sandbox: simulated market data, simulated funds and a working order, risk and ledger core. Regulatory registrations, exchange memberships, depository arrangements and market-data licences have not been obtained, and nothing on this site should be read as a claim that they have.</p>
         <h2>Leadership and governance</h2>
         <p>Leadership profiles, corporate information and governance disclosures will be published once the legal entity is formed. We do not publish placeholders as facts.</p>
+        <p>The governance design is already published: see <Link href="/company/governance">Governance</Link>, the <Link href="/company/policies">policy register</Link> and the <Link href="/company/press">press kit</Link>.</p>
       </div>
     </div>
   );

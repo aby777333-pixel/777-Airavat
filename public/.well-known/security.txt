@@ -1,0 +1,5 @@
+Contact: https://777-airavat.netlify.app/company/security#report
+Policy: https://777-airavat.netlify.app/company/security
+Canonical: https://777-airavat.netlify.app/.well-known/security.txt
+Preferred-Languages: en, hi
+Expires: 2027-10-11T00:00:00.000Z
