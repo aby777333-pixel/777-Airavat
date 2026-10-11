@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## 0.8.2 — 2026-10-11 — Public watchlist and alerts
+- /markets/watchlist: a watchlist that lives in the browser (no account): search the simulated universe, live quotes every 5 s through the new public read-only `/api/quotes` route, crosses-above / falls-below alerts evaluated in the browser with optional browser notifications, stale-quote badge, CSV export link. Signed-in visitors get a one-click "Save to my account" that moves symbols into the sandbox watchlist and alerts into server-side `create_price_alert`, then clears the browser copy; `/login?next=/markets/watchlist?migrate=1` highlights the box after sign-in.
+- Every public instrument page has a ☆ Watch star (`WatchButton`) writing the same browser list. Library `src/lib/public-watchlist.ts`.
+
 ## 0.8.1 — 2026-10-11 — Option chain explorer
 - /markets/option-chain: public chain for four indices and twelve F&O stocks across weekly and monthly expiries: OI bars with change in OI versus a simulated previous session and build-up classification, IV, delta, ATM highlight, PCR, max pain, OI-based support and resistance, expected move from the ATM straddle; charts for OI by strike, IV smile and the max-pain curve; click premiums to build a quick strategy with payoff, breakevens, net premium and max profit/loss, then hand off to the Options Lab.
 - The 0.8.0 treemap replaced the earlier simple sector tile list at /markets/heatmap; the Markets menu entry is relabelled "Market Heatmap".

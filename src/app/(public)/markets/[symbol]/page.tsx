@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WatchButton from "@/components/market/WatchButton";
 import FundamentalsPanel from "@/components/market/FundamentalsPanel";
 import CompanyProfile from "@/components/market/CompanyProfile";
 import { notFound } from "next/navigation";
@@ -31,7 +32,8 @@ export default async function InstrumentPage({ params }: { params: Promise<{ sym
             <span className="text-xs text-faint">updated {istTime(inst.quote.updated_at)}</span>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <WatchButton symbol={inst.symbol} />
           {user ? (
             inst.tradable ? <Link href={`/app/markets/${encodeURIComponent(inst.symbol)}`} className="btn btn-primary">Trade in sandbox</Link> : <span className="badge">Not tradable</span>
           ) : (

@@ -43,6 +43,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/markets/gainers-losers", label: "Gainers & Losers", desc: "Top movers across the universe", icon: "🏁" },
       { href: "/markets/heatmap", label: "Market Heatmap", desc: "Treemap by index weight and change, sector and stock map", icon: "🟩" },
       { href: "/markets/option-chain", label: "Option Chain Explorer", desc: "OI, IV smile, Greeks, max pain, quick strategy", icon: "⛓️", badge: "new" },
+      { href: "/markets/watchlist", label: "My Watchlist & Alerts", desc: "Live list and alerts in your browser, no account", icon: "⭐", badge: "new" },
       { href: "/markets/corporate-actions", label: "Corporate Actions", desc: "Dividends, splits, bonuses, record dates", icon: "📜" },
       { href: "/markets/economic-calendar", label: "Economic Calendar", desc: "Policy, inflation, GDP and holiday dates", icon: "📅" },
       { href: "/markets/news", label: "Market News", desc: "Briefs from AIRAVAT DAILY", icon: "📰" },
