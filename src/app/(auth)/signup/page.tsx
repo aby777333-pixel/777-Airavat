@@ -9,7 +9,7 @@ export default async function Signup({ searchParams }: { searchParams: Promise<{
   return (
     <div className="bg-atmosphere flex min-h-dvh items-center justify-center px-4 py-12">
       <div className="glass-strong w-full max-w-md p-8">
-        <Link href="/" className="flex items-center gap-2"><Logo /><span className="font-display font-bold tracking-[0.18em]">AIRAVAT</span></Link>
+        <Link href="/" className="flex items-center gap-2"><Logo size={38} /></Link>
         <h1 className="font-display mt-6 text-2xl font-bold">Open a sandbox account</h1>
         <p className="mt-1 text-sm text-muted">Step 1 of 2: create your login. Step 2 is a simulated KYC application.</p>
         <SignupForm referralCode={ref?.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 24) || undefined} />

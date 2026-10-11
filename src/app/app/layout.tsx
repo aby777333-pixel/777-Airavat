@@ -34,7 +34,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <SandboxBanner />
       <div className="mx-auto grid max-w-[1600px] gap-6 px-4 py-5 sm:px-6 lg:grid-cols-[250px_1fr]">
         <aside className="glass h-fit p-4 lg:sticky lg:top-5">
-          <Link href="/" className="flex items-center gap-2 px-2"><Logo size={28} /><span className="font-display text-sm font-bold tracking-[0.18em]">AIRAVAT</span></Link>
+          <Link href="/" className="flex items-center gap-2 px-2"><Logo size={32} /></Link>
           <div className="mt-4 rounded-xl border border-border bg-bg/40 p-3 text-xs">
             <div className="truncate font-medium">{profile?.full_name || user.email}</div>
             <div className="text-faint">{account ? `Client ${account.client_code} · ${account.status}` : "No sandbox account yet"}</div>

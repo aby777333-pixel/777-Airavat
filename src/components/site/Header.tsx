@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getSession } from "@/lib/auth";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LiveLink from "@/components/live/LiveLink";
@@ -25,8 +26,7 @@ export default async function Header() {
         </div>
         <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5" aria-label="AIRAVAT home">
-            <Logo />
-            <span className="font-display text-lg font-bold tracking-[0.18em]">AIRAVAT</span>
+            <Logo size={42} />
           </Link>
           <nav aria-label="Primary"><MegaMenu groups={groups} /></nav>
           <div className="hidden items-center gap-2 lg:flex">
@@ -53,20 +53,15 @@ export default async function Header() {
   );
 }
 
-export function Logo({ size = 34 }: { size?: number }) {
+export function Logo({ size = 34, lockup = true }: { size?: number; lockup?: boolean }) {
+  const light = (lockup ? "/brand/airavat-logo.png" : "/brand/airavat-mark.png") + "?v=3";
+  const dark = (lockup ? "/brand/airavat-logo-dark.png" : "/brand/airavat-mark-dark.png") + "?v=3";
+  const ratio = lockup ? 1000 / 292 : 480 / 311;
+  const w = Math.round(size * ratio);
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="var(--accent)" />
-          <stop offset="1" stopColor="var(--accent-2)" />
-        </linearGradient>
-      </defs>
-      <circle cx="32" cy="32" r="30" stroke="url(#g)" strokeWidth="2" opacity="0.6" />
-      <path d="M18 42c0-10 6-18 14-18s14 8 14 18" stroke="url(#g)" strokeWidth="3.5" strokeLinecap="round" />
-      <path d="M26 42v-8m12 8v-8" stroke="url(#g)" strokeWidth="3.5" strokeLinecap="round" />
-      <path d="M32 24c0-4 3-7 7-7" stroke="url(#g)" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="40" cy="30" r="1.8" fill="var(--accent)" />
-    </svg>
+    <span className="logo inline-flex shrink-0 items-center" style={{ height: size, width: w }}>
+      <Image src={light} alt="AIRAVAT" width={w} height={size} className="logo-light h-full w-auto" priority unoptimized />
+      <Image src={dark} alt="AIRAVAT" width={w} height={size} className="logo-dark h-full w-auto" priority unoptimized />
+    </span>
   );
 }

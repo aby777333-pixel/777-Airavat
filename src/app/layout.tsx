@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", name: "AIRAVAT", url: SITE_URL, description: "Independent Indian stock broking and trading technology platform in sandbox development. No SEBI registration or exchange membership is claimed.", logo: `${SITE_URL}/showroom/home.jpg`, areaServed: "IN" },
+    { "@type": "Organization", name: "AIRAVAT", url: SITE_URL, description: "Independent Indian stock broking and trading technology platform in sandbox development. No SEBI registration or exchange membership is claimed.", logo: `${SITE_URL}/brand/airavat-logo.png`, areaServed: "IN" },
     { "@type": "WebSite", name: "AIRAVAT", url: SITE_URL, potentialAction: { "@type": "SearchAction", target: `${SITE_URL}/markets/watch?q={search_term_string}`, "query-input": "required name=search_term_string" } },
   ],
 };

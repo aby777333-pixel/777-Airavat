@@ -37,7 +37,7 @@ export default async function Home() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl drift" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-[1400px] gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.618fr_1fr] md:pt-24">
+        <div className="relative mx-auto grid max-w-[1400px] gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-24">
           <div>
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
@@ -63,44 +63,57 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="rise-2 glass-strong relative p-5">
-            <div className="mb-3 flex items-center justify-between">
-              <div className="font-display text-sm font-semibold">Market pulse</div>
-              <SimBadge />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {indices.map((i) => {
-                const c = changeOf(i.quote.ltp, i.quote.prev_close);
-                return (
-                  <div key={i.symbol} className="rounded-xl border border-border bg-bg/40 p-3">
-                    <div className="text-xs text-muted">{i.symbol}</div>
-                    <div className="tnum font-display text-xl font-semibold">{price(i.quote.ltp)}</div>
-                    <div className={clsx("tnum text-xs", c.change >= 0 ? "text-profit" : "text-loss")}>{pct(c.changePct)}</div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-4 text-xs">
-              <div>
-                <div className="mb-1 font-semibold text-profit">Top gainers</div>
-                {gainers.map((g) => (
-                  <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
-                    <span>{g.symbol}</span><span className="text-profit">{pct(g.changePct)}</span>
-                  </Link>
-                ))}
-              </div>
-              <div>
-                <div className="mb-1 font-semibold text-loss">Top losers</div>
-                {losers.map((g) => (
-                  <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
-                    <span>{g.symbol}</span><span className="text-loss">{pct(g.changePct)}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <Link href="/markets" className="mt-4 block text-center text-xs text-accent hover:underline">Open market overview →</Link>
+          <div className="rise-2 relative hidden min-h-[520px] md:-mb-20 md:block">
+            <div className="pointer-events-none absolute inset-x-8 bottom-10 top-10 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(90,176,232,0.22),transparent_65%)] blur-2xl" aria-hidden="true" />
+            <Image src="/brand/hero-people.webp" alt="Investors and traders from across India greeting with namaste, holding charts" fill priority sizes="(min-width: 768px) 46vw, 100vw" className="object-cover object-[50%_100%]" />
           </div>
         </div>
+      </section>
+
+      {/* MARKET PULSE (moved out of the hero so the artwork stands alone) */}
+      <section className="mx-auto max-w-[1400px] px-4 pt-6 sm:px-6" aria-label="Market pulse">
+        <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-faint"><span className="h-px w-6 bg-accent" /> Market pulse · simulated</div>
+        <div className="glass p-5 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] md:gap-8">
+              <div>
+              <div className="mb-3 flex items-center justify-between">
+                <div className="font-display text-sm font-semibold">Market pulse</div>
+                <SimBadge />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {indices.map((i) => {
+                  const c = changeOf(i.quote.ltp, i.quote.prev_close);
+                  return (
+                    <div key={i.symbol} className="rounded-xl border border-border bg-bg/40 p-3">
+                      <div className="text-xs text-muted">{i.symbol}</div>
+                      <div className="tnum font-display text-xl font-semibold">{price(i.quote.ltp)}</div>
+                      <div className={clsx("tnum text-xs", c.change >= 0 ? "text-profit" : "text-loss")}>{pct(c.changePct)}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              </div>
+              <div>
+              <div className="grid grid-cols-2 gap-4 text-xs md:mt-0">
+                <div>
+                  <div className="mb-1 font-semibold text-profit">Top gainers</div>
+                  {gainers.map((g) => (
+                    <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
+                      <span>{g.symbol}</span><span className="text-profit">{pct(g.changePct)}</span>
+                    </Link>
+                  ))}
+                </div>
+                <div>
+                  <div className="mb-1 font-semibold text-loss">Top losers</div>
+                  {losers.map((g) => (
+                    <Link key={g.symbol} href={`/markets/${g.symbol}`} className="tnum flex justify-between py-1 hover:text-accent">
+                      <span>{g.symbol}</span><span className="text-loss">{pct(g.changePct)}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <Link href="/markets" className="mt-4 block text-center text-xs text-accent hover:underline">Open market overview →</Link>
+            </div>
+              </div>
       </section>
 
       <ProductDiscovery />
