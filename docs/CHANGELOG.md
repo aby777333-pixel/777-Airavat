@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## 0.7.4 — 2026-10-11 — Chart School (Learn block, part 1), bigger logo, scroll arrows
+- /academy/chart-school: 24 animated candlestick patterns (with Hindi names where common), 14 animated chart patterns, 10 indicators read the Indian way, 16 Indian-market essentials (timings, circuits, lots, expiry, T+1, STT/CTT, pledge, ASM/GSM, bulk/block, FII/DII, regulators, ASBA, MF cut-offs, tax basics, Muhurat) and three self-check quizzes; one SEO page per pattern (/academy/chart-school/[slug], 38 pages in the sitemap). Animations use the hero FX keyframes and respect reduced motion.
+- Header logo enlarged (76 px) and floating scroll-to-top/bottom arrows on public pages.
+
 ## 0.7.3 — 2026-10-11 — Tools block: planners, screener, portfolio analyser
 - `src/lib/planners.ts` (7 tests): equity capital gains tax, gain harvesting, futures SPAN+exposure margin, pledge haircut with the cash rule, ELSS vs PPF vs NPS, retirement corpus, goal planner, HRA exemption; eight new tool pages under /tools/*.
 - Migration 0030: `screener_metrics()` (valuation, SMA 50/200, RSI 14, 52-week range, volume ratio in one call) and `resolve_symbols()`.

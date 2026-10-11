@@ -1,6 +1,7 @@
 import PageHero from "@/components/site/PageHero";
 import { seoFor, metadataFor } from "@/lib/seo";
 import { PageHeader } from "@/components/ui";
+import Link from "next/link";
 
 export const metadata = { ...metadataFor("/academy") };
 
@@ -25,6 +26,11 @@ export default function Academy() {
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6">
       <PageHero variant="academy" intro={seoFor("/academy").intro}><PageHeader eyebrow="AIRAVAT Academy" title="Learn how markets actually work" subtitle="Plain-language lessons written to match what the sandbox does. Education, not advice. No course promises returns." /></PageHero>
+      <Link href="/academy/chart-school" className="m-crystal mb-6 block p-6 transition hover:-translate-y-0.5">
+        <div className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">New · Chart School</div>
+        <div className="font-display mt-1 text-xl font-semibold">24 candlestick patterns, 14 chart patterns, 10 indicators and 16 Indian-market essentials, animated and quizzed</div>
+        <p className="mt-1 text-sm text-muted">Doji to three white soldiers, head and shoulders to cup and handle, VWAP to CPR, circuit filters to T+1. Open Chart School →</p>
+      </Link>
       <div className="grid gap-4 md:grid-cols-2">
         {lessons.map((l) => (
           <article key={l.title} className="glass p-6">
