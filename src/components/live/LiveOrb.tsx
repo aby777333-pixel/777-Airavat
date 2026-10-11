@@ -56,7 +56,7 @@ export default function LiveOrb({ context }: { context: LiveContext }) {
           <header className="flex items-center justify-between border-b border-border px-4 py-3">
             <div>
               <div className="font-display text-sm font-semibold">AIRAVAT LIVE</div>
-              <div className="text-[11px] text-faint">Anthropic Claude via the AIRAVAT gateway · answers translated by BHASHA (Sarvam) in 9 Indian languages · cannot place orders · may make mistakes</div>
+              <div className="text-[11px] text-faint">AI assistant · cannot place orders · may make mistakes</div>
             </div>
             <select aria-label="Language" className="select !w-auto !py-1 !text-xs" value={lang} onChange={(e) => setLang(e.target.value)}>
               {LANGS.map(([c, n]) => <option key={c} value={c}>{n}</option>)}

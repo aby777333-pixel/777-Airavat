@@ -280,7 +280,21 @@ body {
   color: var(--text);
 }
 [data-theme="airavat-house"] body { background: var(--bg); }
-[data-theme="airavat-house"] .bg-atmosphere { background: linear-gradient(180deg, var(--bg-2), var(--bg) 40%); }
+[data-theme="airavat-house"] .bg-atmosphere {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(180deg, rgba(244, 246, 240, 0.9), rgba(234, 237, 229, 0) 38%),
+    linear-gradient(rgba(20, 25, 29, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 25, 29, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(20, 25, 29, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 25, 29, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 96px 96px, 96px 96px, 12px 12px, 12px 12px;
+  background-position: 0 0, -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+}
+[data-theme="airavat-house"] .on-night .bg-grid, [data-theme="airavat-house"] .hero .bg-grid {
+  background-image: linear-gradient(rgba(238, 240, 241, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(238, 240, 241, 0.07) 1px, transparent 1px), linear-gradient(rgba(238, 240, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(238, 240, 241, 0.03) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 12px 12px, 12px 12px;
+}
 [data-theme="airavat-house"] .font-display { font-weight: 400; letter-spacing: -0.02em; }
 [data-theme="airavat-house"] h1.font-display, [data-theme="airavat-house"] .hero h1 { font-weight: 300; letter-spacing: -0.024em; line-height: 1.06; }
 [data-theme="airavat-house"] .btn { border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8125rem; font-weight: 600; padding: 0.8rem 1.3125rem; }
@@ -390,6 +404,13 @@ body {
   box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 0 30px rgba(var(--glow),0.5), inset 0 -8px 20px rgba(0,0,0,0.5);
 }
 .orb::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); }
+
+/* Brand lockup: light artwork on dark palettes and night sections, dark artwork on paper and light palettes. */
+.logo-dark { display: none; }
+[data-theme="airavat-house"] .logo-dark, [data-theme="ivory-reserve"] .logo-dark, [data-theme="arctic-frost"] .logo-dark, [data-theme="champagne-ivory"] .logo-dark { display: inline; }
+[data-theme="airavat-house"] .logo-light, [data-theme="ivory-reserve"] .logo-light, [data-theme="arctic-frost"] .logo-light, [data-theme="champagne-ivory"] .logo-light { display: none; }
+[data-theme="airavat-house"] .on-night .logo-dark, [data-theme="airavat-house"] .hero .logo-dark { display: none; }
+[data-theme="airavat-house"] .on-night .logo-light, [data-theme="airavat-house"] .hero .logo-light { display: inline; }
 
 /* Prose */
 .prose h1 { font-size: 1.9rem; font-weight: 700; margin: 0 0 1rem; font-family: var(--font-display); }

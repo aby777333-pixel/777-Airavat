@@ -6,6 +6,7 @@
 - Theme storage key bumped to `airavat-theme-v2` so every visitor sees the new default until they choose another palette; saved profile default is now `airavat-house`.
 - Fix: a stylesheet insertion split the opaque-menu rule; repaired and verified (menu panels, glass panels, theme tokens all resolve).
 - Mega-menu and mobile-menu featured cards carry a distinct animation per group (sunrise, candlesticks, atlas, radar, abacus, constellation, ledger, timeline), reduced-motion aware.
+- Home hero carries the Mumbai fintech skyline artwork behind the card and copy (web-optimised JPEG, gradient for legibility); the paper body and night sections carry a fine 12px/96px mesh.
 - AIRAVAT LIVE is now labelled next to its orb ("AIRAVAT LIVE · Ask · BHASHA …") and reachable from the utility bar; the panel states that answers come from Anthropic Claude through the AIRAVAT gateway and are translated by BHASHA (Sarvam).
 - Fix: /app/settings returned a server error because the theme registry was exported from a client module and read by a server page; the registry now lives in `src/lib/themes.ts`. Page heroes align with the content edges; related links deduplicated.
 

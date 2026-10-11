@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getMarketStatus, getQuotes } from "@/lib/market";
 import { changeOf, price, pct } from "@/lib/format";
 import { SimBadge } from "@/components/ui";
@@ -30,7 +31,10 @@ export default async function Home() {
       <Awakening />
       {/* HERO */}
       <section className="on-night relative overflow-hidden">
-        <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+        <Image src="/brand/hero-mumbai.jpg" alt="" fill priority sizes="100vw" className="pointer-events-none object-cover object-[70%_60%] opacity-70" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#0c1116_0%,rgba(12,17,22,0.88)_32%,rgba(12,17,22,0.55)_60%,rgba(12,17,22,0.35)_100%)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,transparent,#0c1116)]" aria-hidden="true" />
+        <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl drift" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true" />
         <div className="relative mx-auto grid max-w-[1400px] gap-12 px-4 pb-20 pt-16 sm:px-6 md:grid-cols-[1.618fr_1fr] md:pt-24">
