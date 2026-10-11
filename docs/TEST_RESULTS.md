@@ -47,3 +47,50 @@ After migration 0004: no exposed internal `security definer` functions; `search_
 
 ## Not executed
 Load, failover, DR, accessibility automation, mobile device matrix, email-confirmation flow, Sarvam vendor call.
+
+---
+# Phase 2 — 2026-10-11 (release 0.2.0)
+
+## Static and unit
+- `npx tsc --noEmit`: pass (0 errors)
+- `npm run lint`: pass (0 errors; 1 pre-existing unused-arg warning). Local `.netlify/` build output is now ignored by ESLint.
+- `npm test`: 2 files, 27 tests passed (calculators 17, backtest engine 10)
+- `npm run build`: pass (Next.js 16.4, 82 routes)
+
+## Regression of Phase 1 (unchanged behaviour)
+- `compute_charges('CNC','BUY',100000)` = 118.62, `('MIS','SELL',100000)` = 52.22, MIS buy 10,000 brokerage 3.00: identical before and after RevenueOS; `compute_charges_v2` with an account on the STANDARD plan returns the same totals.
+- After all Phase 2 activity the ledger stays balanced: trial balance 14 rows, Σdebit = Σcredit = 11,09,246.42; `reconciliation_report()` journal_balanced = true, 0 order/trade breaks, 0 negative client balances; 0 unbalanced journal entries.
+
+## Phase 2 E2E (live sandbox DB, transaction-scoped JWT claims per role, real engine functions)
+| Step | Expected | Observed |
+|---|---|---|
+| Sign-up with referral DEMO777 (client1.demo) | attribution row for the active partner | ✅ `referral_attributions.referral_code = DEMO777` |
+| submit_kyc (client) → sandbox auto policy | account created, activation accrual for partner | ✅ approved, accrual 500 gross / 50 TDS / 450 net |
+| sandbox_deposit 5,00,000 | ledger 5,00,000 | ✅ |
+| 3 MARKET orders (RELIANCE CNC, TCS CNC, INFY MIS) | FILLED with RMS trail and charges | ✅ all FILLED (e.g. INFY MIS brokerage 9.26 on 30,882) |
+| finance creates offer WELCOME50 (50% off BRK_MIS) → compliance approves → client applies | enrolment | ✅ |
+| MARKET BUY 10 INFY MIS after enrolment | brokerage halved; redemption and contra-income posted | ✅ 2.31 vs 4.62 expected without offer; `offer_redemptions` 1 row; `offer_campaigns.spent` 2.31; account 4100 debits 2.31 |
+| finance requests FULL waiver on BRK_CNC → admin approves | approved grant | ✅ |
+| ops creates partner payout → finance approves | journal entry, accrual paid | ✅ payout id 2 approved, journal entry 18; passport paid_net 450, pending 0 |
+| partner_passport | four flags true with plan | ✅ |
+| revenue_summary (finance) | turnover, brokerage, levies, partner cost | ✅ 6 trades, turnover 93,274.85, brokerage 13.90, levies 61.12, partner remuneration 500 |
+| Editorial: editor drafts → in_review → admin approves → editor publishes | published article visible publicly and in briefing | ✅ `daily_briefing().latest_articles` lists it |
+| create_research_case + evidence; shadow portfolio + order; Sentinel preferences | rows for client1 | ✅ case 1, shadow order 1 (HDFCBANK 25 @ 1593.65, charges 47.26) |
+| create_lead (website) | assigned round-robin to sales | ✅ status new, assigned true |
+| trade_health / premortem / decision_twin / what_changed / daily_briefing under client claims | JSON shapes | ✅ (e.g. pre-mortem flagged concentration 87.4% for 50 TCS) |
+| sentinel_scan() | runs without JWT (cron) | ✅ after migration 0013 (7 prior cron failures recorded) |
+| run_scanners() | matches with evidence | ✅ 53 matches today across 10 scanners |
+
+## Defects found and fixed
+- `sentinel_scan` cron failures (FORBIDDEN from `account_funds`) → 0013.
+- `accrue_partner_commission` / `partner_passport` ambiguous alias → 0014 (would have blocked KYC approval for referred clients).
+- Advisor: three functions without pinned `search_path` → 0013.
+
+## Demo logins
+`python -I demo/verify-logins.py` → 12/12 accounts signed in with the expected role (DEMO_LOGIN_VERIFICATION.md).
+
+## Supabase security advisors (after Phase 2)
+No exposed internal functions. Remaining WARN items are intentional: `create_lead`, `daily_briefing`, `market_status`, `subscribe_newsletter` are callable by anon by design (validated, no sensitive output); authenticated-callable SECURITY DEFINER functions each enforce ownership/role inside. Leaked-password protection remains an owner setting in the Supabase dashboard.
+
+## Not executed
+Load, failover, DR, accessibility automation, mobile device matrix, email delivery, Sarvam vendor call, War Room/editorial copilot against the vendor in this session (routes validated for auth and schema only).

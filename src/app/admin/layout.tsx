@@ -5,12 +5,14 @@ import { signOut } from "@/app/(auth)/actions";
 import { Logo } from "@/components/site/Header";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { Badge, SandboxBanner } from "@/components/ui";
+import CommandPalette, { CommandButton } from "@/components/CommandPalette";
 
 export const dynamic = "force-dynamic";
 
 const nav = [
   ["/admin", "Control tower"], ["/admin/clients", "Clients & roles"], ["/admin/kyc", "KYC queue"], ["/admin/orders", "Orders"], ["/admin/trades", "Trades"],
   ["/admin/funds", "Funds & payouts"], ["/admin/ledger", "Ledger & reconciliation"], ["/admin/risk", "Risk limits"], ["/admin/settlement", "Settlement"],
+  ["/admin/revenue", "RevenueOS"], ["/admin/approvals", "Approvals"], ["/admin/partners", "Partners & CRM"], ["/admin/editorial", "Editorial (DAILY)"], ["/admin/markets", "Market matrix"], ["/admin/sentinel", "Sentinel overview"],
   ["/admin/support", "Support desk"], ["/admin/audit", "Audit log"], ["/admin/ai", "AI operations"], ["/admin/regulatory", "Regulatory register"], ["/admin/requirements", "Requirements register"], ["/admin/settings", "System settings"],
 ];
 
@@ -31,10 +33,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             {nav.map(([href, label]) => <Link key={href} href={href} className="rounded-lg px-3 py-1.5 text-sm text-muted hover:bg-accent/10 hover:text-text">{label}</Link>)}
             <Link href="/app" className="rounded-lg px-3 py-1.5 text-sm text-accent hover:bg-accent/10">← Client app</Link>
           </nav>
-          <div className="mt-4 flex items-center justify-between gap-2 px-2"><ThemeSwitcher compact /><form action={signOut}><button className="btn btn-ghost btn-sm">Log out</button></form></div>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 px-2"><ThemeSwitcher compact /><CommandButton /><form action={signOut}><button className="btn btn-ghost btn-sm">Log out</button></form></div>
         </aside>
         <main className="min-w-0">{children}</main>
       </div>
+      <CommandPalette />
     </div>
   );
 }

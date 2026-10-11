@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { placeOrder, previewOrder } from "../../actions";
 import { money, price as fmtPrice } from "@/lib/format";
+import PremortemPanel from "./PremortemPanel";
 
 type Preview = { ok: boolean; reason?: string; order_value?: number; charges?: { total: number; brokerage: number; stt: number; exchange_txn: number; sebi_fee: number; stamp_duty: number; gst: number }; margin_required?: number; available?: number; sufficient?: boolean; kill_switch?: boolean; holdings_qty?: number };
 
@@ -89,6 +90,7 @@ export default function OrderTicket(p: { symbol: string; ltp: number; tick: numb
         <div className="mt-4 rounded-xl border border-border-strong p-3 text-sm">
           <div className="mb-2 font-medium">Confirm: {side} {qty} {p.symbol} · {type} · {product}{needsPrice ? ` @ ${fmtPrice(price)}` : ""}{needsTrigger ? ` trig ${fmtPrice(trigger)}` : ""}</div>
           <p className="mb-3 text-xs text-muted">This is a simulated order. It will pass through the risk engine and the simulated exchange adapter. Idempotency key {clientOrderId.slice(0, 8)}…</p>
+          <PremortemPanel symbol={p.symbol} side={side} product={product} qty={qty} />
           <div className="flex gap-2"><button className="btn btn-ghost btn-sm" onClick={() => setConfirm(false)} disabled={busy}>Edit</button><button className={clsx("btn btn-sm flex-1", side === "BUY" ? "btn-buy" : "btn-sell")} onClick={submit} disabled={busy}>{busy ? "Sending…" : "Place order"}</button></div>
         </div>
       )}

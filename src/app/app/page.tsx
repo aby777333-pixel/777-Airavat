@@ -5,6 +5,7 @@ import { getAccount, getFunds, getKyc } from "@/lib/account";
 import { getQuotes } from "@/lib/market";
 import { changeOf, money, pct, price, istTime } from "@/lib/format";
 import { Badge, Card, Empty, Notice, PageHeader, Stat, statusTone } from "@/components/ui";
+import WhatChanged from "./WhatChanged";
 
 export default async function Dashboard({ searchParams }: { searchParams: Promise<{ denied?: string }> }) {
   const sp = await searchParams;
@@ -50,6 +51,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
         <Stat label="Open positions" value={(positions ?? []).length} sub={`${(holdings ?? []).length} holdings`} />
       </div>
 
+      <WhatChanged />
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.618fr_1fr]">
         <Card title="Watchlist" subtitle="Simulated quotes" action={<Link href="/app/markets" className="text-xs text-accent">Manage →</Link>}>
           {quotes.length === 0 ? <p className="text-sm text-muted">Your watchlist is empty.</p> : (

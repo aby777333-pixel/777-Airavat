@@ -49,3 +49,32 @@ Allowed statuses: Not started · Researching · Designed · In development · Im
 | REQ-0111 | Live trading enablement gate | Launch | Blocked | hard-coded refusal in `update_app_setting` |
 
 Everything in the master prompt not listed above (PRO terminal, dealer, institutional, developer APIs, research ONE, Sentinel, voice, gesture, mobile, CRM, partner network, Regulatory Fortress modules, etc.) is **Not started** and is tracked in FEATURE_MATRIX.md by directive section so nothing is silently omitted.
+
+## Phase 2 requirements (added 2026-10-11; mirrored in the `requirements` table)
+| REQ | Title | Module | Status | Notes |
+|---|---|---|---|---|
+| REQ-0201 | RevenueOS versioned fee catalogue with maker-checker | RevenueOS | Tested | compute_charges_v2 identical to legacy for the standard plan |
+| REQ-0202 | Plans, waivers, offers, adjustments, subscriptions | RevenueOS | Tested | offer halved MIS brokerage 4.62 → 2.31; contra-income 4100 |
+| REQ-0203 | Revenue intelligence | RevenueOS | Implemented | revenue_summary() |
+| REQ-0204 | Partner network, commission plans, accruals, payouts | Partners | Tested | 500 gross / 50 TDS / 450 net paid |
+| REQ-0205 | Partner Earnings & Eligibility Passport | Partners | Tested | four independent flags |
+| REQ-0206 | CRM leads with consent and round-robin | Sales | Implemented | /api/leads |
+| REQ-0207 | Market Access Matrix + Launch Console | Markets | Implemented | TRADING_ENABLE_GATE |
+| REQ-0208 | Research-only commodity/currency instruments | Markets | Implemented | non-tradable |
+| REQ-0209 | Scanner Matrix | Research | Tested | 10 system scanners, builder |
+| REQ-0210 | Market Detective + AI Research Council | Research | Implemented | War Room |
+| REQ-0211 | Strategy DNA backtesting, fingerprint, robustness | Quant | Tested | 10 unit tests |
+| REQ-0212 | Shadow Portfolio isolation | Research | Tested | |
+| REQ-0213 | Sentinel X | Risk | Tested | cron fixed in 0013 |
+| REQ-0214 | AIRAVAT DAILY CMS | Editorial | Tested | demo article via full workflow |
+| REQ-0215 | AI editorial copilot | Editorial | Implemented | review_required |
+| REQ-0216 | Command Everywhere | UX | Implemented | |
+| REQ-0217 | Living Product Showroom | Website | In development | captures pending |
+| REQ-0218 | Daily Briefing / Morning Intelligence | Website | Implemented | |
+| REQ-0219 | Materialverse | Design | Implemented | 15/22 palettes |
+| REQ-0220 | Project Majesty intro and heroes | Website | Implemented | |
+| REQ-0221 | Demo environment, verified logins | Operations | Tested | 12/12 |
+| REQ-0222 | Partner programme page + lead capture | Website | Implemented | |
+| REQ-0223 | Signup referral attribution | Partners | Tested | |
+| REQ-0224 | Replay, visual builder, Evidence Graph, Digital Twin, MRI | Research | Designed | licensed data needed |
+| REQ-0225 | Employees, HR, incentives, dealer allocation | Sales | Designed | |

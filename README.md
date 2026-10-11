@@ -1,6 +1,6 @@
 # AIRAVAT
 
-Independent Indian securities brokerage technology platform. **Status: sandbox foundation.** Simulated market data, simulated funds, no exchange / bank / depository connectivity, no regulatory registrations. Nothing here is a claim of authorization.
+Independent Indian securities brokerage technology platform. **Status: sandbox, release 0.2.0.** Simulated market data, simulated funds, no exchange / bank / depository connectivity, no regulatory registrations. Nothing here is a claim of authorization.
 
 - Public site, client app and Broker Core admin: Next.js 16 (App Router, TypeScript, Tailwind v4)
 - Authoritative backend: Supabase Postgres (`supabase/migrations`) with RLS, security-definer engine functions, pg_cron tick
@@ -17,6 +17,12 @@ npm install
 npm run dev
 ```
 `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`.
+
+## What ships in 0.2.0 (additive)
+RevenueOS (versioned fees, plans, waivers, offers, approvals), Partner Network OS + CRM, Market Access Matrix, Scanner Matrix, Research ONE (Market Detective + AI Research Council), Strategy DNA backtesting, Shadow Portfolio, Sentinel X, AIRAVAT DAILY newsroom, Command Everywhere (Ctrl/Cmd+K), Materialverse themes, Living Product Showroom, demo accounts for every role. See `AIRAVAT_MASTER_COMPLETION.md` and `docs/SYSTEM_WIRING_MAP.md`.
+
+## Demo access
+Twelve demo accounts (one per role) exist in the sandbox. Credentials live only in `demo/*.local.*` on the operator's machine (git-ignored); `python -I demo/verify-logins.py` verifies them. See `docs/DEMO_LOGIN_VERIFICATION.md`.
 
 ## Control files
 See `docs/` for the master requirements register, architecture, database design, API contracts, security and threat models, regulatory register, test plan and results, decisions, known limitations and next steps. The original master prompt (credentials removed) is in `docs/spec/MASTER_PROMPT.txt`.

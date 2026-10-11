@@ -3,14 +3,17 @@ import { getSession } from "@/lib/auth";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { SandboxBanner } from "@/components/ui";
 import MobileNav from "./MobileNav";
+import { CommandButton } from "@/components/CommandPalette";
 
 export const NAV = [
   { href: "/platforms", label: "Platforms" },
   { href: "/markets", label: "Markets" },
+  { href: "/research", label: "Research" },
+  { href: "/daily", label: "DAILY" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/calculators", label: "Calculators" },
+  { href: "/showroom", label: "Showroom" },
   { href: "/academy", label: "Academy" },
-  { href: "/trust", label: "Trust Centre" },
+  { href: "/trust", label: "Trust" },
 ];
 
 export default async function Header() {
@@ -28,6 +31,7 @@ export default async function Header() {
             {NAV.map((n) => <Link key={n.href} href={n.href} className="hover:text-text">{n.label}</Link>)}
           </nav>
           <div className="hidden items-center gap-3 md:flex">
+            <CommandButton />
             <ThemeSwitcher compact />
             {user ? (
               <>

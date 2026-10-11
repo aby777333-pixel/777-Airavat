@@ -3,6 +3,8 @@ import { getMarketStatus, getQuotes } from "@/lib/market";
 import { changeOf, price, pct } from "@/lib/format";
 import { SimBadge } from "@/components/ui";
 import clsx from "clsx";
+import Awakening from "@/components/site/Awakening";
+import MorningIntelligence from "@/components/site/MorningIntelligence";
 
 const products = [
   { name: "AIRAVAT ONE", who: "Everyday investors", body: "Clean investing, transparent charges and a portfolio that explains itself.", href: "/platforms#one" },
@@ -24,6 +26,7 @@ export default async function Home() {
 
   return (
     <>
+      <Awakening />
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -94,6 +97,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <MorningIntelligence />
 
       {/* JOURNEY */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">

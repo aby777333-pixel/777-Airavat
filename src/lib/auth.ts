@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export type AppRole = "client" | "dealer" | "ops" | "risk" | "compliance" | "admin" | "super_admin";
-export const STAFF_ROLES: AppRole[] = ["dealer", "ops", "risk", "compliance", "admin", "super_admin"];
+export type AppRole = "client" | "dealer" | "ops" | "risk" | "compliance" | "admin" | "super_admin" | "finance" | "editor" | "sales" | "partner";
+// Staff roles may enter Broker Core; each page further restricts by role where the database function does.
+export const STAFF_ROLES: AppRole[] = ["dealer", "ops", "risk", "compliance", "admin", "super_admin", "finance", "editor", "sales"];
 
 export type Profile = {
   id: string;

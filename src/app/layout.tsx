@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#070c1c", width: "device-width", initialScale: 1 };
 
-const themeInit = `(function(){try{var t=localStorage.getItem('airavat-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`;
+const themeInit = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('airavat-theme');if(t){d.setAttribute('data-theme',t);}['material','motion','density'].forEach(function(k){var v=localStorage.getItem('airavat-'+k);if(v){d.setAttribute('data-'+k,v);}});}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

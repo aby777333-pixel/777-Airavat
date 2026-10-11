@@ -42,7 +42,7 @@ export default async function Positions() {
                 <td className={clsx("num", r.unrealized >= 0 ? "text-profit" : "text-loss")}>{money(r.unrealized)}</td>
                 <td className={clsx("num", Number(r.realized_pnl) >= 0 ? "text-profit" : "text-loss")}>{money(r.realized_pnl)}</td>
                 <td className={clsx("num font-semibold", r.total >= 0 ? "text-profit" : "text-loss")}>{money(r.total)}</td>
-                <td className="text-right">{r.net_qty !== 0 && <Link href={`/app/markets/${encodeURIComponent(r.symbol)}?side=${r.net_qty > 0 ? "SELL" : "BUY"}`} className="btn btn-ghost btn-sm">Exit</Link>}</td>
+                <td className="text-right whitespace-nowrap">{r.net_qty !== 0 && <><Link href={`/app/positions/twin?symbol=${encodeURIComponent(r.symbol)}&product=${r.product}`} className="btn btn-ghost btn-sm">Decision twin</Link> <Link href={`/app/markets/${encodeURIComponent(r.symbol)}?side=${r.net_qty > 0 ? "SELL" : "BUY"}`} className="btn btn-ghost btn-sm">Exit</Link></>}</td>
               </tr>))}</tbody>
           </table>
         </div>

@@ -2,6 +2,7 @@ import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import Ticker from "@/components/market/Ticker";
 import LiveOrb from "@/components/live/LiveOrb";
+import CommandPalette from "@/components/CommandPalette";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <main>{children}</main>
       <Footer />
       <LiveOrb context={{ surface: "public-website" }} />
+      <CommandPalette />
     </div>
   );
 }

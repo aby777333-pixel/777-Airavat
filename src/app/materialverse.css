@@ -1,0 +1,65 @@
+/* ------------------------------------------------------------------------
+   MATERIALVERSE — additional curated palettes (additive; the five original
+   themes in globals.css are unchanged). Each palette only overrides tokens.
+   ------------------------------------------------------------------------ */
+[data-theme="royal-sapphire"] { --bg:#07172F; --bg-2:#0b2148; --surface:rgba(21,59,112,0.55); --surface-2:rgba(21,59,112,0.75); --surface-solid:#153B70; --text:#F3E8D0; --text-muted:#c9c0ab; --text-faint:#8d8775; --border:rgba(214,173,96,0.2); --border-strong:rgba(214,173,96,0.45); --accent:#D6AD60; --accent-ink:#1a1202; --accent-2:#7fb0ff; --glow:214,173,96; }
+[data-theme="obsidian-chrome"] { --bg:#090B10; --bg-2:#11151c; --surface:rgba(36,43,54,0.72); --surface-2:rgba(36,43,54,0.9); --surface-solid:#242B36; --text:#F1F4F8; --text-muted:#AEBBCB; --text-faint:#6f7a88; --border:rgba(174,187,203,0.18); --border-strong:rgba(174,187,203,0.4); --accent:#2F80ED; --accent-ink:#f5f9ff; --accent-2:#AEBBCB; --glow:47,128,237; }
+[data-theme="arctic-frost"] { --bg:#EAF1F7; --bg-2:#dfe8f1; --surface:rgba(255,255,255,0.72); --surface-2:rgba(255,255,255,0.92); --surface-solid:#ffffff; --text:#273B50; --text-muted:#536577; --text-faint:#8b98a6; --border:rgba(185,202,216,0.8); --border-strong:rgba(39,59,80,0.3); --accent:#C5A06A; --accent-ink:#1d1403; --accent-2:#2c5fcf; --buy:#0f8a5f; --sell:#c9303e; --profit:#0f8a5f; --loss:#c9303e; --warn:#b26b00; --info:#2c5fcf; --focus:#273B50; --glow:197,160,106; --shadow:0 20px 50px rgba(39,59,80,0.12); }
+[data-theme="emerald-titanium"] { --bg:#071F1B; --bg-2:#0b2d27; --surface:rgba(20,107,87,0.35); --surface-2:rgba(20,107,87,0.55); --surface-solid:#146B57; --text:#F2F5F2; --text-muted:#C9D3D6; --text-faint:#86a09a; --border:rgba(119,201,164,0.22); --border-strong:rgba(119,201,164,0.45); --accent:#77C9A4; --accent-ink:#04140d; --accent-2:#c9d3d6; --glow:119,201,164; }
+[data-theme="imperial-burgundy"] { --bg:#2B101B; --bg-2:#3a1624; --surface:rgba(117,46,70,0.45); --surface-2:rgba(117,46,70,0.7); --surface-solid:#752E46; --text:#FFF9F3; --text-muted:#F2E4E5; --text-faint:#c9a9b3; --border:rgba(215,177,123,0.22); --border-strong:rgba(215,177,123,0.48); --accent:#D7B17B; --accent-ink:#231504; --accent-2:#f2e4e5; --glow:215,177,123; }
+[data-theme="midnight-aurora"] { --bg:#080D24; --bg-2:#0e1536; --surface:rgba(43,54,122,0.45); --surface-2:rgba(43,54,122,0.7); --surface-solid:#2B367A; --text:#D9F5F4; --text-muted:#a9c9d8; --text-faint:#6f8aa0; --border:rgba(70,198,204,0.22); --border-strong:rgba(70,198,204,0.5); --accent:#46C6CC; --accent-ink:#031516; --accent-2:#6A69D8; --glow:70,198,204; }
+[data-theme="graphite-carbon"] { --bg:#101214; --bg-2:#16191c; --surface:rgba(48,54,58,0.7); --surface-2:rgba(48,54,58,0.9); --surface-solid:#30363A; --text:#E0E5E5; --text-muted:#aeb7ba; --text-faint:#6D777D; --border:rgba(208,164,92,0.18); --border-strong:rgba(208,164,92,0.42); --accent:#D0A45C; --accent-ink:#1a1203; --accent-2:#9fb2bc; --glow:208,164,92; --glass-blur:8px; }
+[data-theme="champagne-ivory"] { --bg:#FAF7F0; --bg-2:#F1EADB; --surface:rgba(255,255,255,0.8); --surface-2:rgba(233,223,206,0.85); --surface-solid:#fffdf8; --text:#1C2730; --text-muted:#54524C; --text-faint:#8f8c84; --border:rgba(198,164,108,0.3); --border-strong:rgba(198,164,108,0.6); --accent:#C6A46C; --accent-ink:#1d1403; --accent-2:#1C2730; --buy:#0f8a5f; --sell:#c9303e; --profit:#0f8a5f; --loss:#c9303e; --warn:#b26b00; --info:#2c5fcf; --focus:#1C2730; --glow:198,164,108; --shadow:0 20px 50px rgba(60,40,10,0.1); }
+[data-theme="copper-nebula"] { --bg:#1D1820; --bg-2:#2a2030; --surface:rgba(112,68,53,0.4); --surface-2:rgba(112,68,53,0.65); --surface-solid:#704435; --text:#EDE5DE; --text-muted:#F2CDA7; --text-faint:#b89a84; --border:rgba(196,123,78,0.25); --border-strong:rgba(196,123,78,0.5); --accent:#C47B4E; --accent-ink:#1f0f07; --accent-2:#F2CDA7; --glow:196,123,78; }
+[data-theme="electric-cobalt"] { --bg:#06132B; --bg-2:#0a1b3d; --surface:rgba(18,76,192,0.3); --surface-2:rgba(18,76,192,0.5); --surface-solid:#124CC0; --text:#F5F9FF; --text-muted:#B4D9FF; --text-faint:#7aa6d8; --border:rgba(70,185,244,0.22); --border-strong:rgba(70,185,244,0.5); --accent:#46B9F4; --accent-ink:#03131f; --accent-2:#B4D9FF; --glow:70,185,244; }
+
+/* ------------------------------------------------------------------------
+   Material / motion / density preferences (data attributes on <html>)
+   ------------------------------------------------------------------------ */
+:root { --m-blur: var(--glass-blur); --m-reflect: 0.08; --m-shadow: var(--shadow); --pad: 1.25rem; }
+[data-material="essential"] { --m-blur: 0px; --m-reflect: 0; --m-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+[data-material="balanced"] { --m-blur: 10px; --m-reflect: 0.05; }
+[data-material="cinematic"] { --m-blur: 24px; --m-reflect: 0.14; }
+[data-density="compact"] { --pad: 0.75rem; }
+[data-density="compact"] .glass { border-radius: 10px; }
+[data-density="compact"] .table td, [data-density="compact"] .table th { padding: 0.4rem 0.6rem; }
+[data-motion="reduced"] *, [data-motion="reduced"] *::before, [data-motion="reduced"] *::after { animation: none !important; transition: none !important; }
+[data-motion="reduced"] .awaken { display: none; }
+
+/* ------------------------------------------------------------------------
+   Material presets — twelve families, all token-driven so palettes apply
+   ------------------------------------------------------------------------ */
+.m-crystal { background: linear-gradient(135deg, rgba(255,255,255,calc(var(--m-reflect) + 0.04)), var(--surface) 40%, rgba(var(--glow),0.06)); border: 1px solid var(--border-strong); backdrop-filter: blur(var(--m-blur)); -webkit-backdrop-filter: blur(var(--m-blur)); border-radius: var(--radius-lg); box-shadow: var(--m-shadow), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(0,0,0,0.25); position: relative; }
+.m-crystal::before { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.07) 45%, transparent 60%); }
+.m-frost { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(calc(var(--m-blur) + 6px)) saturate(1.2); -webkit-backdrop-filter: blur(calc(var(--m-blur) + 6px)) saturate(1.2); border-radius: var(--radius); box-shadow: var(--m-shadow); }
+[data-theme="ivory-reserve"] .m-frost, [data-theme="arctic-frost"] .m-frost, [data-theme="champagne-ivory"] .m-frost { background: rgba(255,255,255,0.65); border-color: rgba(0,0,0,0.06); }
+.m-chrome { background: linear-gradient(160deg, #f4f4f4 0%, #b9bec6 18%, #e9ecf0 32%, #8e95a0 50%, #dfe3e8 66%, #a7adb6 84%, #f0f2f5 100%); color: #0b0f16; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.8); }
+.m-carbon { background-color:#0f1113; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 6px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 6px); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), var(--m-shadow); color: #e6e9ec; }
+.m-titanium { background-image: linear-gradient(90deg, #5d646c, #8b929a 30%, #6c737b 50%, #969da5 70%, #60676f), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px); background-blend-mode: overlay; color:#0d1117; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.25); }
+.m-ceramic { background: #f6f3ec; color: #1d1b17; border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius); box-shadow: 0 8px 24px rgba(40,30,10,0.08), inset 0 1px 0 #fff; }
+.m-acrylic { background: rgba(10,12,18,0.55); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(var(--m-blur)); -webkit-backdrop-filter: blur(var(--m-blur)); border-radius: var(--radius); box-shadow: var(--m-shadow), inset 0 0 40px rgba(255,255,255,0.03); }
+.m-sapphire-edge { position: relative; background: var(--surface); border-radius: var(--radius); border: 1px solid rgba(var(--glow),0.35); box-shadow: 0 0 0 1px rgba(var(--glow),0.1), 0 0 36px rgba(var(--glow),0.25), inset 0 0 24px rgba(var(--glow),0.06); }
+.m-obsidian { background: radial-gradient(120% 80% at 20% 0%, #1b1d22, #06070a 60%); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08); color:#eef1f5; }
+.m-dichroic { position: relative; border-radius: var(--radius); background: var(--surface-solid); }
+.m-dichroic::before { content:""; position:absolute; inset:-1px; z-index:-1; border-radius:inherit; background: linear-gradient(120deg, #2e6bff, #8a5cff, #46c6cc, #2e6bff); background-size: 300% 300%; animation: dichroic 8s ease infinite; }
+@keyframes dichroic { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.m-polycarb { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); backdrop-filter: blur(calc(var(--m-blur) / 2)); -webkit-backdrop-filter: blur(calc(var(--m-blur) / 2)); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03); }
+.m-champagne { background: linear-gradient(135deg, #d9c296, #c6a46c 50%, #e3cfa8); color:#2a1f08; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 6px 20px rgba(198,164,108,0.35); }
+
+/* Functional motion helpers */
+.sheen { position: relative; overflow: hidden; }
+.sheen::after { content:""; position:absolute; top:0; left:-60%; width:40%; height:100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.12), transparent); transform: skewX(-15deg); animation: sheen 1.6s 0.4s ease-out 1; pointer-events:none; }
+@keyframes sheen { to { left: 130%; } }
+.magnetic { transition: transform 160ms ease; }
+.magnetic:hover { transform: translateY(-2px) scale(1.01); }
+.aurora-ribbon { position: absolute; inset: auto 0 0 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(var(--glow),0.9), transparent); animation: ribbon 3s ease-in-out infinite; }
+@keyframes ribbon { 0%,100% { opacity: 0.3; transform: translateX(-10%); } 50% { opacity: 1; transform: translateX(10%); } }
+
+/* Awakening intro: brief, skippable, respects reduced-motion */
+.awaken { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; background: radial-gradient(900px 600px at 50% 50%, #0d1a3a, #04070f 70%); animation: awaken-out 500ms 2.6s ease forwards; }
+.awaken .emblem path, .awaken .emblem circle { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 1.8s 0.2s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes awaken-out { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+.awaken .particle { position:absolute; left:50%; top:50%; width:3px; height:3px; border-radius:50%; background: rgba(212,180,106,0.9); animation: converge 2s ease-in forwards; }
+@keyframes converge { from { transform: translate(var(--dx), var(--dy)) scale(1); opacity:0.9 } to { transform: translate(0,0) scale(0.2); opacity:0 } }
+@media (prefers-reduced-motion: reduce) { .awaken { display:none; } .sheen::after, .aurora-ribbon, .m-dichroic::before { animation: none; } }

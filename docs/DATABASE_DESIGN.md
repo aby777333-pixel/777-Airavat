@@ -43,3 +43,15 @@ Public read: instruments, quotes, candles, holidays, legal documents, charge sch
 
 ## Functions (callable by authenticated)
 `submit_kyc`, `sandbox_deposit`, `request_withdrawal`, `preview_order`, `place_order`, `cancel_order`, `account_funds` (own/staff), `accept_document`, `log_ai_interaction`; staff-gated inside: `review_kyc`, `review_withdrawal`, `run_eod_settlement`, `trial_balance`, `reconciliation_report`, `update_risk_limits`, `update_app_setting`, `set_user_role` (super_admin). Internal only: `audit`, `post_journal`, `order_transition`, `apply_fill`, `approve_kyc_internal`, `sim_tick`, `sim_seed_history`, `account_ledger_balance`, `handle_new_user`.
+
+## Phase 2 additions (migrations 0006–0014)
+- Roles: `app_role` += finance, editor, sales, partner; `is_staff()` includes finance/editor/sales.
+- RevenueOS: `fee_categories`, `fee_definitions` (immutable versions, `supersedes`), `pricing_plans`, `plan_assignments`, `waiver_grants`, `offer_campaigns`, `offer_enrollments`, `offer_redemptions`, `charge_adjustments`, `subscription_plans`, `subscriptions`, `vendor_costs`, `approval_requests`; ledger accounts 4100 (contra-income), 4200 (subscription revenue), 2400 (partner payable), 5100 (partner remuneration), 5200 (vendor cost).
+- Partners/CRM: `partners`, `partner_agreements`, `commission_plans`, `partner_plan_assignments`, `referral_attributions`, `commission_accruals`, `partner_payouts`, `leads`, `lead_activities`, `sales_targets`.
+- Markets/Scanners: `market_access_matrix`, `instrument_metrics`, `scanners`, `scanner_results`; 8 research-only instruments (segment COMM/CDS, `tradable=false`).
+- Research/Quant: `research_cases`, `research_evidence`, `research_findings`, `strategies`, `backtest_runs`, `shadow_portfolios`, `shadow_orders`, `shadow_positions`, `shadow_snapshots`.
+- CMS: `article_categories`, `articles`, `article_revisions`, `article_transitions`, `newsletter_subscriptions`.
+- Sentinel: `sentinel_alerts` (unique user+dedupe_key), `sentinel_preferences`.
+- Cron: `airavat-scanners` (*/5), `airavat-sentinel` (2-59/5), `airavat-publish-articles` (* * * * *).
+- Totals after Phase 2: 75 tables, 86 functions in `public`.
+- Fix history: 0013 lets internal (no-JWT) callers read `account_funds` and pins `search_path` on three helpers; 0014 renames query aliases that collided with PL/pgSQL variables in `accrue_partner_commission` and `partner_passport`.

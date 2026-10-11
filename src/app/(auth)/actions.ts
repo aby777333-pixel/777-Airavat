@@ -22,8 +22,8 @@ export async function signIn(_prev: AuthState, form: FormData): Promise<AuthStat
 }
 
 export async function signUp(_prev: AuthState, form: FormData): Promise<AuthState> {
-  const parsed = creds.extend({ full_name: z.string().min(2).max(120) }).safeParse({
-    email: form.get("email"), password: form.get("password"), full_name: form.get("full_name"),
+  const parsed = creds.extend({ full_name: z.string().min(2).max(120), referral_code: z.string().max(24).optional() }).safeParse({
+    email: form.get("email"), password: form.get("password"), full_name: form.get("full_name"), referral_code: String(form.get("referral_code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "") || undefined,
   });
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   if (form.get("accept_terms") !== "on") return { error: "You must accept the draft Terms of Use and Risk Disclosure to continue." };
@@ -33,7 +33,7 @@ export async function signUp(_prev: AuthState, form: FormData): Promise<AuthStat
   const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
-    options: { data: { full_name: parsed.data.full_name }, emailRedirectTo: `${origin}/auth/callback?next=/app/onboarding` },
+    options: { data: { full_name: parsed.data.full_name, ...(parsed.data.referral_code ? { referral_code: parsed.data.referral_code } : {}) }, emailRedirectTo: `${origin}/auth/callback?next=/app/onboarding` },
   });
   if (error) return { error: error.message };
   if (data.session) {

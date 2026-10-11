@@ -33,3 +33,27 @@ Error contract: Postgres `raise exception 'CODE[: detail]'`; the app maps `CODE`
 
 ## Webhooks / streaming
 None yet. Real-time quote streaming (WebSocket) is a backlog item; pages currently read `quotes` on render.
+
+## 3. Phase 2 RPC additions (authenticated session unless stated)
+| Function | Caller | Purpose / errors |
+|---|---|---|
+| `compute_charges_v2(account, product, side, value, date?)` | staff (internal from `apply_fill`) | plan + waiver + offer aware charges; legacy `compute_charges` delegates with no account |
+| `submit_fee_version(p jsonb)` | finance/admin/super_admin; statutory: compliance/super_admin | new pending version → `approval_requests` (`STATUTORY_CHANGE_REQUIRES_COMPLIANCE`) |
+| `decide_approval(request, decision, note)` | per entity matrix | `MAKER_CHECKER_VIOLATION` if requester |
+| `request_waiver(...)` · `create_offer(p)` · `apply_promo_code(code)` · `assign_plan(...)` · `request_charge_adjustment(...)` · `subscribe_plan(code)` · `cancel_subscription(id)` · `revenue_summary(from, to)` | see role checks in migration 0007 | `ONLY_BROKER_FEES_CAN_BE_WAIVED`, `OFFER_NOT_AVAILABLE`, `PLAN_NOT_AVAILABLE`, `ALREADY_SUBSCRIBED`, `INSUFFICIENT_FUNDS` |
+| `register_partner(p)` · `set_partner_status(id, status, note)` · `update_partner(id, p)` · `create_commission_plan(p)` · `assign_commission_plan(partner, plan_code)` · `create_partner_payout(partner)` · `settle_partner_payout(id, decision)` · `partner_passport(partner)` · `update_lead(id, status, note, assignee?)` | sales/ops/compliance/finance/admin per function; passport also partner self | `AUTHORIZED_PERSON_NEEDS_EXCHANGE_APPROVAL_REF`, `PLAN_CATEGORY_MISMATCH`, `PARTNER_NOT_ELIGIBLE`, `NOTHING_TO_PAY`, `PARTNER_CANNOT_APPROVE_OWN_PAYOUT` |
+| `create_lead(p)` | **anon allowed** (public form, honeypot + validation in `/api/leads`) | round-robin assignment to `sales` |
+| `update_market_stage(id, p)` | compliance/admin/super_admin | `TRADING_ENABLE_GATE` |
+| `save_scanner(p)` · `delete_scanner(id)` | user | `CONDITIONS_1_TO_8`, `UNKNOWN_METRIC`, `SCANNER_LIMIT` |
+| `create_research_case(p)` · `add_research_evidence(case, p)` · `add_research_finding(...)` · `close_research_case(case, summary)` | owner | |
+| `save_strategy(p)` · `record_backtest(p)` | owner | `UNKNOWN_STRATEGY_TYPE` |
+| `create_shadow_portfolio(...)` · `shadow_place_order(...)` · `shadow_valuation(portfolio)` | owner | `CASH_OUT_OF_RANGE`, `PORTFOLIO_LIMIT`, `INSUFFICIENT_SHADOW_CASH`, `INSUFFICIENT_SHADOW_HOLDINGS` |
+| `trade_health(account)` · `premortem(symbol, side, product, qty)` · `decision_twin(symbol, product)` · `what_changed(since?)` · `acknowledge_alert(id)` · `set_sentinel_preferences(p)` | owner (health also staff) | `NO_OPEN_POSITION` |
+| `save_article(p)` · `article_transition(id, to, note?, scheduled_for?)` | editor/compliance/admin/super_admin | `COMPLIANCE_APPROVAL_REQUIRED`, `MAKER_CHECKER_VIOLATION`, `MUST_BE_APPROVED`, `MUST_BE_APPROVED_WITH_SCHEDULE`, `INVALID_TRANSITION` |
+| `subscribe_newsletter(email)` · `daily_briefing()` | **anon allowed** | `INVALID_EMAIL` |
+
+## 4. Phase 2 HTTP routes
+- `GET /api/search?q=` → `{results[{kind,title,subtitle?,href}]}` (commands, instruments, published articles).
+- `POST /api/leads` → `{ok, id}`; honeypot field `website`; 400 on validation failure.
+- `POST /api/research/warroom` `{case_id}` → records four findings (bull, bear, neutral, auditor) with model + `warroom-v1.0`; 401/403/503 as appropriate.
+- `POST /api/editorial` `{task, topic, body?, category?}` → `{ok, text, model, prompt_version:"editorial-v1.0", review_required:true}`; staff only.

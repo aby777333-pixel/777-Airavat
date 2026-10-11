@@ -12,5 +12,10 @@
 - Security gaps: no MFA/passkeys, CSP, rate limiting, WAF, SIEM, pen test, DR drills.
 - Email confirmation behaviour depends on Supabase auth settings, which were not changed in this session.
 - Competitor research is a method, not a verified matrix.
-- Only 5 of the 22 specified themes; no Theme Studio editor; no voice/gesture/avatar modes.
-- Mobile apps, PRO terminal, dealer, partner, institutional, developer API, Growth Command, Regulatory Fortress reporting, Sentinel: not started.
+- 15 of the 22 specified palettes; Theme Studio ships; no voice/gesture/avatar modes.
+- Mobile apps, PRO terminal, dealer desk, institutional, developer API, Regulatory Fortress reporting: not started. Partner network, CRM, RevenueOS, Research ONE (sandbox data), Scanner Matrix, Strategy DNA, Shadow Portfolio, Sentinel X and AIRAVAT DAILY ship in 0.2.0.
+- Research modules run on simulated prices only; no fundamentals, filings, ownership or news data (Evidence Graph, Digital Twin, Financial MRI need licensed feeds).
+- Backtests use ~300 synthetic daily candles; results demonstrate the engine, not any edge.
+- AIRAVAT DAILY stores newsletter opt-ins with confirmation tokens but no email provider is connected.
+- Showroom entries without a captured screenshot render as pending.
+- Commission plan legal bases are placeholders pending counsel review; no partner remuneration is real.

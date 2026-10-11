@@ -17,6 +17,11 @@ export default function LiveOrb({ context }: { context: LiveContext }) {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open]);
+  useEffect(() => {
+    const onAsk = (e: Event) => { const q = (e as CustomEvent<{ question?: string }>).detail?.question; setOpen(true); if (q) setInput(q); };
+    window.addEventListener("airavat:live", onAsk);
+    return () => window.removeEventListener("airavat:live", onAsk);
+  }, []);
 
   async function send(e: React.FormEvent) {
     e.preventDefault();

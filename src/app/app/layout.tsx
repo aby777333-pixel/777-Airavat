@@ -7,6 +7,7 @@ import { signOut } from "@/app/(auth)/actions";
 import { Logo } from "@/components/site/Header";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LiveOrb from "@/components/live/LiveOrb";
+import CommandPalette, { CommandButton } from "@/components/CommandPalette";
 import { SandboxBanner } from "@/components/ui";
 import clsx from "clsx";
 
@@ -14,7 +15,9 @@ export const dynamic = "force-dynamic";
 
 const nav = [
   ["/app", "Dashboard"], ["/app/markets", "Market watch"], ["/app/orders", "Orders"], ["/app/positions", "Positions"], ["/app/holdings", "Holdings"],
-  ["/app/portfolio", "Portfolio"], ["/app/funds", "Funds"], ["/app/ledger", "Ledger"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/settings", "Settings"],
+  ["/app/portfolio", "Portfolio"], ["/app/funds", "Funds"], ["/app/ledger", "Ledger"],
+  ["/app/scanners", "Scanner Matrix"], ["/app/research", "Research cases"], ["/app/strategies", "Strategy DNA"], ["/app/shadow", "Shadow Portfolio"], ["/app/sentinel", "Sentinel X"],
+  ["/app/plan", "My plan & offers"], ["/app/partner", "Partner portal"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/theme", "Theme Studio"], ["/app/settings", "Settings"],
 ];
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -46,14 +49,16 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             ))}
             {isStaff && <Link href="/admin" className="rounded-lg px-3 py-2 text-sm text-accent hover:bg-accent/10">Broker Core (admin) →</Link>}
           </nav>
-          <div className="mt-4 flex items-center justify-between gap-2 px-2">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 px-2">
             <ThemeSwitcher compact />
+            <CommandButton />
             <form action={signOut}><button className="btn btn-ghost btn-sm">Log out</button></form>
           </div>
         </aside>
         <main className="min-w-0">{children}</main>
       </div>
       <LiveOrb context={{ surface: "client-app" }} />
+      <CommandPalette />
     </div>
   );
 }
