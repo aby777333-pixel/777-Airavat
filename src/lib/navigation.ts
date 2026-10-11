@@ -122,6 +122,7 @@ export const NAV_GROUPS: NavGroup[] = [
     links: [
       { href: "/pricing/plans", label: "Brokerage Plans", desc: "Approved plans and eligibility", icon: "🏷️" },
       { href: "/pricing", label: "All Charges", desc: "The complete schedule", icon: "🧾" },
+      { href: "/pricing/explainer", label: "Interactive Explainer", desc: "Drag a trade value, see every levy and formula", icon: "🎚️", badge: "new" },
       { href: "/pricing/compare", label: "Plan Comparison", desc: "Side-by-side by trade type", icon: "🆚" },
       { href: "/tools/brokerage-calculator", label: "Charges Calculator", desc: "Exact cost of any trade", icon: "🧮" },
       { href: "/pricing/margin-interest", label: "Margin & Interest", desc: "MTF, delayed payment, pledge", icon: "💹" },

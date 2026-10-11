@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 0.8.3 — 2026-10-11 — Interactive charges explainer
+- /pricing/explainer: slide the trade value from ₹1,000 to ₹1 crore across all eight published segments, switch side and exchange (and premium share for options); a stacked bar and a formula table update live from `estimateCharges` (the same schedule the ledger uses), with round-trip cost, breakeven move, the broker's share of the bill and preset scenarios. Pricing menu updated.
+
 ## 0.8.2 — 2026-10-11 — Public watchlist and alerts
 - /markets/watchlist: a watchlist that lives in the browser (no account): search the simulated universe, live quotes every 5 s through the new public read-only `/api/quotes` route, crosses-above / falls-below alerts evaluated in the browser with optional browser notifications, stale-quote badge, CSV export link. Signed-in visitors get a one-click "Save to my account" that moves symbols into the sandbox watchlist and alerts into server-side `create_price_alert`, then clears the browser copy; `/login?next=/markets/watchlist?migrate=1` highlights the box after sign-in.
 - Every public instrument page has a ☆ Watch star (`WatchButton`) writing the same browser list. Library `src/lib/public-watchlist.ts`.
