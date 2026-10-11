@@ -31,6 +31,11 @@ export default function Academy() {
         <div className="font-display mt-1 text-xl font-semibold">24 candlestick patterns, 14 chart patterns, 10 indicators and 16 Indian-market essentials, animated and quizzed</div>
         <p className="mt-1 text-sm text-muted">Doji to three white soldiers, head and shoulders to cup and handle, VWAP to CPR, circuit filters to T+1. Open Chart School →</p>
       </Link>
+      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+        <Link href="/academy/tracks" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Learning tracks</div><div className="text-xs text-muted">Beginner · Investor · F&amp;O, with quizzes</div></Link>
+        <Link href="/academy/glossary" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Glossary A–Z</div><div className="text-xs text-muted">120+ terms with search</div></Link>
+        <Link href="/learn/regulations" className="glass block p-4 hover:-translate-y-0.5"><div className="font-display font-semibold">Regulation explained</div><div className="text-xs text-muted">Peak margin, T+1, pledge, SCORES, ODR</div></Link>
+      </div>
       <div className="grid gap-4 md:grid-cols-2">
         {lessons.map((l) => (
           <article key={l.title} className="glass p-6">

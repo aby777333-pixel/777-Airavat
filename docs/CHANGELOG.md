@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 0.7.5 — 2026-10-11 — Learn block, part 2: glossary, learning tracks, regulation explained; hero card more transparent
+- /academy/glossary: 120+ Indian-market terms (STT, CTT, UCC, DP, BSDA, CKYC, KRA, ASBA, T+1, MTF, SLB, ASM/GSM, SPAN, GTT, VWAP …) in ten categories with search, category filter, A–Z jump links, DefinedTermSet JSON-LD and "see it" links to the screen where each term appears.
+- /academy/tracks: three structured tracks (First steps · 7 lessons, Long-term investor · 6, F&O foundations · 5) at /academy/tracks/[track]/[lesson], each with a try-it link into the sandbox and a quiz; completion stored per browser with a progress bar (no account needed).
+- /learn/regulations: twelve plain-language digests (peak margin, T+1/T+0, running-account settlement, pledge/re-pledge, investor charter, SCORES/SMART ODR, KYC/nomination, F&O risk disclosure, ASM/GSM, algo rules, charges transparency, authorised persons) with official-source links and a "how AIRAVAT applies these" box.
+- Learn menu, academy hub cards, SEO entries and sitemap (18 lesson URLs) updated. Hero copy card transparency raised again (28% night, light blur).
+
 ## 0.7.4 — 2026-10-11 — Chart School (Learn block, part 1), bigger logo, scroll arrows
 - /academy/chart-school: 24 animated candlestick patterns (with Hindi names where common), 14 animated chart patterns, 10 indicators read the Indian way, 16 Indian-market essentials (timings, circuits, lots, expiry, T+1, STT/CTT, pledge, ASM/GSM, bulk/block, FII/DII, regulators, ASBA, MF cut-offs, tax basics, Muhurat) and three self-check quizzes; one SEO page per pattern (/academy/chart-school/[slug], 38 pages in the sitemap). Animations use the hero FX keyframes and respect reduced motion.
 - Header logo enlarged (76 px) and floating scroll-to-top/bottom arrows on public pages.

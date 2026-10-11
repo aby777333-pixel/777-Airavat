@@ -97,6 +97,9 @@ export const NAV_GROUPS: NavGroup[] = [
     links: [
       { href: "/academy", label: "AIRAVAT Academy", desc: "Structured lessons by level", icon: "🎓" },
       { href: "/academy/chart-school", label: "Chart School", desc: "Animated candlestick and chart patterns, indicators, Indian market rules", icon: "🕯️", badge: "new" },
+      { href: "/academy/tracks", label: "Learning Tracks", desc: "Beginner, investor and F&O tracks with quizzes", icon: "🛤️", badge: "new" },
+      { href: "/academy/glossary", label: "Glossary A–Z", desc: "120+ market terms with search", icon: "📖" },
+      { href: "/learn/regulations", label: "Regulation Explained", desc: "Peak margin, T+1, pledges, SCORES, ODR", icon: "⚖️" },
       { href: "/daily", label: "AIRAVAT DAILY", desc: "The financial journal", icon: "📰" },
       { href: "/briefing", label: "Morning Intelligence", desc: "Today's briefing", icon: "🌅" },
       { href: "/learn/beginner-guides", label: "Beginner Guides", desc: "Demat, KYC, first order, first SIP", icon: "🧭" },

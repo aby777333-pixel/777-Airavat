@@ -45,7 +45,7 @@ export default async function Home() {
               <Image src="/brand/hero-people.webp" alt="" fill priority unoptimized sizes="(min-width: 1400px) 1400px, 100vw" className="object-contain object-[100%_100%]" />
             </div>
             <div className="relative z-10 max-w-[620px] py-12 md:py-16">
-              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.16)] bg-[#0c1116]/45 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-md">
+              <div className="rise rounded-[var(--radius-lg)] border border-[rgba(238,240,241,0.16)] bg-[#0c1116]/28 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm">
             <div className="rise inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               <span className="h-px w-8 bg-accent" /> The Indian brokerage house, built in the open
             </div>
