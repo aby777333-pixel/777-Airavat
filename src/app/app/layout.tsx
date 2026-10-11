@@ -15,9 +15,9 @@ export const dynamic = "force-dynamic";
 
 const nav = [
   ["/app", "Dashboard"], ["/app/pro", "Terminal X"], ["/app/markets", "Market watch"], ["/app/orders", "Orders"], ["/app/positions", "Positions"], ["/app/holdings", "Holdings"],
-  ["/app/portfolio", "Portfolio"], ["/app/funds", "Funds"], ["/app/ledger", "Ledger"],
+  ["/app/portfolio", "Portfolio"], ["/app/reports", "Reports & tax"], ["/app/funds", "Funds"], ["/app/ledger", "Ledger"],
   ["/app/scanners", "Scanner Matrix"], ["/app/research", "Research cases"], ["/app/strategies", "Strategy DNA"], ["/app/shadow", "Shadow Portfolio"], ["/app/sentinel", "Sentinel X"],
-  ["/app/ipo", "IPO desk"], ["/app/developer", "API & alerts"], ["/app/plan", "My plan & offers"], ["/app/partner", "Partner portal"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/theme", "Theme Studio"], ["/app/settings", "Settings"],
+  ["/app/ipo", "IPO desk"], ["/app/developer", "API & alerts"], ["/app/plan", "My plan & offers"], ["/app/partner", "Partner portal"], ["/app/kyc", "KYC & account"], ["/app/consents", "Consent vault"], ["/app/support", "Support"], ["/app/notifications", "Notifications"], ["/app/theme", "Theme Studio"], ["/app/settings", "Settings"],
 ];
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {

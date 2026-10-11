@@ -3,6 +3,7 @@ import { istTime } from "@/lib/format";
 import { Badge, Card, Empty, PageHeader, statusTone } from "@/components/ui";
 import { reviewKyc } from "../actions";
 import ActionForm from "@/components/ActionForm";
+import KycVerifications from "./KycVerifications";
 
 export default async function KycQueue() {
   const { supabase, profile } = await requireStaff("/admin/kyc");
@@ -21,7 +22,9 @@ export default async function KycQueue() {
               <div className="sm:col-span-3"><span className="text-muted">Address</span> {addr ? `${addr.line1}, ${addr.city}, ${addr.state} ${addr.pincode}` : "—"}</div>
               <div className="sm:col-span-3"><span className="text-muted">Nominee</span> {(a.nominee as { name: string; relationship: string })?.name} ({(a.nominee as { relationship: string })?.relationship}) · <span className="text-muted">Declarations</span> {Object.entries((a.declarations ?? {}) as Record<string, boolean>).filter(([, v]) => v).map(([k]) => k).join(", ")}</div>
               {a.rejection_reason && <div className="sm:col-span-3 text-xs text-muted">Reviewer note: {a.rejection_reason}</div>}
+              <div className="sm:col-span-3"><span className="text-muted">Entity</span> {(a as { entity_type?: string }).entity_type ?? "individual"} · <span className="text-muted">Documents</span> {((a as { documents?: { name: string; status: string }[] }).documents ?? []).filter((d) => d.status === "provided").length}/{((a as { documents?: unknown[] }).documents ?? []).length} provided</div>
             </div>
+            <KycVerifications appId={a.id} />
             {a.status === "under_review" && canReview && (
               <ActionForm action={reviewKyc} className="mt-4 flex flex-wrap items-center gap-2"><input type="hidden" name="id" value={a.id} /><input className="input max-w-xs" name="note" placeholder="Reviewer note (required for reject)" />
                 <button className="btn btn-primary btn-sm" name="decision" value="approve">Approve</button><button className="btn btn-ghost btn-sm" name="decision" value="reject">Reject</button></ActionForm>

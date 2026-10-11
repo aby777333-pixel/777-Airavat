@@ -5,7 +5,8 @@ import { requireUser } from "@/lib/auth";
 import { getAccount, getFunds } from "@/lib/account";
 import { getCandles, getInstrument, getMarketStatus } from "@/lib/market";
 import { changeOf, istTime, pct, price } from "@/lib/format";
-import Chart from "@/components/market/Chart";
+import AdvancedChart from "@/components/market/AdvancedChart";
+import CompanyProfile from "@/components/market/CompanyProfile";
 import { Notice, SimBadge } from "@/components/ui";
 import OrderTicket from "./OrderTicket";
 import AdvancedOrders from "./AdvancedOrders";
@@ -16,12 +17,15 @@ export default async function TradePage({ params, searchParams }: { params: Prom
   const { supabase, user } = await requireUser(`/app/markets/${symbol}`);
   const [inst, ms, account] = await Promise.all([getInstrument(sym), getMarketStatus(), getAccount(supabase, user.id)]);
   if (!inst) notFound();
-  const [candles, funds, holding, position] = await Promise.all([
+  const [candles, intraday, funds, holding, position, myTrades] = await Promise.all([
     getCandles(inst.id, "1d", 300),
+    getCandles(inst.id, "1m", 2000),
     account ? getFunds(supabase, account.id) : null,
     account ? supabase.from("holdings").select("qty,avg_price").eq("account_id", account.id).eq("instrument_id", inst.id).maybeSingle() : null,
     account ? supabase.from("positions").select("product,net_qty,avg_price,realized_pnl").eq("account_id", account.id).eq("instrument_id", inst.id).neq("net_qty", 0) : null,
+    account ? supabase.from("trades").select("side,qty,price,traded_at").eq("account_id", account.id).eq("instrument_id", inst.id).order("traded_at", { ascending: false }).limit(50) : null,
   ]);
+  const markers = (myTrades?.data ?? []).map((t) => ({ time: Math.floor(new Date(t.traded_at).getTime() / 1000), side: t.side as "BUY" | "SELL", qty: t.qty, price: Number(t.price) }));
   const c = changeOf(inst.quote.ltp, inst.quote.prev_close);
 
   return (
@@ -39,7 +43,8 @@ export default async function TradePage({ params, searchParams }: { params: Prom
       </div>
       <div className="grid gap-5 lg:grid-cols-[1.618fr_1fr]">
         <div className="space-y-4">
-          <div className="glass p-4"><Chart candles={candles} height={360} /></div>
+          <div className="glass p-4"><AdvancedChart daily={candles} intraday={intraday} symbol={inst.symbol} markers={markers} height={380} /></div>
+          <CompanyProfile instrumentId={inst.id} symbol={inst.symbol} />
           <div className="grid gap-3 sm:grid-cols-3 text-sm">
             <div className="glass p-3"><div className="text-xs text-muted">Bid / Ask</div><div className="tnum">{price(inst.quote.bid)} / {price(inst.quote.ask)}</div></div>
             <div className="glass p-3"><div className="text-xs text-muted">Day range</div><div className="tnum">{price(inst.quote.low)} – {price(inst.quote.high)}</div></div>

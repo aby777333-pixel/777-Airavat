@@ -42,6 +42,8 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "/markets/news", label: "Market News", desc: "Briefs from AIRAVAT DAILY", icon: "📰" },
       { href: "/markets/breadth", label: "Market Breadth", desc: "Advance-decline, 52-week highs and lows", icon: "📶" },
       { href: "/markets/ipo-calendar", label: "IPO Calendar", desc: "Upcoming, open and listed issues", icon: "🗓️" },
+      { href: "/markets/announcements", label: "Announcements & Insiders", desc: "Filings, insider disclosures, shareholding", icon: "📣" },
+      { href: "/markets/deals", label: "Deals, Flows & Delivery", desc: "Bulk/block deals, FII/DII, delivery %", icon: "🏦" },
       { href: "/markets/universe", label: "Market Atlas", desc: "Every segment and its launch stage", icon: "🗺️" },
     ] },
   { key: "intelligence", label: "Intelligence", blurb: "Research ONE: evidence first, opinions second, never advice.",

@@ -5,7 +5,7 @@ import { getAccount, getFunds } from "@/lib/account";
 import { getCandles, getMarketStatus, getQuotes } from "@/lib/market";
 import { changeOf, money, pct, price } from "@/lib/format";
 import { Badge, Empty, SimBadge } from "@/components/ui";
-import Chart from "@/components/market/Chart";
+import AdvancedChart from "@/components/market/AdvancedChart";
 import OrderTicket from "../markets/[symbol]/OrderTicket";
 import AdvancedOrders from "../markets/[symbol]/AdvancedOrders";
 import DepthLadder from "./DepthLadder";
@@ -18,7 +18,7 @@ export default async function TerminalX({ searchParams }: { searchParams: Promis
   if (!account) return <Empty title="No sandbox account" cta={{ href: "/app/onboarding", label: "Complete onboarding" }} />;
   const [quotes, ms, funds, { data: positions }, watch] = await Promise.all([getQuotes(), getMarketStatus(), getFunds(supabase, account.id), supabase.from("positions").select("*, instrument:instruments(symbol)").eq("account_id", account.id).neq("net_qty", 0), supabase.from("watchlist_items").select("instrument_id, watchlist:watchlists!inner(user_id)").eq("watchlist.user_id", user.id)]);
   const inst = quotes.find((q) => q.symbol === symbol.toUpperCase() && q.tradable) ?? quotes.find((q) => q.symbol === "RELIANCE")!;
-  const [candles, holding] = await Promise.all([getCandles(inst.id, "1d", 200), supabase.from("holdings").select("qty").eq("account_id", account.id).eq("instrument_id", inst.id).maybeSingle()]);
+  const [candles, intraday, holding] = await Promise.all([getCandles(inst.id, "1d", 200), getCandles(inst.id, "1m", 1200), supabase.from("holdings").select("qty").eq("account_id", account.id).eq("instrument_id", inst.id).maybeSingle()]);
   const ids = new Set((watch.data ?? []).map((w) => w.instrument_id));
   const list = quotes.filter((q) => q.segment === "EQ" && (ids.size === 0 || ids.has(q.id)));
   const qmap = new Map(quotes.map((q) => [q.id, q.quote.ltp]));
@@ -33,7 +33,7 @@ export default async function TerminalX({ searchParams }: { searchParams: Promis
         <main className="space-y-3">
           <div className="glass p-3">
             <div className="mb-2 flex flex-wrap items-baseline gap-3"><span className="font-display text-xl font-bold">{inst.symbol}</span><span className="text-sm text-muted">{inst.name}</span><span className="tnum text-lg">{price(inst.quote.ltp)}</span>{(() => { const c = changeOf(inst.quote.ltp, inst.quote.prev_close); return <span className={clsx("tnum text-sm", c.change >= 0 ? "text-profit" : "text-loss")}>{pct(c.changePct)}</span>; })()}<Link href={`/app/markets/${inst.symbol}`} className="ml-auto text-xs text-accent">Full page →</Link></div>
-            <Chart candles={candles} height={360} />
+            <AdvancedChart daily={candles} intraday={intraday} symbol={inst.symbol} height={340} compact />
           </div>
           <div className="glass p-3">
             <div className="mb-1 text-[11px] uppercase tracking-wider text-faint">Positions</div>

@@ -121,7 +121,7 @@ export default async function Pricing() {
           <li><strong className="text-text">Investor protection fund</strong> contributions are tiny per-crore amounts collected by NSE and shown separately on contract notes.</li>
           <li>Every fee in the catalogue is versioned with an effective date, an approval record and a source; historical trades keep the version that applied at the time. Use the <Link className="text-accent underline" href="/calculators">calculators</Link> for an exact breakdown.</li>
         </ul>
-        <p className="mt-3 text-xs text-faint">Market reference for this schedule: {REFERENCE.label}, retrieved {REFERENCE.retrieved} (<a className="underline" href={REFERENCE.url} target="_blank" rel="noreferrer">{REFERENCE.url}</a>). Official exchange and statutory notifications take precedence; they are cited on each catalogue line before live use.</p>
+        <p className="mt-3 text-xs text-faint">{REFERENCE.label}; benchmark date {REFERENCE.retrieved}. Official exchange and statutory notifications take precedence; they are cited on each catalogue line before live use.</p>
       </section>
     </div>
   );

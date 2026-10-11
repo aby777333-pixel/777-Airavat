@@ -4,6 +4,7 @@ import { contentPage, CONTENT_PAGES } from "@/content/pages";
 import ContentPageView from "@/components/site/ContentPageView";
 import { SITE } from "@/lib/seo";
 import { NAV_GROUPS } from "@/lib/navigation";
+import { publishedFaqs, publishedHero, publishedPageOverride } from "@/lib/cms";
 
 const groupHref = (group: string) => NAV_GROUPS.find((g) => g.label === group)?.links[0].href ?? "/";
 
@@ -13,14 +14,18 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
   const { slug } = await params;
-  const page = contentPage("/" + slug.join("/"));
+  const path = "/" + slug.join("/");
+  const page = (await publishedPageOverride(path)) ?? contentPage(path);
   if (!page) return {};
   return { title: page.title, description: page.dek, keywords: page.keywords, alternates: { canonical: `${SITE.url}${page.path}` }, openGraph: { title: page.title, description: page.dek, url: `${SITE.url}${page.path}`, siteName: SITE.name, type: "article" } };
 }
 
 export default async function RegistryPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
-  const page = contentPage("/" + slug.join("/"));
-  if (!page) notFound();
+  const path = "/" + slug.join("/");
+  const base = (await publishedPageOverride(path)) ?? contentPage(path);
+  if (!base) notFound();
+  const [extraFaqs, hero] = await Promise.all([publishedFaqs(path), publishedHero(path)]);
+  const page = { ...base, faqs: [...base.faqs, ...extraFaqs], hero: hero?.variant ?? base.hero, intro: hero?.intro ?? base.intro, h1: hero?.headline ?? base.h1 };
   return <ContentPageView page={page} groupHref={groupHref(page.group)} />;
 }

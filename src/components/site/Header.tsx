@@ -6,12 +6,14 @@ import MobileNav from "./MobileNav";
 import MegaMenu from "./MegaMenu";
 import { CommandButton } from "@/components/CommandPalette";
 import { NAV_GROUPS, UTILITY_NAV } from "@/lib/navigation";
+import { publishedMenu } from "@/lib/cms";
 
 // Legacy flat list kept for the command registry and tests; the header renders NAV_GROUPS.
 export const NAV = NAV_GROUPS.map((g) => ({ href: g.links[0].href, label: g.label }));
 
 export default async function Header() {
-  const { user, profile } = await getSession();
+  const [{ user, profile }, menuOverride] = await Promise.all([getSession(), publishedMenu("primary")]);
+  const groups = menuOverride ?? NAV_GROUPS;
   return (
     <>
       <SandboxBanner />
@@ -25,7 +27,7 @@ export default async function Header() {
             <Logo />
             <span className="font-display text-lg font-bold tracking-[0.18em]">AIRAVAT</span>
           </Link>
-          <nav aria-label="Primary"><MegaMenu groups={NAV_GROUPS} /></nav>
+          <nav aria-label="Primary"><MegaMenu groups={groups} /></nav>
           <div className="hidden items-center gap-2 lg:flex">
             <CommandButton />
             <ThemeSwitcher compact />
@@ -43,7 +45,7 @@ export default async function Header() {
               </>
             )}
           </div>
-          <MobileNav groups={NAV_GROUPS} utility={UTILITY_NAV} signedIn={!!user} />
+          <MobileNav groups={groups} utility={UTILITY_NAV} signedIn={!!user} />
         </div>
       </header>
     </>

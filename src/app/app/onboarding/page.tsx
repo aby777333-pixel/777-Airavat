@@ -10,7 +10,7 @@ export default async function Onboarding() {
   if (account) redirect("/app");
   return (
     <>
-      <PageHeader eyebrow="Onboarding" title="Simulated KYC application" subtitle="What a real application collects, minus document uploads, KRA/CKYC verification, eSign and in-person verification. Those integrations are external dependencies and are listed as such in the requirements register." />
+      <PageHeader eyebrow="Onboarding" title="Simulated KYC application" subtitle="Every eligible entity type: resident individual, NRI, HUF, company, partnership, LLP and trust, with entity-specific documents and the full verification set (PAN, CKYC, KRA, DigiLocker, Aadhaar offline, bank, IPV, eSign, FATCA/CRS, nomination, income proof, UCC, demat). All providers are simulated in the sandbox and each result shows its production blocker." />
       {kyc?.status === "under_review" ? (
         <Notice tone="info">Your application is in the compliance review queue. You will be notified when it is approved.</Notice>
       ) : (

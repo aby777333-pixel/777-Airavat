@@ -23,6 +23,11 @@ export default function OrderTicket(p: { symbol: string; ltp: number; tick: numb
   // Idempotency key: generated once per order attempt, rotated after each submission result (in the event handler).
   const [clientOrderId, setClientOrderId] = useState<string>(() => crypto.randomUUID());
 
+  useEffect(() => {
+    const onPrefill = (e: Event) => { const d = (e as CustomEvent<{ symbol: string; price: number }>).detail; if (!d || d.symbol !== p.symbol) return; setType("LIMIT"); setPrice(d.price); };
+    window.addEventListener("airavat:prefill-price", onPrefill);
+    return () => window.removeEventListener("airavat:prefill-price", onPrefill);
+  }, [p.symbol]);
   const needsPrice = type === "LIMIT" || type === "SL";
   const needsTrigger = type === "SL" || type === "SL-M";
   const key = useMemo(() => JSON.stringify({ side, product, type, qty, price: needsPrice ? price : null }), [side, product, type, qty, price, needsPrice]);

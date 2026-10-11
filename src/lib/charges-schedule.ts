@@ -1,10 +1,10 @@
 // AIRAVAT published charge schedule (sandbox). One source of truth for the public pricing page and the calculators.
-// Values follow the Indian discount-brokerage market reference retrieved on 2026-10-11 (see REFERENCE below); statutory and
+// Values are AIRAVAT's own schedule, benchmarked on 2026-10-11 against prevailing Indian discount-brokerage market rates (see REFERENCE below); statutory and
 // exchange rates are re-verified against official notifications before any live use. Only NSE equity cash (CNC/MIS) is
 // tradable in the sandbox; every other segment is published for transparency and labelled "not enabled".
 
 export const SCHEDULE_VERSION = "2026-10-11";
-export const REFERENCE = { label: "Indian discount-brokerage market reference (Zerodha published charges)", url: "https://zerodha.com/charges/", retrieved: "2026-10-11" };
+export const REFERENCE = { label: "AIRAVAT published schedule, benchmarked against prevailing Indian discount-brokerage market rates and statutory levies", url: "/pricing", retrieved: "2026-10-11" };
 
 export type SegmentKey = "equity_delivery" | "equity_intraday" | "equity_futures" | "equity_options" | "currency_futures" | "currency_options" | "commodity_futures" | "commodity_options";
 export type Side = "BUY" | "SELL";
