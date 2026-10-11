@@ -6,6 +6,10 @@
   NODE_VERSION = "24"
   AIRAVAT_ENV = "sandbox"
 
+# Next.js runtime (OpenNext adapter). Declared explicitly so API-created sites always run it; version is intentionally unpinned.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [[headers]]
   for = "/*"
   [headers.values]
