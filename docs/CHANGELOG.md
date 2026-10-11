@@ -1,5 +1,10 @@
 # CHANGELOG.md
 
+## 0.7.3 — 2026-10-11 — Tools block: planners, screener, portfolio analyser
+- `src/lib/planners.ts` (7 tests): equity capital gains tax, gain harvesting, futures SPAN+exposure margin, pledge haircut with the cash rule, ELSS vs PPF vs NPS, retirement corpus, goal planner, HRA exemption; eight new tool pages under /tools/*.
+- Migration 0030: `screener_metrics()` (valuation, SMA 50/200, RSI 14, 52-week range, volume ratio in one call) and `resolve_symbols()`.
+- /tools/screener with eight presets and combinable filters; /tools/portfolio-analyser (paste a holdings CSV: sector allocation, concentration, P&L, XIRR, NIFTY 50 overlap, computed in the browser).
+
 ## 0.7.2 — 2026-10-11 — Business TV, header and hero polish
 - Home: Business TV panel beside the market pulse with the official YouTube live streams of CNBC-TV18, ET Now, NDTV Profit, Zee Business, CNBC Awaaz and Business Today; nothing loads until the viewer presses play (youtube-nocookie embed), with a broadcaster disclaimer. Market pulse indices in a three-column grid.
 - Header: Search and the theme selector moved to the utility bar so the main row stays inside the content edge. Hero copy card is more transparent (45% night with blur).
